@@ -1,0 +1,5 @@
+- hosts: localhost
+  roles:
+     - {role: digitransit-azure-appgw}
+  vars:
+     - environment_type: prod

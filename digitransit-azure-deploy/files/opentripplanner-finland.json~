@@ -1,0 +1,63 @@
+{
+  "id": "/opentripplanner-finland",
+  "cmd": null,
+  "cpus": 3,
+  "mem": 7168,
+  "disk": 0,
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/opentripplanner",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "servicePort": 10007,
+          "protocol": "tcp",
+          "name": "otpfinland",
+          "labels": {
+            "VIP_0": "/opentripplanner-finland:8080"
+          }
+        }
+      ],
+      "privileged": false,
+      "parameters": [
+        {
+          "key": "net",
+          "value": "host"
+        },
+        {
+          "key": "name",
+          "value": "opentripplanner-finland"
+        }
+      ],
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "ROUTER_DATA_CONTAINER_URL": "https://hsldevcom.blob.core.windows.net/routingdata",
+    "ROUTER_NAME": "finland"
+  },
+  "healthChecks": [
+    {
+      "path": "/",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 1200,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 30,
+      "maxConsecutiveFailures": 10,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "portDefinitions": [
+    {
+      "port": 10007,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}

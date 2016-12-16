@@ -1,0 +1,4 @@
+---
+# defaults file for digitransit-azure-deploy
+dcos_uri: "http://localhost/marathon/v2/apps/"
+

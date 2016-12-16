@@ -1,0 +1,19 @@
+---
+# tasks file for digitransit-azure-acs
+
+- name: create AZURE resource group
+  shell: az resource group create -n {{resource_group_name}} -l "{{azure_region}}"
+
+
+
+- name: create AZURE container service
+  shell: "az acs create -n digitransit-dev-cluster \
+          -g digitransit-dev \
+          -d digitransit-dev \
+          --admin-username hsldev \
+          --master-count 3 \
+          --agent-count 6 \
+          --orchestrator-type dcos \
+          --agent-vm-size Standard_D3_v2 \
+          --generate-ssh-keys"
+

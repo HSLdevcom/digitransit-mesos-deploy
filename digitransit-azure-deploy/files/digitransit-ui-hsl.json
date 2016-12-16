@@ -1,0 +1,59 @@
+{
+  "id": "/digitransit-ui-hsl",
+  "cmd": null,
+  "cpus": 1,
+  "mem": 800,
+  "disk": 0,
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/digitransit-ui",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "servicePort": 10001,
+          "protocol": "tcp",
+          "labels": {
+            "VIP_0": "/digitransit-ui-hsl:8080"
+          }
+        }
+      ],
+      "privileged": false,
+      "parameters": [
+        {
+          "key": "net",
+          "value": "host"
+        }
+      ],
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "CONFIG": "hsl",
+    "API_URL": "https://api.digitransit.space",
+    "MAP_URL": "https://digitransitcdn.azureedge.net"
+  },
+  "healthChecks": [
+    {
+      "path": "/",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 10,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "portDefinitions": [
+    {
+      "port": 10001,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}
