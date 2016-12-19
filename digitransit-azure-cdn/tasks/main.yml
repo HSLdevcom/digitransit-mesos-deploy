@@ -1,0 +1,34 @@
+---
+# tasks file for digitransit-azure-cdn
+
+- name: create CDN resources group
+  shell: "azure group create \
+         --name {{resource_group_name}} \
+         --location {{azure_region}}"
+
+- name: create a CDN profile
+  shell: "azure cdn profile create \
+          --name {{project}}-{{environment_type}}-CDN \
+          --resource-group {{resource_group_name}} \
+          --location {{azure_region}} \
+          --sku-name {{cdn_sku}}"
+
+#repeat this block for as many endpoints as you want to add under one profile
+
+- name: create CDN Endpoint 
+  shell: "azure cdn endpoint create \
+          --name {{project}}-{{environment_type}}-CDN-{{endpoint}} \
+          --resource-group {{resource_group_name}} \
+          --profile-name {{project}}-{{environment_type}}-CDN \
+          --location {{azure_region}} \
+          --origin-name {{origin_name}} \
+          --origin-host-name {{origin_host}} \
+          --origin-host-header {{origin_header}} \
+          --is-compression-enabled {{compression}} \
+          --content-types-to-compress {{mime_types}} \
+          --is-http-allowed {{http}} \
+          --is-https-allowed {{https}} \
+          --http-port {{http_port}} \
+          --https-port {{https_port}}" 
+
+
