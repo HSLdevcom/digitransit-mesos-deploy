@@ -9,7 +9,7 @@
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "uberguru/pelias-api-golden",
+      "image": "hsldevcom/pelias-api",
       "network": "BRIDGE",
       "portMappings": [
         {

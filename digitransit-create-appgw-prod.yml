@@ -1,0 +1,8 @@
+- hosts: localhost
+  roles:
+     - {role: digitransit-azure-appgw}
+  vars:
+     environment_type: PROD
+     certfile: /location/of/digitransit.pfx
+     certpass: yourpasswordhere
+

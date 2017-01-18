@@ -1,0 +1,7 @@
+- hosts: localhost
+  roles:
+     - {role: digitransit-azure-cdn}
+  vars:
+    environment_type: DEV
+    origin_host: dev-api.digitransit.fi
+    origin_header: dev-api.digitransit.fi

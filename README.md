@@ -13,7 +13,19 @@ It will deploy:
 
 some example playbooks are included and can be executed like so.
 
-ansible-playbook -i hosts playbookname.yml 
+ansible-playbook -i playbookname.yml 
+
+environment_type: PROD or DEV can be passed to the playbook for deploying the correct config
+some playbooks required ssh keys to be setup for creating services in azure
+
+set the location of your ssh keys according to which keys should be used to create the environment. 
+
+i.e. 
+
+ansible-playbook digitransit-create-acs.yml --extra-vars "ssh_keys=/home/username/.ssh/key.pub environment_type=PROD"
+
+
+
 
 Requirements
 ------------

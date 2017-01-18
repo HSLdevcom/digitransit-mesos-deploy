@@ -28,7 +28,8 @@
   shell: "azure network public-ip create \
           --resource-group {{project }}-{{environment_type}}-APPGW-RG \
           --name {{project}}-{{environment_type}}-APPGW-PUBIP \
-          --location {{azure_region}}"
+          --location {{azure_region}} \
+          --allocation-method Dynamic"
 
 
 - name: create initial APPGW CONFIG for digitransit SSL offload

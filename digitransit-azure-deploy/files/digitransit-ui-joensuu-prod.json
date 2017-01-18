@@ -1,25 +1,25 @@
+
 {
-  "id": "/opentripplanner-finland",
+  "id": "/digitransit-ui-joensuu",
   "cmd": null,
-  "cpus": 2,
-  "mem": 7168,
+  "cpus": 1,
+  "mem": 800,
   "disk": 0,
   "instances": 2,
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/opentripplanner",
+      "image": "hsldevcom/digitransit-ui",
       "network": "BRIDGE",
       "portMappings": [
         {
           "containerPort": 8080,
           "hostPort": 0,
-          "servicePort": 10007,
+          "servicePort": 10019,
           "protocol": "tcp",
-          "name": "otpfinland",
           "labels": {
-            "VIP_0": "/opentripplanner-finland:8080"
+            "VIP_0": "/digitransit-ui-joensuu:8080"
           }
         }
       ],
@@ -28,35 +28,38 @@
         {
           "key": "net",
           "value": "host"
-        },
-        {
-          "key": "name",
-          "value": "opentripplanner-finland"
         }
       ],
       "forcePullImage": true
     }
   },
   "env": {
-    "ROUTER_DATA_CONTAINER_URL": "http://opentripplanner-data-con.marathon.l4lb.thisdcos.directory:8080",
-    "ROUTER_NAME": "finland",
-    "JAVA_OPTS": "-Xmx6G -Xms6G"
+    "CONFIG": "joensuu",
+    "API_URL": "https://api.digitransit.eu",
+    "MAP_URL": "https://digitransitcdn.azureedge.net", 
+    "SENTRY_DSN": "sentrydsnenvsecret",
+    "SENTRY_SECRET_DSN": "sentrydsnsecret",
+    "PIWIK_ID": "11",
+    "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php"
   },
   "healthChecks": [
     {
       "path": "/",
       "protocol": "HTTP",
       "portIndex": 0,
-      "gracePeriodSeconds": 1200,
+      "gracePeriodSeconds": 300,
       "intervalSeconds": 10,
-      "timeoutSeconds": 30,
+      "timeoutSeconds": 10,
       "maxConsecutiveFailures": 10,
       "ignoreHttp1xx": false
     }
   ],
+  "labels": {
+    "update": "auto"
+  },
   "portDefinitions": [
     {
-      "port": 10007,
+      "port": 10019,
       "protocol": "tcp",
       "labels": {}
     }

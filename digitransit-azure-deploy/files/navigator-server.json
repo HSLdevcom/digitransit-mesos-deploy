@@ -1,25 +1,24 @@
 {
-  "id": "/hsl-map-server",
+  "id": "/navigator-server",
   "cmd": null,
-  "cpus": 1,
-  "mem": 2048,
+  "cpus": 0.1,
+  "mem": 500,
   "disk": 0,
   "instances": 2,
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "uberguru/hsl-map-server",
+      "image": "hsldevcom/navigator-server",
       "network": "BRIDGE",
       "portMappings": [
         {
           "containerPort": 8080,
           "hostPort": 0,
-          "servicePort": 10000,
+          "servicePort": 10013,
           "protocol": "tcp",
-          "name": "8080",
           "labels": {
-            "VIP_0": "/hsl-map-server:8080"
+            "VIP_0": "/navigator-server:8080"
           }
         }
       ],
@@ -28,30 +27,30 @@
         {
           "key": "net",
           "value": "host"
+        },
+        {
+          "key": "name",
+          "value": "navigator-server"
         }
       ],
       "forcePullImage": true
     }
   },
-  "env": {
-    "FONTSTACK_PASSWORD": "$FONTSTACKPWORD",
-    "HSL_OTP_URL": "api.digitransit.space/routing/v1/routers/hsl/index/graphql"
-  },
   "healthChecks": [
     {
-      "path": "/hsl-map/index.json",
+      "path": "/",
       "protocol": "HTTP",
       "portIndex": 0,
       "gracePeriodSeconds": 300,
       "intervalSeconds": 10,
       "timeoutSeconds": 10,
-      "maxConsecutiveFailures": 10,
+      "maxConsecutiveFailures": 5,
       "ignoreHttp1xx": false
     }
   ],
   "portDefinitions": [
     {
-      "port": 10000,
+      "port": 10013,
       "protocol": "tcp",
       "labels": {}
     }

@@ -1,25 +1,25 @@
 {
-  "id": "/opentripplanner-finland",
+  "id": "/hsl-map-server",
   "cmd": null,
-  "cpus": 2,
-  "mem": 7168,
+  "cpus": 1,
+  "mem": 2048,
   "disk": 0,
   "instances": 2,
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/opentripplanner",
+      "image": "hsldevcom/hsl-map-server",
       "network": "BRIDGE",
       "portMappings": [
         {
           "containerPort": 8080,
           "hostPort": 0,
-          "servicePort": 10007,
+          "servicePort": 10018,
           "protocol": "tcp",
-          "name": "otpfinland",
+          "name": "8080",
           "labels": {
-            "VIP_0": "/opentripplanner-finland:8080"
+            "VIP_0": "/hsl-map-server:8080"
           }
         }
       ],
@@ -28,35 +28,32 @@
         {
           "key": "net",
           "value": "host"
-        },
-        {
-          "key": "name",
-          "value": "opentripplanner-finland"
         }
       ],
       "forcePullImage": true
     }
   },
   "env": {
-    "ROUTER_DATA_CONTAINER_URL": "http://opentripplanner-data-con.marathon.l4lb.thisdcos.directory:8080",
-    "ROUTER_NAME": "finland",
-    "JAVA_OPTS": "-Xmx6G -Xms6G"
+    "FONTSTACK_PASSWORD": "fontstacksecret",
+    "HSL_OTP_URL": "api.digitransit.eu/routing/v1/routers/hsl/index/graphql",
+    "FINLAND_OTP_URL": "api.digitransit.eu/routing/v1/routers/finland/index/graphql",
+    "WALTTI_OTP_URL": "api.digitransit.eu/routing/v1/routers/finland/index/graphql"
   },
   "healthChecks": [
     {
-      "path": "/",
+      "path": "/hsl-map/index.json",
       "protocol": "HTTP",
       "portIndex": 0,
-      "gracePeriodSeconds": 1200,
+      "gracePeriodSeconds": 300,
       "intervalSeconds": 10,
-      "timeoutSeconds": 30,
+      "timeoutSeconds": 10,
       "maxConsecutiveFailures": 10,
       "ignoreHttp1xx": false
     }
   ],
   "portDefinitions": [
     {
-      "port": 10007,
+      "port": 10018,
       "protocol": "tcp",
       "labels": {}
     }

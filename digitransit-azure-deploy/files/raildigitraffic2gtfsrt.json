@@ -1,25 +1,24 @@
 {
-  "id": "/opentripplanner-finland",
+  "id": "/raildigitraffic2gtfsrt",
   "cmd": null,
-  "cpus": 2,
-  "mem": 7168,
+  "cpus": 0.1,
+  "mem": 1000,
   "disk": 0,
   "instances": 2,
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/opentripplanner",
+      "image": "hsldevcom/raildigitraffic2gtfsrt",
       "network": "BRIDGE",
       "portMappings": [
         {
           "containerPort": 8080,
           "hostPort": 0,
-          "servicePort": 10007,
+          "servicePort": 10015,
           "protocol": "tcp",
-          "name": "otpfinland",
           "labels": {
-            "VIP_0": "/opentripplanner-finland:8080"
+            "VIP_0": "/raildigitraffic2gtfsrt:8080"
           }
         }
       ],
@@ -31,32 +30,30 @@
         },
         {
           "key": "name",
-          "value": "opentripplanner-finland"
+          "value": "raildigitraffic2gtfsrt"
         }
       ],
       "forcePullImage": true
     }
   },
   "env": {
-    "ROUTER_DATA_CONTAINER_URL": "http://opentripplanner-data-con.marathon.l4lb.thisdcos.directory:8080",
-    "ROUTER_NAME": "finland",
-    "JAVA_OPTS": "-Xmx6G -Xms6G"
+    "ROUTER_ZIP_URL": "http://opentripplanner-data-con.marathon.l4lb.thisdcos.directory:8080/router-finland.zip"
   },
   "healthChecks": [
     {
-      "path": "/",
+      "path": "/hsl",
       "protocol": "HTTP",
       "portIndex": 0,
-      "gracePeriodSeconds": 1200,
+      "gracePeriodSeconds": 300,
       "intervalSeconds": 10,
-      "timeoutSeconds": 30,
-      "maxConsecutiveFailures": 10,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 5,
       "ignoreHttp1xx": false
     }
   ],
   "portDefinitions": [
     {
-      "port": 10007,
+      "port": 10015,
       "protocol": "tcp",
       "labels": {}
     }

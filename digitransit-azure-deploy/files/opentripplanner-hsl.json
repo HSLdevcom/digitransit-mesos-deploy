@@ -1,7 +1,7 @@
 {
   "id": "/opentripplanner-hsl",
   "cmd": null,
-  "cpus": 3,
+  "cpus": 2,
   "mem": 7168,
   "disk": 0,
   "instances": 2,
@@ -38,7 +38,7 @@
     }
   },
   "env": {
-    "ROUTER_DATA_CONTAINER_URL": "https://hsldevcom.blob.core.windows.net/routingdata",
+    "ROUTER_DATA_CONTAINER_URL": "http://opentripplanner-data-con:8080",
     "ROUTER_NAME": "hsl",
     "JAVA_OPTS": "-Xmx6G -Xms6G"
   },

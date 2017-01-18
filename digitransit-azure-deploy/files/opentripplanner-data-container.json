@@ -1,30 +1,38 @@
 {
-  "id": "/digitransit-proxy",
+  "id": "/opentripplanner-data-con",
   "cmd": null,
-  "cpus": 2,
-  "mem": 512,
+  "cpus": 0.1,
+  "mem": 20,
   "disk": 0,
   "instances": 2,
-  "acceptedResourceRoles": [
-    "slave_public"
-  ],
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/digitransit-proxy",
+      "image": "hsldevcom/opentripplanner-data-container",
       "network": "BRIDGE",
       "portMappings": [
         {
           "containerPort": 8080,
-          "hostPort": 80,
-          "servicePort": 10002,
+          "hostPort": 0,
+          "servicePort": 10014,
           "protocol": "tcp",
-          "labels": {}
+          "labels": {
+            "VIP_0": "/opentripplanner-data-con:8080"
+          }
         }
       ],
       "privileged": false,
-      "parameters": [],
+      "parameters": [
+        {
+          "key": "net",
+          "value": "host"
+        },
+        {
+          "key": "name",
+          "value": "opentripplanner-data-con"
+        }
+      ],
       "forcePullImage": true
     }
   },
@@ -34,18 +42,15 @@
       "protocol": "HTTP",
       "portIndex": 0,
       "gracePeriodSeconds": 300,
-      "intervalSeconds": 60,
-      "timeoutSeconds": 20,
-      "maxConsecutiveFailures": 3,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 5,
       "ignoreHttp1xx": false
     }
   ],
-  "labels": {
-    "update": "auto"
-  },
   "portDefinitions": [
     {
-      "port": 10002,
+      "port": 10014,
       "protocol": "tcp",
       "labels": {}
     }

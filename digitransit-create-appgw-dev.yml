@@ -1,0 +1,8 @@
+- hosts: localhost
+  roles:
+     - {role: digitransit-azure-appgw}
+  vars: 
+     environment_type: DEV
+     certfile: /location/of/digitransit.pfx
+     certpass: yourpasswordhere
+     backend_servers: "digitransit-dev-acsagents.westeurope.cloudapp.azure.com"

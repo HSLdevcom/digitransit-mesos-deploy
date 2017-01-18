@@ -1,67 +1,138 @@
 ---
 # tasks file for digitransit-azure-deploy
 
-- name: deploy digitransit-ui-hsl to DC/OS
+##This section of the role is for restarting already deployed applications 
+##A restart usually desploys the lastest application from dockerhub
+
+- name: restart service in marathon
   uri:
-    url: "{{dcos_uri}}"
+    url: "{{dcos_uri}}/apps/{{appid}}/restart"
     method: POST
-    body: "{{ lookup('file','digitransit-ui-hsl.json') }}"
+    body: ""
     body_format: json
     HEADER_Content-Type: "application/json"
     status_code: 200,201
     ignore_errors: yes
+  tags: 
+     - restart
 
-- name: deploy opentripplanner-hsl to DC/OS
+## This section of the role is for updating existing running apps or if app not running it deploys it
+## marathon will only update where the json file differs from what is running
+## this means that we can safely ensure the state of the containers by PUT to all. 
+## Alternative method would be allow user to pass as list but this fits CI method better. 
+## curl -X PUT http://localhost/marathon/v2/apps/pelias-api -d @pelias-api.json -H "Content-type: application/json"
+
+
+- block:
+    - name: replace piwik dsn secret
+      replace: 
+        dest="{{ role_path }}/files/{{ item }}"
+        regexp='sentrydsnenvsecret'
+        replace="{{dev_sentry_dsn}}"
+      with_items: 
+         - "{{filesecrets}}"
+      tags: 
+         - decrypt
+         - deploy
+  when: environment_type == 'DEV'
+
+- block:
+    - name: replace piwik dsn secret
+      replace:
+        dest="{{ role_path }}/files/{{ item }}"
+        regexp='sentrydsnenvsecret'
+        replace="{{prod_sentry_dsn}}"
+      with_items:
+         - "{{filesecrets}}"
+      tags:
+         - decrypt
+         - deploy
+  when: environment_type == 'PROD'
+
+
+- name: replace piwik secret
+  replace:
+      dest="{{ role_path }}/files/{{ item }}"
+      regexp='sentrydsnsecret'
+      replace="{{sentry_secret_dsn}}"
+  with_items:
+     - "{{filesecrets}}"
+  tags:
+     - decrypt
+     - deploy
+
+- name: replace fontstack secret
+  replace:
+     dest="{{ role_path }}/files/hsl-map-server-{{environment_type}}.json"
+     regexp='fontstacksecret'
+     replace="{{fontstack_password}}"
+  tags:
+     - decrypt
+     - deploy
+
+
+###UPDATE OR CREATE THE CONTAINERS 
+
+- name: update or create containers to DC/OS 
   uri:
-    url: "{{dcos_uri}}"
-    method: POST
-    body: "{{ lookup('file','opentripplanner-hsl.json') }}"
+    url: "{{dcos_uri}}/apps/{{ item.name }}"
+    method: PUT
+    body: "{{ lookup('file','{{ item.config }}.json') }}"
     body_format: json
     HEADER_Content-Type: "application/json"
     status_code: 200,201
-    ignore_errors: yes
-
-- name: deploy hsl-map-server to DC/OS
-  uri:
-    url: "{{dcos_uri}}"
-    method: POST
-    body: "{{ lookup('file','hsl-map-server.json') }}"
-    body_format: json
-    HEADER_Content-Type: "application/json"
-    status_code: 200,201
-    ignore_errors: yes
-
-- name: deploy pelias-data-container to DC/OS
-  uri:
-    url: "{{dcos_uri}}"
-    method: POST
-    body: "{{ lookup('file','pelias-data-container.json') }}"
-    body_format: json
-    HEADER_Content-Type: "application/json"
-    status_code: 200,201
-    ignore_errors: yes
-
-- name: deploy pelias-api to DC/OS
-  uri:
-    url: "{{dcos_uri}}"
-    method: POST
-    body: "{{ lookup('file','pelias-api.json') }}"
-    body_format: json
-    HEADER_Content-Type: "application/json"
-    status_code: 200,201
-    ignore_errors: yes
-
-#digitransit proxy has to be the last component to be deployed
-#LB DNS entries in DC/OS need to exist before NGINX container will start
-
-- name: deploy digitransit proxy to DC/OS
-  uri:
-    url: "{{dcos_uri}}"
-    method: POST
-    body: "{{ lookup('file','digitransit-proxy.json') }}"
-    body_format: json
-    HEADER_Content-Type: "application/json"
-    status_code: 200,201
-    ignore_errors: yes
+  with_items:
+     - "{{ container }}"
+  tags:
+     - update
+     - deploy
 
 
+###RE-ENCRYPT the variabls to prevent any accidents when committing changes
+
+- block:
+    - name: replace piwik dsn secret
+      replace:
+        dest="{{ role_path }}/files/{{ item }}"
+        regexp="{{dev_sentry_dsn}}"
+        replace='sentrydsnenvsecret'
+      with_items:
+         - "{{filesecrets}}"
+      tags:
+         - encrypt
+         - deploy
+  when: environment_type == 'DEV'
+
+- block:
+    - name: replace piwik dsn secret
+      replace:
+        dest="{{ role_path }}/files/{{ item }}"
+        regexp="{{prod_sentry_dsn}}"
+        replace='sentrydsnenvsecret'
+      with_items:
+         - "{{filesecrets}}"
+      tags:
+         - encrypt
+         - deploy
+  when: environment_type == 'PROD'
+
+
+- name: replace piwik secret
+  replace:
+      dest="{{ role_path }}/files/{{ item }}"
+      regexp="{{sentry_secret_dsn}}"
+      replace='sentrydsnsecret'
+  with_items:
+     - "{{filesecrets}}"
+  tags:
+     - encrypt
+     - deploy
+
+- name: replace fontstack secret
+  replace:
+     dest="{{ role_path }}/files/hsl-map-server-{{environment_type}}.json"
+     regexp="{{fontstack_password}}"
+     replace='fontstacksecret'
+  tags:
+     - encrypt
+     - deploy 

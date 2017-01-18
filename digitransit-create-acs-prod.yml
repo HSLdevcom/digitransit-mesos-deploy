@@ -1,0 +1,7 @@
+- hosts: localhost
+  roles:
+     - {role: digitransit-azure-acs }
+  vars:
+     environment_type: PROD
+     ssh_keys: /home/.ssh/sshkey.pub
+     admin_user: adminusernamegoeshere

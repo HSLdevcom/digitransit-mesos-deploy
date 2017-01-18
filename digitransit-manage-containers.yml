@@ -1,3 +1,5 @@
 - hosts: localhost
   roles:
      - {role: digitransit-azure-deploy}
+  vars:
+    environment_type: 

@@ -2,7 +2,7 @@
 # defaults file for digitransit-azure-cdn
 project: digitransit
 environment_type: dev
-resource_group_name: "{{project}}-{{environment_type}}-CDN-RG"
+resource_group_name: "{{project}}-{{ environment_type | upper }}-CDN-RG"
 azure_region: westeurope
 cdn_sku: Standard_Verizon
 origin_name: digitransit_api
@@ -15,6 +15,6 @@ http: true
 http_port: 80
 https_port: 443
 #this is more for logical naming of the object its pointing to i.e the endpoint
-endpoint: api
+endpoint: origin
 #The endpoint will be named 
 #https://{{project}}-{{environment_type}}-CDN-{{endpoint}}.azureedge.net/map/v1/hsl-map/13/4664/2371.png

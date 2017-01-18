@@ -3,14 +3,15 @@
 
 
 project: digitransit
-environment_type: dev
-resource_group_name: "{{project}}-{{environment_type}}-APPGW-RG"
+environment_type: DEV
+resource_group_name: "{{project}}-{{environment_type | upper}}-APPGW-RG"
 azure_region: westeurope
 vnet_prefix: 10.0.0.0/16
 subnet_prefix: 10.0.0.0/28
-backend_servers: digitransit-devagents.westeurope.cloudapp.azure.com
-certfile: $CERTLOCATION
-certpass: $CERTPASS1
+#backend_servers: digitransit-devagents.westeurope.cloudapp.azure.com
+backend_servers: "{{ project | lower }}-{{ environment_type | lower }}-acsagents.westeurope.cloudapp.azure.com"
+certfile: /your/cert/file.pfx
+certpass: yourcertpassword
 capacity: 2 
 sku: Standard_Medium
 sku_tier: Standard

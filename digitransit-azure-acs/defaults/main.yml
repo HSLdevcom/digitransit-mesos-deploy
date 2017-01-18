@@ -2,23 +2,26 @@
 # defaults file for digitransit-azure-acs
 
 #What type of environment
-environment: dev
+environment_type: DEV
 #How many master nodes defaults to 3 for HA
 master_nodes: 3
 #How many azure vms needs as nodes for DCOS
-agent_nodes: 6
+agent_nodes: 12
 #The azure cluster name
-acs_name: digitransit-{{environment}}-cluster
+acs_name: "{{project_name}}-{{environment_type}}-ACS-CLUSTER"
 #the username defaults to admin recommend to change 
-admin_user: admin
+admin_user: ""
 #The orchestrator type to be used
 orchestrator: dcos
 #The azure VM instance size to be used for deployments
 vm_size: Standard_D3_v2
 #Azure resource group name
-resource_group_name: digitransit-{{environment}}
+resource_group_name: digitransit-{{environment_type}}-ACS-RG
 #DNS prefix this has to be unique on azure or cluster creation will fail
-dns_prefix: digitransit-{{environment}}
-
-
+dns_prefix: digitransit-{{environment_type | lower }}-acs
+#ssh keys
+ssh_keys: ""
+#which azure region
+azure_region: westeurope
+project_name: digitransit
 

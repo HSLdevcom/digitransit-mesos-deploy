@@ -2,9 +2,9 @@
 # tasks file for digitransit-azure-acs
 
 - name: create AZURE resource group
-  shell: az resource group create -n {{resource_group_name}} -l "{{azure_region}}"
-
-
+  shell: "az group create 
+         --name {{resource_group_name}} 
+         --location {{azure_region}}"
 
 - name: create AZURE container service
   shell: "az acs create -n {{acs_name}} \
@@ -15,5 +15,4 @@
           --agent-count {{agent_nodes}} \
           --orchestrator-type {{orchestrator}} \
           --agent-vm-size {{vm_size}} \
-          --generate-ssh-keys"
-
+          --ssh-key-value {{ssh_keys}}"
