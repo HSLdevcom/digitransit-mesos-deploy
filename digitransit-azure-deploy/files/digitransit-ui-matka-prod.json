@@ -34,7 +34,7 @@
   },
   "env": {
     "CONFIG": "matka",
-    "API_URL": "https://api.digitransit.eu",
+    "API_URL": "https://api.digitransit.fi",
     "MAP_URL": "https://digitransit-prod-cdn-origin.azureedge.net",
     "SENTRY_DSN": "sentrydsnenvsecret",
     "SENTRY_SECRET_DSN": "sentrydsnsecret",
