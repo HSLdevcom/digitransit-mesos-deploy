@@ -91,7 +91,7 @@
 ###RE-ENCRYPT the variabls to prevent any accidents when committing changes
 
 - block:
-    - name: replace piwik dsn secret
+    - name: re-encrypt piwik dsn secret
       replace:
         dest="{{ role_path }}/files/{{ item }}"
         regexp="{{dev_sentry_dsn}}"
@@ -104,7 +104,7 @@
   when: environment_type == 'DEV'
 
 - block:
-    - name: replace piwik dsn secret
+    - name: re-encrypt piwik dsn secret
       replace:
         dest="{{ role_path }}/files/{{ item }}"
         regexp="{{prod_sentry_dsn}}"
@@ -117,7 +117,7 @@
   when: environment_type == 'PROD'
 
 
-- name: replace piwik secret
+- name: re-encrypt piwik secret
   replace:
       dest="{{ role_path }}/files/{{ item }}"
       regexp="{{sentry_secret_dsn}}"
@@ -128,9 +128,9 @@
      - encrypt
      - deploy
 
-- name: replace fontstack secret
+- name: re-encrypt fontstack secret
   replace:
-     dest="{{ role_path }}/files/hsl-map-server-{{environment_type}}.json"
+     dest="{{ role_path }}/files/hsl-map-server-{{environment_type} |lower}.json"
      regexp="{{fontstack_password}}"
      replace='fontstacksecret'
   tags:

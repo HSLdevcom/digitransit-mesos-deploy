@@ -35,7 +35,7 @@
   "env": {
     "CONFIG": "turku",
     "API_URL": "https://api.digitransit.eu",
-    "MAP_URL": "https://api.digitransit.eu"
+    "MAP_URL": "https://digitransit-prod-cdn-origin.azureedge.net",
     "SENTRY_DSN": "sentrydsnenvsecret",
     "SENTRY_SECRET_DSN": "sentrydsnsecret",
     "PIWIK_ID": "13",
