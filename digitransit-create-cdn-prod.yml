@@ -2,6 +2,6 @@
   roles:
      - {role: digitransit-azure-cdn}
   vars:
-    environment_type: dev
+    environment_type: prod
     origin_host: api.digitransit.fi
     origin_header: api.digitransit.fi
