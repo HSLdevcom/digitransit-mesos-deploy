@@ -35,9 +35,9 @@
   },
   "env": {
     "FONTSTACK_PASSWORD": "fontstacksecret",
-    "HSL_OTP_URL": "api.digitransit.fi/routing/v1/routers/hsl/index/graphql",
-    "FINLAND_OTP_URL": "api.digitransit.fi/routing/v1/routers/finland/index/graphql",
-    "WALTTI_OTP_URL": "api.digitransit.fi/routing/v1/routers/finland/index/graphql"
+    "HSL_OTP_URL": "opentripplanner-hsl:8080/otp/routers/hsl/index/graphql",
+    "FINLAND_OTP_URL": "opentripplanner-finland:8080/otp/routers/finland/index/graphql",
+    "WALTTI_OTP_URL": "opentripplanner-waltti:8080/otp/routers/waltti/index/graphql"
   },
   "healthChecks": [
     {

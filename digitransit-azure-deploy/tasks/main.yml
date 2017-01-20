@@ -63,7 +63,7 @@
 
 - name: replace fontstack secret
   replace:
-     dest="{{ role_path }}/files/hsl-map-server-{{environment_type}}.json"
+     dest="{{ role_path }}/files/hsl-map-server-{{environment_type | lower}}.json"
      regexp='fontstacksecret'
      replace="{{fontstack_password}}"
   tags:
@@ -130,7 +130,7 @@
 
 - name: re-encrypt fontstack secret
   replace:
-     dest="{{ role_path }}/files/hsl-map-server-{{environment_type} |lower}.json"
+     dest="{{ role_path }}/files/hsl-map-server-{{environment_type | lower}}.json"
      regexp="{{fontstack_password}}"
      replace='fontstacksecret'
   tags:
