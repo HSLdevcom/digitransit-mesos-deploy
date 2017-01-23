@@ -35,7 +35,7 @@
   "env": {
     "CONFIG": "joensuu",
     "API_URL": "https://dev-api.digitransit.fi",
-    "MAP_URL": "https://dev-api.digitransit.fi",
+    "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
     "SENTRY_DSN": "sentrydsnenvsecret",
     "SENTRY_SECRET_DSN": "sentrydsnsecret",
     "PIWIK_ID": "10",
