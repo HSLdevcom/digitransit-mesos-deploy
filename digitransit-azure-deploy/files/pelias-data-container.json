@@ -38,7 +38,7 @@
           "value": "pelias-data-container"
         }
       ],
-      "forcePullImage": false
+      "forcePullImage": true
     }
   },
   "env": {
