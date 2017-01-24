@@ -1,7 +1,7 @@
 ---
 # tasks file for digitransit-azure-deploy
 
-##This section of the role is for restarting already deployed applications 
+##This section of the role is for restarting already deployed applications
 ##A restart usually desploys the lastest application from dockerhub
 
 - name: restart service in marathon
@@ -13,25 +13,25 @@
     HEADER_Content-Type: "application/json"
     status_code: 200,201
     ignore_errors: yes
-  tags: 
+  tags:
      - restart
 
 ## This section of the role is for updating existing running apps or if app not running it deploys it
 ## marathon will only update where the json file differs from what is running
-## this means that we can safely ensure the state of the containers by PUT to all. 
-## Alternative method would be allow user to pass as list but this fits CI method better. 
+## this means that we can safely ensure the state of the containers by PUT to all.
+## Alternative method would be allow user to pass as list but this fits CI method better.
 ## curl -X PUT http://localhost/marathon/v2/apps/pelias-api -d @pelias-api.json -H "Content-type: application/json"
 
 
 - block:
     - name: replace piwik dsn secret
-      replace: 
+      replace:
         dest="{{ role_path }}/files/{{ item }}"
         regexp='sentrydsnenvsecret'
         replace="{{dev_sentry_dsn}}"
-      with_items: 
+      with_items:
          - "{{filesecrets}}"
-      tags: 
+      tags:
          - decrypt
          - deploy
   when: environment_type == 'DEV'
@@ -63,7 +63,7 @@
 
 - name: replace fontstack secret
   replace:
-     dest="{{ role_path }}/files/hsl-map-server-{{environment_type | lower}}.json"
+     dest="{{ role_path }}/files/hsl-map-server.json"
      regexp='fontstacksecret'
      replace="{{fontstack_password}}"
   tags:
@@ -71,9 +71,9 @@
      - deploy
 
 
-###UPDATE OR CREATE THE CONTAINERS 
+###UPDATE OR CREATE THE CONTAINERS
 
-- name: update or create containers to DC/OS 
+- name: update or create containers to DC/OS
   uri:
     url: "{{dcos_uri}}/apps/{{ item.name }}"
     method: PUT
@@ -130,9 +130,9 @@
 
 - name: re-encrypt fontstack secret
   replace:
-     dest="{{ role_path }}/files/hsl-map-server-{{environment_type | lower}}.json"
+     dest="{{ role_path }}/files/hsl-map-server.json"
      regexp="{{fontstack_password}}"
      replace='fontstacksecret'
   tags:
      - encrypt
-     - deploy 
+     - deploy
