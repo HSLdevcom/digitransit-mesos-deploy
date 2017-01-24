@@ -10,7 +10,7 @@
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/digitransit-ui",
+      "image": "hsldevcom/digitransit-ui:test",
       "network": "BRIDGE",
       "portMappings": [
         {
@@ -36,7 +36,7 @@
   "env": {
     "CONFIG": "joensuu",
     "API_URL": "https://api.digitransit.fi",
-    "MAP_URL": "https://digitransit-prod-cdn-origin.azureedge.net", 
+    "MAP_URL": "https://digitransit-prod-cdn-origin.azureedge.net",
     "SENTRY_DSN": "sentrydsnenvsecret",
     "SENTRY_SECRET_DSN": "sentrydsnsecret",
     "PIWIK_ID": "11",

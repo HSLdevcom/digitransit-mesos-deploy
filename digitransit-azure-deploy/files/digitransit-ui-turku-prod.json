@@ -9,7 +9,7 @@
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/digitransit-ui",
+      "image": "hsldevcom/digitransit-ui:test",
       "network": "BRIDGE",
       "portMappings": [
         {
