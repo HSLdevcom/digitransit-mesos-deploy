@@ -1,0 +1,64 @@
+{
+  "id": "/raildigitraffic2gtfsrt",
+  "cmd": null,
+  "cpus": 0.1,
+  "mem": 1000,
+  "disk": 0,
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/raildigitraffic2gtfsrt:test",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "servicePort": 10015,
+          "protocol": "tcp",
+          "labels": {
+            "VIP_0": "/raildigitraffic2gtfsrt:8080"
+          }
+        }
+      ],
+      "privileged": false,
+      "parameters": [
+        {
+          "key": "net",
+          "value": "host"
+        },
+        {
+          "key": "name",
+          "value": "raildigitraffic2gtfsrt"
+        }
+      ],
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "ROUTER_ZIP_URL": "http://opentripplanner-data-con.marathon.l4lb.thisdcos.directory:8080/router-finland.zip"
+  },
+  "healthChecks": [
+    {
+      "path": "/hsl",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 5,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "update": "auto"
+  },
+  "portDefinitions": [
+    {
+      "port": 10015,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}

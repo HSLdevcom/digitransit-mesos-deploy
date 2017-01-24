@@ -5,19 +5,19 @@ dcos_uri: "http://localhost/marathon/v2"
 environment_type: ""
 container:
 - name: "pelias-api"
-  config: "pelias-api"
+  config: "pelias-api-{{ environment_type | lower }}"
 
 - name: "siri2gtfsrt"
-  config: "siri2gtfsrt"
+  config: "siri2gtfsrt-{{ environment_type | lower }}"
 
 - name: "raildigitraffic2gtfsrt"
-  config: "raildigitraffic2gtfsrt"
+  config: "raildigitraffic2gtfsrt-{{ environment_type | lower }}"
 
 - name: "digitransit-site"
-  config: "digitransit-site"
+  config: "digitransit-site-{{ environment_type | lower }}"
 
 - name: "hslalert"
-  config: "hslalert"
+  config: "hslalert-{{ environment_type | lower }}"
 
 - name: "digitransit-ui-joensuu"
   config: "digitransit-ui-joensuu-{{ environment_type | lower }}"
@@ -32,28 +32,28 @@ container:
   config: "digitransit-ui-hsl-{{ environment_type | lower }}"
 
 - name: "opentripplanner-hsl"
-  config: "opentripplanner-hsl"
+  config: "opentripplanner-hsl-{{ environment_type | lower }}"
 
 - name: "opentripplanner-waltti"
-  config: "opentripplanner-waltti"
+  config: "opentripplanner-waltti-{{ environment_type | lower }}"
 
 - name: "opentripplanner-finland"
-  config: "opentripplanner-finland"
+  config: "opentripplanner-finland-{{ environment_type | lower }}"
 
 - name: "digitransit-proxy"
-  config: "digitransit-proxy"
+  config: "digitransit-proxy-{{ environment_type | lower }}"
 
 - name: "opentripplanner-data-con"
-  config: "opentripplanner-data-container"
+  config: "opentripplanner-data-container-{{ environment_type | lower }}"
 
 - name: "navigator-server"
-  config: "navigator-server"
+  config: "navigator-server-{{ environment_type | lower }}"
 
 - name: "hsl-map-server"
-  config: "hsl-map-server"
+  config: "hsl-map-server-{{ environment_type | lower }}"
 
 - name: "pelias-data-container"
-  config: "pelias-data-container"
+  config: "pelias-data-container-{{ environment_type | lower }}"
 
 filesecrets:
 - "digitransit-ui-hsl-{{environment_type | lower}}.json"

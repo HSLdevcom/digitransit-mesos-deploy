@@ -1,0 +1,61 @@
+{
+  "id": "/navigator-server",
+  "cmd": null,
+  "cpus": 0.1,
+  "mem": 500,
+  "disk": 0,
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/navigator-server:test",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "servicePort": 10013,
+          "protocol": "tcp",
+          "labels": {
+            "VIP_0": "/navigator-server:8080"
+          }
+        }
+      ],
+      "privileged": false,
+      "parameters": [
+        {
+          "key": "net",
+          "value": "host"
+        },
+        {
+          "key": "name",
+          "value": "navigator-server"
+        }
+      ],
+      "forcePullImage": true
+    }
+  },
+  "healthChecks": [
+    {
+      "path": "/",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 5,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "update": "auto"
+  },
+  "portDefinitions": [
+    {
+      "port": 10013,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}

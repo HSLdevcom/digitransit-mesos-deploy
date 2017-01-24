@@ -1,0 +1,57 @@
+{
+  "id": "/digitransit-site",
+  "cmd": null,
+  "cpus": 0.1,
+  "mem": 256,
+  "disk": 0,
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/digitransit-site:test",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "servicePort": 10012,
+          "protocol": "tcp",
+          "labels": {
+            "VIP_0": "/digitransit-site:8080"
+          }
+        }
+      ],
+      "privileged": false,
+      "parameters": [
+        {
+          "key": "name",
+          "value": "digitransit-site"
+        }
+      ],
+      "forcePullImage": true
+    }
+  },
+  "healthChecks": [
+    {
+      "path": "/",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 5,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "update": "auto"
+  },
+  "portDefinitions": [
+    {
+      "port": 10012,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}

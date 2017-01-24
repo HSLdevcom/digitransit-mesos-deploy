@@ -1,0 +1,64 @@
+{
+  "id": "/hsl-map-server",
+  "cmd": null,
+  "cpus": 1,
+  "mem": 2048,
+  "disk": 0,
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/hsl-map-server:test",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "servicePort": 10018,
+          "protocol": "tcp",
+          "name": "8080",
+          "labels": {
+            "VIP_0": "/hsl-map-server:8080"
+          }
+        }
+      ],
+      "privileged": false,
+      "parameters": [
+        {
+          "key": "net",
+          "value": "host"
+        }
+      ],
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "FONTSTACK_PASSWORD": "fontstacksecret",
+    "HSL_OTP_URL": "opentripplanner-hsl:8080/otp/routers/hsl/index/graphql",
+    "FINLAND_OTP_URL": "opentripplanner-finland:8080/otp/routers/finland/index/graphql",
+    "WALTTI_OTP_URL": "opentripplanner-waltti:8080/otp/routers/waltti/index/graphql"
+  },
+  "healthChecks": [
+    {
+      "path": "/hsl-map/index.json",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 10,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "update": "auto"
+  },
+  "portDefinitions": [
+    {
+      "port": 10018,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "id": "/siri2gtfsrt",
+  "cmd": null,
+  "cpus": 0.3,
+  "mem": 1000,
+  "disk": 0,
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/siri2gtfsrt:test",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "servicePort": 10016,
+          "protocol": "tcp",
+          "labels": {
+            "VIP_0": "/siri2gtfsrt:8080"
+          }
+        }
+      ],
+      "privileged": false,
+      "parameters": [
+        {
+          "key": "net",
+          "value": "host"
+        },
+        {
+          "key": "name",
+          "value": "siri2gtfsrt"
+        }
+      ],
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "TRAIN_URL": "http://raildigitraffic2gtfsrt.marathon.l4lb.thisdcos.directory:8080/hsl",
+    "HSL_URL": "http://navigator-server.marathon.l4lb.thisdcos.directory:8080/siriaccess/vm/json?operatorRef=HSL",
+    "TRIP_UPDATE_URL": "http://hslalert.marathon.l4lb.thisdcos.directory:8080/"
+  },
+  "healthChecks": [
+    {
+      "path": "/HSL",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 5,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "update": "auto"
+  },
+  "portDefinitions": [
+    {
+      "port": 10016,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ],
+"upgradeStrategy": {
+    "minimumHealthCapacity": 0.5,
+    "maximumOverCapacity": 1
+  }
+}

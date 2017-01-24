@@ -1,0 +1,67 @@
+{
+  "id": "/opentripplanner-hsl",
+  "cmd": null,
+  "cpus": 2,
+  "mem": 7168,
+  "disk": 0,
+  "instances": 2,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/opentripplanner:test",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "servicePort": 10000,
+          "protocol": "tcp",
+          "name": "otphsl",
+          "labels": {
+            "VIP_0": "/opentripplanner-hsl:8080"
+          }
+        }
+      ],
+      "privileged": false,
+      "parameters": [
+        {
+          "key": "net",
+          "value": "host"
+        },
+        {
+          "key": "name",
+          "value": "opentripplanner-hsl"
+        }
+      ],
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "ROUTER_DATA_CONTAINER_URL": "http://opentripplanner-data-con:8080",
+    "ROUTER_NAME": "hsl",
+    "JAVA_OPTS": "-Xmx6G -Xms6G"
+  },
+  "healthChecks": [
+    {
+      "path": "/",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 1200,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 30,
+      "maxConsecutiveFailures": 10,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "update": "auto"
+  },
+  "portDefinitions": [
+    {
+      "port": 10000,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}
