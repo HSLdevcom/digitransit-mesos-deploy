@@ -44,6 +44,9 @@
       "ignoreHttp1xx": false
     }
   ],
+  "labels": {
+    "update": "auto"
+  },
   "portDefinitions": [
     {
       "port": 10012,
