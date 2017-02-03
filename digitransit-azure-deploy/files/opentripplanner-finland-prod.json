@@ -2,7 +2,7 @@
   "id": "/opentripplanner-finland",
   "cmd": null,
   "cpus": 2,
-  "mem": 8192,
+  "mem": 10240,
   "disk": 0,
   "instances": 2,
   "container": {
@@ -47,9 +47,9 @@
       "path": "/",
       "protocol": "HTTP",
       "portIndex": 0,
-      "gracePeriodSeconds": 1200,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 30,
+      "gracePeriodSeconds": 2400,
+      "intervalSeconds": 30,
+      "timeoutSeconds": 20,
       "maxConsecutiveFailures": 10,
       "ignoreHttp1xx": false
     }
