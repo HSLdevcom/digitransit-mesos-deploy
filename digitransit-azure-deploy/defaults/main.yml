@@ -19,14 +19,11 @@ container:
 - name: "hslalert"
   config: "hslalert-{{ environment_type | lower }}"
 
-- name: "digitransit-ui-joensuu"
-  config: "digitransit-ui-joensuu-{{ environment_type | lower }}"
+- name: "digitransit-ui-waltti"
+  config: "digitransit-ui-waltti-{{ environment_type | lower }}"
 
 - name: "digitransit-ui-default"
   config: "digitransit-ui-matka-{{ environment_type | lower }}"
-
-- name: "digitransit-ui-turku"
-  config: "digitransit-ui-turku-{{ environment_type | lower }}"
 
 - name: "digitransit-ui-hsl"
   config: "digitransit-ui-hsl-{{ environment_type | lower }}"
@@ -57,9 +54,8 @@ container:
 
 filesecrets:
 - "digitransit-ui-hsl-{{environment_type | lower}}.json"
-- "digitransit-ui-turku-{{environment_type| lower}}.json"
+- "digitransit-ui-waltti-{{environment_type| lower}}.json"
 - "digitransit-ui-matka-{{environment_type| lower}}.json"
-- "digitransit-ui-joensuu-{{environment_type| lower}}.json"
 
 secret_secrets:
 - "fontstackpasswordsecret"
