@@ -37,7 +37,9 @@
     "MAP_URL": "https://digitransit-prod-cdn-origin.azureedge.net",
     "SENTRY_DSN": "sentrydsnenvsecret",
     "SENTRY_SECRET_DSN": "sentrydsnsecret",
-    "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php"
+    "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
+    "NODE_OPTS": "--max_old_space_size=600",
+    "RELAY_FETCH_TIMEOUT": "3000"
   },
   "healthChecks": [
     {
