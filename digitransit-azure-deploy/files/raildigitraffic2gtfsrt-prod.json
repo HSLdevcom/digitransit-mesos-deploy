@@ -1,7 +1,7 @@
 {
   "id": "/raildigitraffic2gtfsrt",
   "cmd": null,
-  "cpus": 0.1,
+  "cpus": 1,
   "mem": 1000,
   "disk": 0,
   "instances": 2,
@@ -45,7 +45,7 @@
       "protocol": "HTTP",
       "portIndex": 0,
       "gracePeriodSeconds": 300,
-      "intervalSeconds": 10,
+      "intervalSeconds": 30,
       "timeoutSeconds": 10,
       "maxConsecutiveFailures": 5,
       "ignoreHttp1xx": false

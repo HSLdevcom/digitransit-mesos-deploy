@@ -50,7 +50,7 @@
       "gracePeriodSeconds": 1200,
       "intervalSeconds": 30,
       "timeoutSeconds": 20,
-      "maxConsecutiveFailures": 4,
+      "maxConsecutiveFailures": 10,
       "ignoreHttp1xx": false
     }
   ],

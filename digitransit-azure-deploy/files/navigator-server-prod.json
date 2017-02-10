@@ -1,7 +1,7 @@
 {
   "id": "/navigator-server",
   "cmd": null,
-  "cpus": 0.1,
+  "cpus": 1,
   "mem": 500,
   "disk": 0,
   "instances": 2,
@@ -42,8 +42,8 @@
       "protocol": "HTTP",
       "portIndex": 0,
       "gracePeriodSeconds": 300,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 10,
+      "intervalSeconds": 30,
+      "timeoutSeconds": 20,
       "maxConsecutiveFailures": 5,
       "ignoreHttp1xx": false
     }
