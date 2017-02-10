@@ -49,7 +49,7 @@
       "portIndex": 0,
       "gracePeriodSeconds": 1200,
       "intervalSeconds": 30,
-      "timeoutSeconds": 10,
+      "timeoutSeconds": 20,
       "maxConsecutiveFailures": 10,
       "ignoreHttp1xx": false
     }
