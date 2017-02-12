@@ -36,6 +36,9 @@
       "forcePullImage": true
     }
   },
+  "env": {
+    "NODE_OPTS": "--max_old_space_size=400",
+  },
   "healthChecks": [
     {
       "path": "/",
