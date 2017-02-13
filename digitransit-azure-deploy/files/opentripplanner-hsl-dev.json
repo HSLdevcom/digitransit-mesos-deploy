@@ -46,12 +46,12 @@
     {
       "protocol": "COMMAND",
       "command": {
-        "value": "test $(curl -4 -s -o /dev/null -I -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/hsl/) = 200"
+        "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/hsl/) = 200"
       },
       "gracePeriodSeconds": 1200,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 30,
-      "maxConsecutiveFailures": 10
+      "intervalSeconds": 30,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 6
     }
   ],
   "labels": {
