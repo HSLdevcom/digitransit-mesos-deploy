@@ -1,7 +1,7 @@
 {
   "id": "/opentripplanner-finland",
   "cmd": null,
-  "cpus": 2,
+  "cpus": 6,
   "mem": 10240,
   "disk": 0,
   "instances": 2,
@@ -9,7 +9,7 @@
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/opentripplanner:test",
+      "image": "hsldevcom/opentripplanner:prod",
       "network": "BRIDGE",
       "portMappings": [
         {

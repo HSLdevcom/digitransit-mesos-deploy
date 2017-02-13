@@ -9,7 +9,7 @@
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/siri2gtfsrt:test",
+      "image": "hsldevcom/siri2gtfsrt:prod",
       "network": "BRIDGE",
       "portMappings": [
         {

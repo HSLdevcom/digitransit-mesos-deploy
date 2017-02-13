@@ -4,12 +4,12 @@
   "cpus": 2,
   "mem": 6324,
   "disk": 0,
-  "instances": 2,
+  "instances": 4,
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/pelias-data-container:test",
+      "image": "hsldevcom/pelias-data-container:prod",
       "network": "BRIDGE",
       "portMappings": [
         {

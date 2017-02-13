@@ -4,12 +4,12 @@
   "cpus": 2,
   "mem": 8192,
   "disk": 0,
-  "instances": 6,
+  "instances": 12,
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/opentripplanner:test",
+      "image": "hsldevcom/opentripplanner:prod",
       "network": "BRIDGE",
       "portMappings": [
         {

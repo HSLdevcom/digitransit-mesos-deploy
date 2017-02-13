@@ -4,12 +4,12 @@
   "cpus": 1,
   "mem": 800,
   "disk": 0,
-  "instances": 2,
+  "instances": 4,
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/digitransit-ui:test",
+      "image": "hsldevcom/digitransit-ui:prod",
       "network": "BRIDGE",
       "portMappings": [
         {

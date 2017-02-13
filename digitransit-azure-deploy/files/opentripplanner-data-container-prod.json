@@ -2,14 +2,14 @@
   "id": "/opentripplanner-data-con",
   "cmd": null,
   "cpus": 0.1,
-  "mem": 20,
+  "mem": 128,
   "disk": 0,
   "instances": 2,
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/opentripplanner-data-container:test",
+      "image": "hsldevcom/opentripplanner-data-container:prod",
       "network": "BRIDGE",
       "portMappings": [
         {

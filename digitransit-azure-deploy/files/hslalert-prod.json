@@ -4,12 +4,12 @@
   "cpus": 0.1,
   "mem": 128,
   "disk": 0,
-  "instances": 2,
+  "instances": 4,
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/hslalert:test",
+      "image": "hsldevcom/hslalert:prod",
       "network": "BRIDGE",
       "portMappings": [
         {

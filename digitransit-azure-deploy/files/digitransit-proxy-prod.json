@@ -4,7 +4,7 @@
   "cpus": 2,
   "mem": 512,
   "disk": 0,
-  "instances": 2,
+  "instances": 6,
   "acceptedResourceRoles": [
     "slave_public"
   ],
@@ -12,7 +12,7 @@
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/digitransit-proxy:test",
+      "image": "hsldevcom/digitransit-proxy:prod",
       "network": "BRIDGE",
       "portMappings": [
         {

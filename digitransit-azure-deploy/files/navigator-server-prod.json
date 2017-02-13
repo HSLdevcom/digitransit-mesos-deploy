@@ -9,7 +9,7 @@
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/navigator-server:test",
+      "image": "hsldevcom/navigator-server:prod",
       "network": "BRIDGE",
       "portMappings": [
         {
