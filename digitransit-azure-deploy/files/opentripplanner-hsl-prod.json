@@ -2,7 +2,7 @@
   "id": "/opentripplanner-hsl",
   "cmd": null,
   "cpus": 2,
-  "mem": 8192,
+  "mem": 10240,
   "disk": 0,
   "instances": 12,
   "container": {

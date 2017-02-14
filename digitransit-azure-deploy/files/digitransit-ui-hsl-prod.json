@@ -2,7 +2,7 @@
   "id": "/digitransit-ui-hsl",
   "cmd": null,
   "cpus": 1,
-  "mem": 800,
+  "mem": 1024,
   "disk": 0,
   "instances": 8,
   "container": {

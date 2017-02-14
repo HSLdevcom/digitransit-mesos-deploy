@@ -2,7 +2,7 @@
   "id": "/opentripplanner-finland",
   "cmd": null,
   "cpus": 2,
-  "mem": 7168,
+  "mem": 10240,
   "disk": 0,
   "instances": 2,
   "container": {
@@ -40,7 +40,7 @@
   "env": {
     "ROUTER_DATA_CONTAINER_URL": "http://opentripplanner-data-con.marathon.l4lb.thisdcos.directory:8080",
     "ROUTER_NAME": "finland",
-    "JAVA_OPTS": "-Xmx6G -Xms6G"
+    "JAVA_OPTS": "-Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10  -XX:+PrintGC"
   },
   "healthChecks": [
     {
