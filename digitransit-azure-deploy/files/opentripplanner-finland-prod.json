@@ -1,10 +1,10 @@
 {
   "id": "/opentripplanner-finland",
   "cmd": null,
-  "cpus": 6,
+  "cpus": 2,
   "mem": 10240,
   "disk": 0,
-  "instances": 2,
+  "instances": 4,
   "container": {
     "type": "DOCKER",
     "volumes": [],
