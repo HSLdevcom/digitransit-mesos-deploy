@@ -2,7 +2,7 @@
   "id": "/opentripplanner-waltti",
   "cmd": null,
   "cpus": 2,
-  "mem": 7168,
+  "mem": 10240,
   "disk": 0,
   "instances": 2,
   "container": {
