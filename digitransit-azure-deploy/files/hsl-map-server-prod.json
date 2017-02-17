@@ -52,7 +52,9 @@
     }
   ],
   "labels": {
-    "update": "auto"
+    "update": "auto",
+    "restart-delay": "5",
+    "restart-after-services": "/opentripplanner-finland,/opentripplanner-hsl,/opentripplanner-waltti"
   },
   "portDefinitions": [
     {
