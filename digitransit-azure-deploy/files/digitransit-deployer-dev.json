@@ -1,0 +1,47 @@
+{
+  "id": "/digitransit-deployer",
+  "cmd": null,
+  "cpus": 1,
+  "mem": 128,
+  "disk": 0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/digitransit-deployer",
+      "network": "HOST",
+      "portMappings": null,
+      "privileged": false,
+      "parameters": [],
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "MARATHON_URL": "http://172.16.0.5/service/marathon/",
+    "DEBUG": "*"
+  },
+  "healthChecks": [
+    {
+      "protocol": "COMMAND",
+      "command": {
+        "value": "ps -p 1|grep npm > /dev/null"
+      },
+      "gracePeriodSeconds": 5,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 1,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "update": "auto"
+  },
+  "portDefinitions": [
+    {
+      "port": 10004,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}
