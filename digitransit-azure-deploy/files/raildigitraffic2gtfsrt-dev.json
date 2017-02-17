@@ -52,7 +52,9 @@
     }
   ],
   "labels": {
-    "update": "auto"
+    "update": "auto",
+    "restart-after-services": "/opentripplanner-data-con",
+    "restart-delay": "5"
   },
   "portDefinitions": [
     {
