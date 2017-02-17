@@ -20,6 +20,7 @@
           "name": "otpfinland",
           "labels": {
             "VIP_0": "/opentripplanner-finland:8080"
+
           }
         }
       ],
@@ -55,7 +56,9 @@
     }
   ],
   "labels": {
-    "update": "auto"
+    "update": "auto",
+    "restart-after-services": "/opentripplanner-data-con",
+    "restart-delay": "25"
   },
   "portDefinitions": [
     {
