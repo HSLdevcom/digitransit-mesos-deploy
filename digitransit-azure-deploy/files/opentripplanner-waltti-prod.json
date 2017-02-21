@@ -44,14 +44,14 @@
   },
   "healthChecks": [
     {
-      "path": "/",
-      "protocol": "HTTP",
-      "portIndex": 0,
+      "protocol": "COMMAND",
+      "command": {
+        "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/waltti/) = 200"
+      },
       "gracePeriodSeconds": 1200,
       "intervalSeconds": 30,
-      "timeoutSeconds": 10,
-      "maxConsecutiveFailures": 10,
-      "ignoreHttp1xx": false
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 6
     }
   ],
   "labels": {
