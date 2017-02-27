@@ -20,6 +20,7 @@
           "name": "otpfinland",
           "labels": {
             "VIP_0": "/opentripplanner-finland:8080"
+
           }
         }
       ],
@@ -44,18 +45,20 @@
   },
   "healthChecks": [
     {
-      "path": "/",
-      "protocol": "HTTP",
-      "portIndex": 0,
+      "protocol": "COMMAND",
+      "command": {
+        "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/finland/) = 200"
+      },
       "gracePeriodSeconds": 2400,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 30,
-      "maxConsecutiveFailures": 10,
-      "ignoreHttp1xx": false
+      "intervalSeconds": 30,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 6
     }
   ],
   "labels": {
-    "update": "auto"
+    "update": "auto",
+    "restart-after-services": "/opentripplanner-data-con",
+    "restart-delay": "25"
   },
   "portDefinitions": [
     {
