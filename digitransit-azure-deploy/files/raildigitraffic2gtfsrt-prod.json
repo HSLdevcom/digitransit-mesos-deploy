@@ -2,7 +2,7 @@
   "id": "/raildigitraffic2gtfsrt",
   "cmd": null,
   "cpus": 1,
-  "mem": 1000,
+  "mem": 2048,
   "disk": 0,
   "instances": 4,
   "container": {
