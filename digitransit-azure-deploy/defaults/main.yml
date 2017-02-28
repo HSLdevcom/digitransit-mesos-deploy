@@ -7,6 +7,9 @@ container:
 - name: "digitransit-deployer"
   config: "digitransit-deployer-{{ environment_type | lower }}"
 
+- name: "digitransit-docker-gc"
+  config: "digitransit-docker-gc-{{ environment_type | lower }}"
+
 - name: "pelias-api"
   config: "pelias-api-{{ environment_type | lower }}"
 

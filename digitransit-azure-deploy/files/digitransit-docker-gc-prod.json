@@ -1,0 +1,47 @@
+{
+  "id": "/digitransit-cleaner",
+  "cmd": "sh -c \"while true; do ./docker-gc ; sleep 86400; done\"\n",
+  "cpus": 0.01,
+  "mem": 32,
+  "disk": 0,
+  "instances": 38,
+  "constraints": [
+    [
+      "hostname",
+      "UNIQUE"
+    ]
+  ],
+  "container": {
+    "type": "DOCKER",
+    "volumes": [
+      {
+        "containerPath": "/var/run/docker.sock",
+        "hostPath": "/var/run/docker.sock",
+        "mode": "RW"
+      },
+      {
+        "containerPath": "/etc",
+        "hostPath": "/etc",
+        "mode": "RO"
+      }
+    ],
+    "docker": {
+      "image": "hsldevcom/docker-gc:1.11.2_0.1.1",
+      "network": "HOST",
+      "portMappings": null,
+      "privileged": false,
+      "parameters": [],
+      "forcePullImage": false
+    }
+  },
+  "env": {
+    "DOCKER_VERSION": "1.12"
+  },
+  "portDefinitions": [
+    {
+      "port": 10009,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}
