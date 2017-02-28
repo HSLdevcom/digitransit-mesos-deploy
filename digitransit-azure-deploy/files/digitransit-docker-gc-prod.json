@@ -34,9 +34,19 @@
       "forcePullImage": false
     }
   },
-  "env": {
-    "DOCKER_VERSION": "1.12"
-  },
+  "healthChecks": [
+    {
+      "protocol": "COMMAND",
+      "command": {
+        "value": "echo \"OK\""
+      },
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false
+    }
+  ],
   "portDefinitions": [
     {
       "port": 10009,
