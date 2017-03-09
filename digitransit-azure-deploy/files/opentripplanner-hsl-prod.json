@@ -1,10 +1,10 @@
 {
   "id": "/opentripplanner-hsl",
   "cmd": null,
-  "cpus": 2,
+  "cpus": 1.9,
   "mem": 10240,
   "disk": 0,
-  "instances": 12,
+  "instances": 8,
   "container": {
     "type": "DOCKER",
     "volumes": [],
