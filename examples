@@ -12,7 +12,7 @@ ansible-playbook digitransit-manage-containers.yml --tags restart --extra-vars "
 
 #Update all containers to meet the specification in version control 
 #Deploy containers if not existing if not container is running it will create it
-ansible-playbook -i hosts digitransit-manage-containers.yml --tags deploy --extra-vars "environment_type=DEV"
+ansible-playbook -i hosts digitransit-manage-containers.yml --tags deploy --extra-vars "environment_type=PROD"
 
 #deploy CDN for environment
 ansible-playbook digitransit-create-cdn-dev.yml --extra-vars "environment_type=DEV origin_host=dev-api.digitransit.fi origin_header=dev-api.digitransit.fi" 
