@@ -1,7 +1,7 @@
 {
   "id": "/pelias-data-container",
   "cmd": null,
-  "cpus": 2,
+  "cpus": 0.5,
   "mem": 6324,
   "disk": 0,
   "instances": 2,
