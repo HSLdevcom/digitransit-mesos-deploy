@@ -1,7 +1,7 @@
 {
   "id": "/digitransit-ui-default",
   "cmd": null,
-  "cpus": 0.9,
+  "cpus": 0.5,
   "mem": 1024,
   "disk": 0,
   "instances": 4,
