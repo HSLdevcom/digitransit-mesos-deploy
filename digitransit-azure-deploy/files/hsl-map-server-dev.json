@@ -2,7 +2,7 @@
   "id": "/hsl-map-server",
   "cmd": null,
   "cpus": 0.2,
-  "mem": 2048,
+  "mem": 3584,
   "disk": 0,
   "instances": 2,
   "container": {
