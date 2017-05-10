@@ -11,6 +11,10 @@
       "UNIQUE"
     ]
   ],
+  "acceptedResourceRoles": [
+    "slave_public",
+    "*"
+  ],
   "container": {
     "type": "DOCKER",
     "volumes": [

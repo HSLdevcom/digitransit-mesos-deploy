@@ -2,7 +2,7 @@
   "id": "/hsl-map-server",
   "cmd": null,
   "cpus": 0.2,
-  "mem": 2048,
+  "mem": 3584,
   "disk": 0,
   "instances": 2,
   "container": {
@@ -37,7 +37,8 @@
     "FONTSTACK_PASSWORD": "fontstacksecret",
     "HSL_OTP_URL": "opentripplanner-hsl:8080/otp/routers/hsl/index/graphql",
     "FINLAND_OTP_URL": "opentripplanner-finland:8080/otp/routers/finland/index/graphql",
-    "WALTTI_OTP_URL": "opentripplanner-waltti:8080/otp/routers/waltti/index/graphql"
+    "WALTTI_OTP_URL": "opentripplanner-waltti:8080/otp/routers/waltti/index/graphql",
+    "NODE_OPTS": "--max_old_space_size=2048 --optimize_for_size --max_executable_size=2048 --stack_size=2048 --harmony"
   },
   "healthChecks": [
     {
