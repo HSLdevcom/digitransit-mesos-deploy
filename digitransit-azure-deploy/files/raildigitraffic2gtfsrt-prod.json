@@ -37,7 +37,7 @@
     }
   },
   "env": {
-    "ROUTER_ZIP_URL": "https://api.digitransit.fi/routing-data/v2/finland/router-finland.zip"
+    "ROUTER_ZIP_URL": "http://opentripplanner-data-con.marathon.l4lb.thisdcos.directory:8080/router-finland.zip"
   },
   "healthChecks": [
     {
