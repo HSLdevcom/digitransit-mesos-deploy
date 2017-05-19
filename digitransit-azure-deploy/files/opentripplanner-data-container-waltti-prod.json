@@ -15,7 +15,7 @@
         {
           "containerPort": 8080,
           "hostPort": 0,
-          "servicePort": 10014,
+          "servicePort": 10022,
           "protocol": "tcp",
           "labels": {
             "VIP_0": "/opentripplanner-data-con-waltti:8080"
