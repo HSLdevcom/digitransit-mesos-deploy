@@ -58,6 +58,10 @@
   "labels": {
     "update": "auto"
   },
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 0,
+    "maximumOverCapacity": 1
+  },
   "portDefinitions": [
     {
       "port": 10001,
