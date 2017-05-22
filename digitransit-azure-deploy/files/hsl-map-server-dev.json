@@ -57,6 +57,10 @@
     "restart-delay": "5",
     "restart-after-services": "/opentripplanner-finland,/opentripplanner-hsl,/opentripplanner-waltti"
   },
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 0,
+    "maximumOverCapacity": 1
+  },
   "portDefinitions": [
     {
       "port": 10018,
