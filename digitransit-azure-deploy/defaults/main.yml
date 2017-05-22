@@ -1,6 +1,6 @@
 ---
 # defaults file for digitransit-azure-deploy
-dcos_uri: "http://localhost/marathon/v2"
+dcos_uri: "http://localhost:{{localhost_port}}/marathon/v2"
 #remove default environment to prevent accidents needs be set a runtime
 environment_type: ""
 container:
