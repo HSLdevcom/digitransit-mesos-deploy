@@ -1,24 +1,24 @@
 {
-  "id": "/raildigitraffic2gtfsrt",
+  "id": "/opentripplanner-data-con-hsl",
   "cmd": null,
   "cpus": 0.1,
-  "mem": 2048,
+  "mem": 128,
   "disk": 0,
   "instances": 2,
   "container": {
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/raildigitraffic2gtfsrt",
+      "image": "hsldevcom/opentripplanner-data-container-hsl:prod",
       "network": "BRIDGE",
       "portMappings": [
         {
           "containerPort": 8080,
           "hostPort": 0,
-          "servicePort": 10015,
+          "servicePort": 10021,
           "protocol": "tcp",
           "labels": {
-            "VIP_0": "/raildigitraffic2gtfsrt:8080"
+            "VIP_0": "/opentripplanner-data-con-hsl:8080"
           }
         }
       ],
@@ -30,18 +30,15 @@
         },
         {
           "key": "name",
-          "value": "raildigitraffic2gtfsrt"
+          "value": "opentripplanner-data-con-hsl"
         }
       ],
       "forcePullImage": true
     }
   },
-  "env": {
-    "ROUTER_ZIP_URL": "https://dev-api.digitransit.fi/routing-data/v2/finland/router-finland.zip"
-  },
   "healthChecks": [
     {
-      "path": "/hsl",
+      "path": "/",
       "protocol": "HTTP",
       "portIndex": 0,
       "gracePeriodSeconds": 300,
@@ -52,17 +49,11 @@
     }
   ],
   "labels": {
-    "update": "auto",
-    "restart-after-services": "/opentripplanner-data-con",
-    "restart-delay": "5"
-  },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
+    "update": "auto"
   },
   "portDefinitions": [
     {
-      "port": 10015,
+      "port": 10021,
       "protocol": "tcp",
       "labels": {}
     }

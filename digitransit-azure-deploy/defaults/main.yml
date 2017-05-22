@@ -49,6 +49,15 @@ container:
 - name: "opentripplanner-data-con"
   config: "opentripplanner-data-container-{{ environment_type | lower }}"
 
+- name: "opentripplanner-data-con-hsl"
+  config: "opentripplanner-data-container-hsl-{{ environment_type | lower }}"
+
+- name: "opentripplanner-data-con-waltti"
+  config: "opentripplanner-data-container-waltti-{{ environment_type | lower }}"
+
+- name: "opentripplanner-data-con-finland"
+  config: "opentripplanner-data-container-finland-{{ environment_type | lower }}"
+
 - name: "navigator-server"
   config: "navigator-server-{{ environment_type | lower }}"
 
