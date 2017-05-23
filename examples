@@ -1,10 +1,10 @@
 #Some example for managing containers
 
 
-#deploy or update containers in production 
+#deploy or update containers in production through localhost port 5536 
 ansible-playbook digitransit-manage-containers.yml --tags deploy --extra-vars "environment_type=PROD"
 		
-#deploy or update containers in developement
+#deploy or update containers in developement through localhost port 5436
 ansible-playbook digitransit-manage-containers.yml --tags deploy --extra-vars "environment_type=DEV"
 
 #restart a container example pelias api

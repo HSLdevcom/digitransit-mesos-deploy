@@ -1,5 +1,15 @@
-- hosts: localhost
+- hosts: localhost:5436
   roles:
      - {role: digitransit-azure-deploy}
   vars:
-    environment_type: 
+    environment_type:
+    localhost_port: 5436
+  when: environment_type == "DEV"
+
+- hosts: localhost:5536
+  roles:
+     - {role: digitransit-azure-deploy}
+  vars:
+    environment_type:
+    localhost_port: 5536
+  when: environment_type == "PROD" 
