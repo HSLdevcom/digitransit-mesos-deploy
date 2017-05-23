@@ -4,6 +4,18 @@
 ##This section of the role is for restarting already deployed applications
 ##A restart usually desploys the lastest application from dockerhub
 
+- set_fact:
+    dcos_uri: "http://localhost:5436/marathon/v2"
+  when: environment_type == "DEV"
+  tags:
+     - deploy
+
+- set_fact:
+    dcos_uri: "http://localhost:5536/marathon/v2"
+  when: environment_type == "PROD"
+  tags:
+     - deploy 
+
 - name: restart service in marathon
   uri:
     url: "{{dcos_uri}}/apps/{{appid}}/restart"

@@ -1,17 +1,8 @@
 ---
 # defaults file for digitransit-azure-deploy
-- name: "define dcos_uri for dev"
-  set_fact:
-    dcos_uri: "http://localhost:5436/marathon/v2"
-  when: environment_type == "DEV"
-
-- name: "define dcos_uri for prod"
-  set_fact:
-    dcos_uri: "http://localhost:5536/marathon/v2"
-  when: environment_type == "PROD"
 
 #remove default environment to prevent accidents needs be set a runtime
-environment_type: ""
+#environment_type: ""
 container:
 - name: "digitransit-deployer"
   config: "digitransit-deployer-{{ environment_type | lower }}"
