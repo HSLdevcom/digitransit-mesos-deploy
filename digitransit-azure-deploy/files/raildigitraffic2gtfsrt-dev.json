@@ -53,7 +53,7 @@
   ],
   "labels": {
     "update": "auto",
-    "restart-after-services": "/opentripplanner-data-con",
+    "restart-after-services": "/opentripplanner-data-con-finland",
     "restart-delay": "5"
   },
   "upgradeStrategy": {
