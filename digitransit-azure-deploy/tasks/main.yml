@@ -18,7 +18,7 @@
 
 - name: restart service in marathon
   uri:
-    url: "{{dcos_uri}}/apps/{{appid}}/restart"
+    url: "{{dcos_uri}}/apps/{{appid}}/restart?force=true"
     method: POST
     body: ""
     body_format: json
@@ -87,7 +87,7 @@
 
 - name: update or create containers to DC/OS
   uri:
-    url: "{{dcos_uri}}/apps/{{ item.name }}"
+    url: "{{dcos_uri}}/apps/{{ item.name }}?force=true"
     method: PUT
     body: "{{ lookup('file','{{ item.config }}.json') }}"
     body_format: json
