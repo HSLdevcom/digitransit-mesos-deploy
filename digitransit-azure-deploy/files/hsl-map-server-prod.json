@@ -42,7 +42,7 @@
   },
   "healthChecks": [
     {
-      "path": "/hsl-map/index.json",
+      "path": "/map/v1/hsl-map/index.json",
       "protocol": "HTTP",
       "portIndex": 0,
       "gracePeriodSeconds": 300,
