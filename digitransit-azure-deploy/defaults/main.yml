@@ -71,15 +71,20 @@ filesecrets:
 - "digitransit-ui-hsl-{{environment_type | lower}}.json"
 - "digitransit-ui-waltti-{{environment_type| lower}}.json"
 - "digitransit-ui-matka-{{environment_type| lower}}.json"
+- "opentripplanner-hsl-{{environment_type | lower}}.json"
+- "opentripplanner-waltti-{{environment_type| lower}}.json"
+- "opentripplanner-finland-{{environment_type| lower}}.json"
 
 secret_secrets:
 - "fontstackpasswordsecret"
 - "sentrydsnenvsecret"
 - "sentrydsnsecret"
 - "piwikaddrsecret"
+- "sentry_routing_secret_dsn"
 
 secret_answers:
 - "{{fontstack_password}}"
 - "{{environment_type}_sentry_dsn}"
 - "{{sentry_secret_dsn}}"
 - "{{piwikaddr}}"
+- "{{sentry_routing_secret_dsn}}"
