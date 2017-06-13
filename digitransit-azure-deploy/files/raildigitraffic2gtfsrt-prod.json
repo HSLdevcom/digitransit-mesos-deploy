@@ -44,7 +44,7 @@
       "path": "/hsl",
       "protocol": "HTTP",
       "portIndex": 0,
-      "gracePeriodSeconds": 300,
+      "gracePeriodSeconds": 720,
       "intervalSeconds": 30,
       "timeoutSeconds": 10,
       "maxConsecutiveFailures": 5,
