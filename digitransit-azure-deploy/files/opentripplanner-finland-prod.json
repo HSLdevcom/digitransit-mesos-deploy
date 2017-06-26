@@ -51,7 +51,7 @@
       "gracePeriodSeconds": 2400,
       "intervalSeconds": 30,
       "timeoutSeconds": 20,
-      "maxConsecutiveFailures": 6
+      "maxConsecutiveFailures": 3
     }
   ],
   "labels": {
