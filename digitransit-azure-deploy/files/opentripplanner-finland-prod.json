@@ -59,6 +59,10 @@
     "restart-after-services": "/opentripplanner-data-con-finland",
     "restart-delay": "25"
   },
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 1,
+    "maximumOverCapacity": 1
+  },
   "portDefinitions": [
     {
       "port": 10007,
