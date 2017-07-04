@@ -93,7 +93,7 @@
      - decrypt
      - deploy
 
-- block
+- block:
     - name: replace dockerauth secret
       replace:
          dest="{{ role_path }}/files/{{item}}"
@@ -116,7 +116,7 @@
          - decrypt
          - deploy
  
-    -name: replace slackwebhook secret
+    - name: replace slackwebhook secret
       replace:
          dest="{{ role_path }}/files/{{ item }}"
          regexp='slackwebhook'
@@ -234,7 +234,7 @@
      - encrypt
      - deploy
 
-- block
+- block:
     - name: re-encrypt dockerauth secret
       replace:
          dest="{{ role_path }}/files/{{item}}"
@@ -257,7 +257,7 @@
          - encrypt
          - deploy
  
-    -name: re-encrypt slackwebhook secret
+    - name: re-encrypt slackwebhook secret
       replace:
          dest="{{ role_path }}/files/{{ item }}"
          regexp="{{slack_webhook}}"
