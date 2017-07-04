@@ -67,13 +67,25 @@ container:
 - name: "pelias-data-container"
   config: "pelias-data-container-{{ environment_type | lower }}"
 
+dev_container:
+
+- name: "pelias-data-container-builder"
+  config: "pelias-data-container-builder-dev"
+
+- name: "otp-data-builder"
+  config: "otp-data-builder-dev"
+
 filesecrets:
 - "digitransit-ui-hsl-{{environment_type | lower}}.json"
-- "digitransit-ui-waltti-{{environment_type| lower}}.json"
-- "digitransit-ui-matka-{{environment_type| lower}}.json"
+- "digitransit-ui-waltti-{{environment_type | lower}}.json"
+- "digitransit-ui-matka-{{environment_type | lower}}.json"
 - "opentripplanner-hsl-{{environment_type | lower}}.json"
-- "opentripplanner-waltti-{{environment_type| lower}}.json"
-- "opentripplanner-finland-{{environment_type| lower}}.json"
+- "opentripplanner-waltti-{{environment_type | lower}}.json"
+- "opentripplanner-finland-{{environment_type | lower}}.json"
+
+dockersecrets:
+- "pelias-data-container-builder-dev.json"
+- "otp-data-builder-dev.json"
 
 secret_secrets:
 - "fontstackpasswordsecret"
@@ -81,6 +93,9 @@ secret_secrets:
 - "sentrydsnsecret"
 - "piwikaddrsecret"
 - "sentry_routing_secret_dsn"
+- "dockerauth"
+- "dockeruser"
+- "slackwebhook"
 
 secret_answers:
 - "{{fontstack_password}}"
@@ -88,3 +103,6 @@ secret_answers:
 - "{{sentry_secret_dsn}}"
 - "{{piwikaddr}}"
 - "{{sentry_routing_secret_dsn}}"
+- "{{docker_auth}}"
+- "{{docker_user}}"
+- "{{slack_webhook}}"

@@ -93,6 +93,40 @@
      - decrypt
      - deploy
 
+- block
+    - name: replace dockerauth secret
+      replace:
+         dest="{{ role_path }}/files/{{item}}"
+         regexp='dockerauth'
+         replace="{{docker_auth}}"
+      with_items:
+         - "{{dockersecrets}}"
+      tags:
+         - decrypt
+         - deploy
+ 
+    - name: replace dockeruser secret
+      replace:
+         dest="{{ role_path }}/files/{{item}}"
+         regexp='dockeruser'
+         replace="{{docker_user}}"
+      with_items:
+         - "{{dockersecrets}}"
+      tags:
+         - decrypt
+         - deploy
+ 
+    -name: replace slackwebhook secret
+      replace:
+         dest="{{ role_path }}/files/{{ item }}"
+         regexp='slackwebhook'
+         replace="{{slack_webhook}}"
+      with_items:
+         - "{{dockersecrets}}"
+      tags:
+         - decrypt
+         - deploy
+  when: environment_type == 'DEV'
 
 ###UPDATE OR CREATE THE CONTAINERS
 
@@ -109,6 +143,24 @@
   tags:
      - update
      - deploy
+
+###UPDATE OR CREATE THE DEV SPECIFIC CONTAINERS
+
+- block:
+    - name: update or create dev specific containers to DC/OS
+      uri:
+        url: "{{dcos_uri}}/apps/{{ item.name }}?force=true"
+        method: PUT
+        body: "{{ lookup('file','{{ item.config }}.json') }}"
+        body_format: json
+        HEADER_Content-Type: "application/json"
+        status_code: 200,201
+      with_items:
+         - "{{ dev_container }}"
+      tags:
+         - update
+         - deploy
+  when: environment_type == 'DEV'
 
 
 ###RE-ENCRYPT the variabls to prevent any accidents when committing changes
@@ -162,6 +214,17 @@
       - encrypt
       - deploy
 
+- block:
+    - name: re-encrypt sentry_routing_secret_dsn for otp-data-builder
+      replace:
+        dest="{{ role_path }}/files/otp-data-builder-dev.json"
+        regexp="{{sentry_routing_secret_dsn}}"
+        replace='sentry_routing_secret_dsn'
+      tags:
+         - encrypt
+         - deploy
+  when: environment_type == 'DEV'
+
 - name: re-encrypt fontstack secret
   replace:
      dest="{{ role_path }}/files/hsl-map-server-{{environment_type | lower}}.json"
@@ -170,3 +233,38 @@
   tags:
      - encrypt
      - deploy
+
+- block
+    - name: re-encrypt dockerauth secret
+      replace:
+         dest="{{ role_path }}/files/{{item}}"
+         regexp="{{docker_auth}}"
+         replace='dockerauth'
+      with_items:
+         - "{{dockersecrets}}"
+      tags:
+         - encrypt
+         - deploy
+
+    - name: re-encrypt dockeruser secret
+      replace:
+         dest="{{ role_path }}/files/{{item}}"
+         regexp="{{docker_user}}"
+         replace='dockeruser'
+      with_items:
+         - "{{dockersecrets}}"
+      tags:
+         - encrypt
+         - deploy
+ 
+    -name: re-encrypt slackwebhook secret
+      replace:
+         dest="{{ role_path }}/files/{{ item }}"
+         regexp="{{slack_webhook}}"
+         replace='slackwebhook'
+      with_items:
+         - "{{dockersecrets}}"
+      tags:
+         - encrypt
+         - deploy
+  when: environment_type == 'DEV'

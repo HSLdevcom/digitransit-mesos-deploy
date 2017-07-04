@@ -1,0 +1,52 @@
+{
+  "id": "/pelias-data-container-builder",
+  "cmd": null,
+  "cpus": 2,
+  "mem": 6000,
+  "disk": 0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/pelias-data-container-builder",
+      "network": "HOST",
+      "portMappings": null,
+      "privileged": false,
+      "parameters": [],
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "DOCKER_AUTH": "dockerauth",
+    "DOCKER_USER": "dockeruser",
+    "SLACK_WEBHOOK_URL": "slackwebhook"
+  },
+  "healthChecks": [
+    {
+      "protocol": "COMMAND",
+      "command": {
+        "value": "true"
+      },
+      "gracePeriodSeconds": 30,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 2,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "update": "auto"
+  },
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 0,
+    "maximumOverCapacity": 1
+  },
+  "portDefinitions": [
+    {
+      "port": 10023,
+      "protocol": "tcp",
+      "labels": {}
+    }
+  ]
+}
