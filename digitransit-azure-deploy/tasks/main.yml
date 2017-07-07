@@ -126,6 +126,15 @@
       tags:
          - decrypt
          - deploy
+    
+    - name: replace sentry_routing_secret_dsn for otp-data-builder
+      replace:
+          dest="{{ role_path }}/files/otp-data-builder-dev.json"
+          regexp='sentry_routing_secret_dsn'
+          replace="{{sentry_routing_secret_dsn}}"
+      tags:
+        - decrypt
+        - deploy
   when: environment_type == 'DEV'
 
 ###UPDATE OR CREATE THE CONTAINERS
@@ -214,17 +223,6 @@
       - encrypt
       - deploy
 
-- block:
-    - name: re-encrypt sentry_routing_secret_dsn for otp-data-builder
-      replace:
-        dest="{{ role_path }}/files/otp-data-builder-dev.json"
-        regexp="{{sentry_routing_secret_dsn}}"
-        replace='sentry_routing_secret_dsn'
-      tags:
-         - encrypt
-         - deploy
-  when: environment_type == 'DEV'
-
 - name: re-encrypt fontstack secret
   replace:
      dest="{{ role_path }}/files/hsl-map-server-{{environment_type | lower}}.json"
@@ -264,6 +262,15 @@
          replace='slackwebhook'
       with_items:
          - "{{dockersecrets}}"
+      tags:
+         - encrypt
+         - deploy
+    
+    - name: re-encrypt sentry_routing_secret_dsn for otp-data-builder
+      replace:
+        dest="{{ role_path }}/files/otp-data-builder-dev.json"
+        regexp="{{sentry_routing_secret_dsn}}"
+        replace='sentry_routing_secret_dsn'
       tags:
          - encrypt
          - deploy
