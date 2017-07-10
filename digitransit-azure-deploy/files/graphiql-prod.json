@@ -17,16 +17,23 @@
           "hostPort": 0,
           "servicePort": 10025,
           "protocol": "tcp",
-          "labels": {}
+          "labels": {
+            "VIP_0": "/graphiql:8080"
+          }
         }
       ],
       "privileged": false,
-      "parameters": [],
-      "forcePullImage": false
+      "parameters": [
+        {
+          "key": "name",
+          "value": "graphiql"
+        }
+      ],
+      "forcePullImage": true
     }
   },
   "env": {
-    "URL_PREFIX": "https://api.digitransit.fi/routing/v1/routers/"
+    "URL_PREFIX": "https://api.digitransit.fi"
   },
   "healthChecks": [
     {
@@ -40,6 +47,9 @@
       "ignoreHttp1xx": false
     }
   ],
+  "labels": {
+    "update": "auto"
+  },
   "portDefinitions": [
     {
       "port": 10025,
