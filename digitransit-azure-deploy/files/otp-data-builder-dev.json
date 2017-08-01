@@ -1,3 +1,4 @@
+
 {
   "id": "/otp-data-builder",
   "cmd": null,
@@ -17,6 +18,13 @@
         "containerPath": "/opt/otp-data-builder/data",
         "hostPath": "/tmp/data",
         "mode": "RW"
+      },
+      {
+        "containerPath": "persistent",
+        "mode": "RW",
+        "persistent": {
+            "size": 2000
+        }
       }
     ],
     "docker": {
