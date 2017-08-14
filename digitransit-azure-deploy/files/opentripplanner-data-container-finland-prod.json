@@ -38,7 +38,7 @@
   },
   "healthChecks": [
     {
-      "path": "/",
+      "path": "/version.txt",
       "protocol": "HTTP",
       "portIndex": 0,
       "gracePeriodSeconds": 300,
