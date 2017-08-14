@@ -46,7 +46,7 @@
   },
   "healthChecks": [
     {
-      "path": "/_cluster/health?wait_for_status=yellow&timeout=20s",
+      "path": "/_search?q=name.fi:helsinki",
       "protocol": "HTTP",
       "portIndex": 0,
       "gracePeriodSeconds": 600,
