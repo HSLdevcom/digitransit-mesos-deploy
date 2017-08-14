@@ -9,7 +9,7 @@
     "type": "DOCKER",
     "volumes": [],
     "docker": {
-      "image": "hsldevcom/graphiql",
+      "image": "hsldevcom/graphiql:prod",
       "network": "BRIDGE",
       "portMappings": [
         {
