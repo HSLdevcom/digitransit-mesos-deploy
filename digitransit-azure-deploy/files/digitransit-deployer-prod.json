@@ -25,7 +25,7 @@
     {
       "protocol": "COMMAND",
       "command": {
-        "value": "ps -p 1|grep npm > /dev/null"
+        "value": "test $(ps|grep npm|grep -v grep|wc -l) == 1"
       },
       "gracePeriodSeconds": 5,
       "intervalSeconds": 60,
