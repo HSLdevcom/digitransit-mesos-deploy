@@ -57,7 +57,7 @@
   ],
   "labels": {
     "update": "auto",
-    "restart-at": "03:00",
+    "restart-at": "03:20",
     "restart-limit-interval": "180"
   },
   "upgradeStrategy": {
