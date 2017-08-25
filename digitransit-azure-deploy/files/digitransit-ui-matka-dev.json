@@ -56,7 +56,9 @@
     }
   ],
   "labels": {
-    "update": "auto"
+    "update": "auto",
+    "restart-at": "03:00",
+    "restart-limit-interval": "480"
   },
   "upgradeStrategy": {
     "minimumHealthCapacity": 0,
