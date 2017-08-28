@@ -17,10 +17,12 @@
       "portMappings": [
         {
           "containerPort": 8080,
+          "protocol": "tcp",
           "hostPort": 80,
           "servicePort": 10002,
-          "protocol": "tcp",
-          "labels": {}
+          "labels": {
+            "VIP_0": "/digitransit-proxy:8080"
+          }
         }
       ],
       "privileged": false,
