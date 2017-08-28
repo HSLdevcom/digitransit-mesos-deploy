@@ -2,7 +2,7 @@
   "id": "/digitransit-proxy",
   "cmd": null,
   "cpus": 2,
-  "mem": 512,
+  "mem": 1024,
   "disk": 0,
   "instances": 2,
   "acceptedResourceRoles": [
