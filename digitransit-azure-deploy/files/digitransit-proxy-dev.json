@@ -2,7 +2,7 @@
   "id": "/digitransit-proxy",
   "cmd": null,
   "cpus": 2,
-  "mem": 512,
+  "mem": 1024,
   "disk": 0,
   "instances": 2,
   "acceptedResourceRoles": [
@@ -17,10 +17,12 @@
       "portMappings": [
         {
           "containerPort": 8080,
+          "protocol": "tcp",
           "hostPort": 80,
           "servicePort": 10002,
-          "protocol": "tcp",
-          "labels": {}
+          "labels": {
+            "VIP_0": "/digitransit-proxy:8080"
+          }
         }
       ],
       "privileged": false,
