@@ -57,7 +57,9 @@
   "labels": {
     "update": "auto",
     "restart-after-services": "/opentripplanner-data-con-hsl",
-    "restart-delay": "1"
+    "restart-delay": "1",
+    "restart-at": "05:15",
+    "restart-limit-interval": "720"
   },
   "upgradeStrategy": {
     "minimumHealthCapacity": 1,
