@@ -57,7 +57,9 @@
   "labels": {
     "update": "auto",
     "restart-after-services": "/opentripplanner-data-con-finland",
-    "restart-delay": "25"
+    "restart-delay": "25",
+    "restart-at": "05:30",
+    "restart-limit-interval": "720"
   },
   "upgradeStrategy": {
     "minimumHealthCapacity": 1,
