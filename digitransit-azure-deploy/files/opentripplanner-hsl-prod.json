@@ -4,7 +4,7 @@
   "cpus": 1.9,
   "mem": 10240,
   "disk": 0,
-  "instances": 8,
+  "instances": 10,
   "container": {
     "type": "DOCKER",
     "volumes": [],
