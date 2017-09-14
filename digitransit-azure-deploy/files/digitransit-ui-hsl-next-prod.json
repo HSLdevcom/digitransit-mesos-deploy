@@ -1,0 +1,53 @@
+{
+  "id": "/digitransit-ui-hsl-next",
+  "cmd": null,
+  "cpus": 1,
+  "mem": 800,
+  "disk": 0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "hsldevcom/digitransit-ui:index-page",
+      "network": "HOST",
+      "portMappings": null,
+      "privileged": false,
+      "parameters": [],
+      "forcePullImage": true
+    }
+  },
+  "env": {
+    "NODE_OPTS": "--max_old_space_size=600",
+    "API_URL": "https://dev-api.digitransit.fi",
+    "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
+    "RELAY_FETCH_TIMEOUT": "3000",
+    "CONFIG": "hsl",
+    "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
+    "PIWIK_ID": "5"
+  },
+  "healthChecks": [
+    {
+      "path": "/",
+      "protocol": "HTTP",
+      "portIndex": 0,
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 10,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "update": "auto"
+  },
+  "portDefinitions": [
+    {
+      "port": 8080,
+      "protocol": "tcp",
+      "labels": {
+        "VIP_0": "/digitransit-ui-hsl-next:8080"
+      }
+    }
+  ]
+}
