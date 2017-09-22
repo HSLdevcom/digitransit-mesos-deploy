@@ -53,7 +53,7 @@
   },
   "upgradeStrategy": {
     "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
+    "maximumOverCapacity": 0
   },
   "portDefinitions": [
     {
