@@ -19,7 +19,8 @@
   },
   "env": {
     "MARATHON_URL": "http://172.16.0.5/service/marathon/",
-    "DEBUG": "*"
+    "DEBUG": "*",
+    "ENVIRONMENT_TYPE": "DEV"
   },
   "healthChecks": [
     {
