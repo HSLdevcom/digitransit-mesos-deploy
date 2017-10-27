@@ -1,70 +1,84 @@
-
 {
-  "id": "/otp-data-builder",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 3,
-  "mem": 9000,
-  "disk": 0,
-  "instances": 1,
   "container": {
-    "type": "DOCKER",
-    "volumes": [
-      {
-        "containerPath": "/var/run/docker.sock",
-        "hostPath": "/var/run/docker.sock",
-        "mode": "RO"
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/otp-data-builder",
+          "network": "HOST",
+          "parameters": [],
+          "portMappings": null,
+          "privileged": false
       },
-      {
-        "containerPath": "/opt/otp-data-builder/data",
-        "hostPath": "/tmp/data",
-        "mode": "RW"
-      },
-      {
-        "containerPath": "persistent",
-        "mode": "RW",
-        "persistent": {
-            "size": 2000
-        }
-      }
-    ],
-    "docker": {
-      "image": "hsldevcom/otp-data-builder",
-      "network": "HOST",
-      "portMappings": null,
-      "privileged": false,
-      "parameters": [],
-      "forcePullImage": true
-    }
+      "type": "DOCKER",
+      "volumes": [
+          {
+              "containerPath": "/var/run/docker.sock",
+              "hostPath": "/var/run/docker.sock",
+              "mode": "RO"
+          },
+          {
+              "containerPath": "/opt/otp-data-builder/data",
+              "hostPath": "/tmp/data",
+              "mode": "RW"
+          },
+          {
+              "containerPath": "persistent",
+              "mode": "RW",
+              "persistent": {
+                  "size": 2000
+              }
+          }
+      ]
   },
+  "cpus": 3,
+  "dependencies": [],
+  "disk": 0,
   "env": {
-    "HOST_DATA": "/tmp/data",
-    "DATA": "/opt/otp-data-builder/data",
-    "DOCKER_AUTH": "dockerauth",
-    "SLACK_WEBHOOK_URL": "slackwebhook",
-    "SENTRY_DSN": "sentry_routing_secret_dsn",
-    "DOCKER_USER": "dockeruser"
+      "HOST_DATA": "/tmp/data",
+      "DATA": "/opt/otp-data-builder/data",
+      "DOCKER_AUTH": "dockerauth",
+      "SLACK_WEBHOOK_URL": "slackwebhook",
+      "SENTRY_DSN": "sentry_routing_secret_dsn",
+      "DOCKER_USER": "dockeruser"
   },
+  "gpus": 0,
   "healthChecks": [
-    {
-      "protocol": "COMMAND",
-      "command": {
-        "value": "true"
-      },
-      "gracePeriodSeconds": 30,
-      "intervalSeconds": 60,
-      "timeoutSeconds": 20,
-      "maxConsecutiveFailures": 2,
-      "ignoreHttp1xx": false
-    }
+      {
+          "command": {
+              "value": "true"
+          },
+          "gracePeriodSeconds": 30,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 60,
+          "maxConsecutiveFailures": 2,
+          "protocol": "COMMAND",
+          "timeoutSeconds": 20
+      }
   ],
+  "id": "/otp-data-builder",
+  "instances": 1,
   "labels": {
-    "update": "auto"
+      "update": "auto"
   },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 9000,
   "portDefinitions": [
-    {
-      "port": 10024,
-      "protocol": "tcp",
-      "labels": {}
-    }
-  ]
+      {
+          "labels": {},
+          "port": 10024,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      10024
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 0,
+      "minimumHealthCapacity": 0.5
+  }
 }
