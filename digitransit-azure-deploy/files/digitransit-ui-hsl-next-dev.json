@@ -1,53 +1,69 @@
 {
-  "id": "/digitransit-ui-hsl-next",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 1,
-  "mem": 800,
-  "disk": 0,
-  "instances": 1,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/digitransit-ui:index-page",
-      "network": "HOST",
-      "portMappings": null,
-      "privileged": false,
-      "parameters": [],
-      "forcePullImage": true
-    }
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/digitransit-ui:index-page",
+          "network": "HOST",
+          "parameters": [],
+          "portMappings": null,
+          "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
   },
+  "cpus": 1,
+  "dependencies": [],
+  "disk": 0,
   "env": {
-    "NODE_OPTS": "--max_old_space_size=600",
-    "API_URL": "https://dev-api.digitransit.fi",
-    "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
-    "RELAY_FETCH_TIMEOUT": "3000",
-    "CONFIG": "hsl",
-    "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
-    "PIWIK_ID": "5"
+      "NODE_OPTS": "--max_old_space_size=600",
+      "API_URL": "https://dev-api.digitransit.fi",
+      "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
+      "RELAY_FETCH_TIMEOUT": "3000",
+      "CONFIG": "hsl",
+      "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
+      "PIWIK_ID": "5"
   },
+  "gpus": 0,
   "healthChecks": [
-    {
-      "path": "/",
-      "protocol": "HTTP",
-      "portIndex": 0,
-      "gracePeriodSeconds": 300,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 10,
-      "maxConsecutiveFailures": 3,
-      "ignoreHttp1xx": false
-    }
-  ],
-  "labels": {
-    "update": "auto"
-  },
-  "portDefinitions": [
-    {
-      "port": 8080,
-      "protocol": "tcp",
-      "labels": {
-        "VIP_0": "/digitransit-ui-hsl-next:8080"
+      {
+          "gracePeriodSeconds": 300,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 10,
+          "maxConsecutiveFailures": 3,
+          "path": "/",
+          "portIndex": 0,
+          "protocol": "HTTP",
+          "timeoutSeconds": 10
       }
-    }
-  ]
+  ],
+  "id": "/digitransit-ui-hsl-next",
+  "instances": 1,
+  "labels": {
+      "update": "auto"
+  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 800,
+  "portDefinitions": [
+      {
+          "labels": {
+              "VIP_0": "/digitransit-ui-hsl-next:8080"
+          },
+          "port": 8080,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      8080
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 1
+  }
 }
+
