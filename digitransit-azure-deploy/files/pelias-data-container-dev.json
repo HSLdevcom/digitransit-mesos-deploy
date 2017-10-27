@@ -1,78 +1,90 @@
 {
-  "id": "/pelias-data-container",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 0.5,
-  "mem": 6324,
-  "disk": 0,
-  "instances": 2,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/pelias-data-container",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 9200,
-          "hostPort": 0,
-          "servicePort": 10003,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_0": "/pelias-data-container:9200"
-          }
-        },
-        {
-          "containerPort": 9300,
-          "hostPort": 0,
-          "servicePort": 10011,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_1": "/pelias-data-container:9300"
-          }
-        }
-      ],
-      "privileged": false,
-      "parameters": [
-        {
-          "key": "name",
-          "value": "pelias-data-container"
-        }
-      ],
-      "forcePullImage": true
-    }
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/pelias-data-container",
+          "network": "BRIDGE",
+          "parameters": [
+              {
+                  "key": "name",
+                  "value": "pelias-data-container"
+              }
+          ],
+          "portMappings": [
+              {
+                  "containerPort": 9200,
+                  "hostPort": 0,
+                  "labels": {
+                      "VIP_0": "/pelias-data-container:9200"
+                  },
+                  "protocol": "tcp",
+                  "servicePort": 10003
+              },
+              {
+                  "containerPort": 9300,
+                  "hostPort": 0,
+                  "labels": {
+                      "VIP_1": "/pelias-data-container:9300"
+                  },
+                  "protocol": "tcp",
+                  "servicePort": 10011
+              }
+          ],
+          "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
   },
+  "cpus": 0.5,
+  "dependencies": [],
+  "disk": 0,
   "env": {
-    "ES_HEAP_SIZE": "6g"
+      "ES_HEAP_SIZE": "6g"
   },
+  "gpus": 0,
   "healthChecks": [
-    {
-      "path": "/_search?q=name.fi:helsinki",
-      "protocol": "HTTP",
-      "portIndex": 0,
-      "gracePeriodSeconds": 600,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 10,
-      "maxConsecutiveFailures": 3,
-      "ignoreHttp1xx": false
-    }
+      {
+          "gracePeriodSeconds": 600,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 10,
+          "maxConsecutiveFailures": 3,
+          "path": "/_search?q=name.fi:helsinki",
+          "portIndex": 0,
+          "protocol": "HTTP",
+          "timeoutSeconds": 10
+      }
   ],
+  "id": "/pelias-data-container",
+  "instances": 2,
   "labels": {
-    "update": "auto"
+      "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 6324,
   "portDefinitions": [
-    {
-      "port": 10003,
-      "protocol": "tcp",
-      "labels": {}
-    },
-    {
-      "port": 10011,
-      "protocol": "tcp",
-      "labels": {}
-    }
-  ]
+      {
+          "labels": {},
+          "port": 10003,
+          "protocol": "tcp"
+      },
+      {
+          "labels": {},
+          "port": 10011,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      10003,
+      10011
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 0
+  }
 }
