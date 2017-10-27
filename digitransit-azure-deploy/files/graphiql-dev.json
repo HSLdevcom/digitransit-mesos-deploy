@@ -1,60 +1,75 @@
 {
-  "id": "/graphiql",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 1,
-  "mem": 128,
-  "disk": 0,
-  "instances": 1,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/graphiql",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10025,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_0": "/graphiql:8080"
-          }
-        }
-      ],
-      "privileged": false,
-      "parameters": [
-        {
-          "key": "name",
-          "value": "graphiql"
-        }
-      ],
-      "forcePullImage": true
-    }
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/graphiql",
+          "network": "BRIDGE",
+          "parameters": [
+              {
+                  "key": "name",
+                  "value": "graphiql"
+              }
+          ],
+          "portMappings": [
+              {
+                  "containerPort": 8080,
+                  "hostPort": 0,
+                  "labels": {
+                      "VIP_0": "/graphiql:8080"
+                  },
+                  "protocol": "tcp",
+                  "servicePort": 10025
+              }
+          ],
+          "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
   },
+  "cpus": 1,
+  "dependencies": [],
+  "disk": 0,
   "env": {
-    "URL_PREFIX": "https://dev-api.digitransit.fi"
+      "URL_PREFIX": "https://dev-api.digitransit.fi"
   },
+  "gpus": 0,
   "healthChecks": [
-    {
-      "path": "/graphiql/hsl",
-      "protocol": "HTTP",
-      "portIndex": 0,
-      "gracePeriodSeconds": 60,
-      "intervalSeconds": 60,
-      "timeoutSeconds": 10,
-      "maxConsecutiveFailures": 1,
-      "ignoreHttp1xx": false
-    }
+      {
+          "gracePeriodSeconds": 60,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 60,
+          "maxConsecutiveFailures": 1,
+          "path": "/graphiql/hsl",
+          "portIndex": 0,
+          "protocol": "HTTP",
+          "timeoutSeconds": 10
+      }
   ],
+  "id": "/graphiql",
+  "instances": 1,
   "labels": {
-    "update": "auto"
+      "update": "auto"
   },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 128,
   "portDefinitions": [
-    {
-      "port": 10025,
-      "protocol": "tcp",
-      "labels": {}
-    }
-  ]
+      {
+          "labels": {},
+          "port": 10025,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      10025
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 1
+  }
 }
