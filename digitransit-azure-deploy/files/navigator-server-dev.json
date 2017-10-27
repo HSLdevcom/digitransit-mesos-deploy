@@ -1,68 +1,79 @@
 {
-  "id": "/navigator-server",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 0.1,
-  "mem": 500,
-  "disk": 0,
-  "instances": 2,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/navigator-server",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10013,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_0": "/navigator-server:8080"
-          }
-        }
-      ],
-      "privileged": false,
-      "parameters": [
-        {
-          "key": "net",
-          "value": "host"
-        },
-        {
-          "key": "name",
-          "value": "navigator-server"
-        }
-      ],
-      "forcePullImage": true
-    }
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/navigator-server",
+          "network": "BRIDGE",
+          "parameters": [
+              {
+                  "key": "net",
+                  "value": "host"
+              },
+              {
+                  "key": "name",
+                  "value": "navigator-server"
+              }
+          ],
+          "portMappings": [
+              {
+                  "containerPort": 8080,
+                  "hostPort": 0,
+                  "labels": {
+                      "VIP_0": "/navigator-server:8080"
+                  },
+                  "protocol": "tcp",
+                  "servicePort": 10013
+              }
+          ],
+          "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
   },
+  "cpus": 0.1,
+  "dependencies": [],
+  "disk": 0,
   "env": {
-    "NODE_OPTS": "--max_old_space_size=400",
+      "NODE_OPTS": "--max_old_space_size=400"
   },
+  "gpus": 0,
   "healthChecks": [
-    {
-      "path": "/",
-      "protocol": "HTTP",
-      "portIndex": 0,
-      "gracePeriodSeconds": 300,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 10,
-      "maxConsecutiveFailures": 5,
-      "ignoreHttp1xx": false
-    }
+      {
+          "gracePeriodSeconds": 300,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 10,
+          "maxConsecutiveFailures": 5,
+          "path": "/",
+          "portIndex": 0,
+          "protocol": "HTTP",
+          "timeoutSeconds": 10
+      }
   ],
+  "id": "/navigator-server",
+  "instances": 2,
   "labels": {
-    "update": "auto"
+      "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 500,
   "portDefinitions": [
-    {
-      "port": 10013,
-      "protocol": "tcp",
-      "labels": {}
-    }
-  ]
+      {
+          "labels": {},
+          "port": 10013,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      10013
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 0
+  }
 }
