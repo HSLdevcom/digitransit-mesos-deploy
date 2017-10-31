@@ -31,12 +31,12 @@
           "command": {
               "value": "test $(ps|grep npm|grep -v grep|wc -l) == 1"
           },
-          "gracePeriodSeconds": 5,
+          "gracePeriodSeconds": 30,
           "ignoreHttp1xx": false,
           "intervalSeconds": 60,
-          "maxConsecutiveFailures": 3,
+          "maxConsecutiveFailures": 5,
           "protocol": "COMMAND",
-          "timeoutSeconds": 1
+          "timeoutSeconds": 10
       }
   ],
   "id": "/digitransit-deployer",
