@@ -18,9 +18,11 @@
     }
   },
   "env": {
-    "MARATHON_URL": "http://172.16.0.5/service/marathon/",
+    "MARATHON_URL": "http://leader.mesos/service/marathon/",
     "DEBUG": "*",
-    "ENVIRONMENT_TYPE": "PROD"
+    "ENVIRONMENT_TYPE": "PROD",
+    "SLACK_WEBHOOK_URL": "slackwebhook",
+    "SECRET": "ansiblesecret"
   },
   "healthChecks": [
     {
