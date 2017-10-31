@@ -1,52 +1,65 @@
 {
-  "id": "/digitransit-deployer",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 1,
-  "mem": 128,
-  "disk": 0,
-  "instances": 1,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/digitransit-deployer",
-      "network": "HOST",
-      "portMappings": null,
-      "privileged": false,
-      "parameters": [],
-      "forcePullImage": true
-    }
-  },
-  "env": {
-    "MARATHON_URL": "http://172.16.0.5/service/marathon/",
-    "DEBUG": "*",
-    "ENVIRONMENT_TYPE": "DEV"
-  },
-  "healthChecks": [
-    {
-      "protocol": "COMMAND",
-      "command": {
-        "value": "test $(ps|grep npm|grep -v grep|wc -l) == 1"
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/digitransit-deployer",
+          "network": "HOST",
+          "parameters": [],
+          "portMappings": null,
+          "privileged": false
       },
-      "gracePeriodSeconds": 5,
-      "intervalSeconds": 60,
-      "timeoutSeconds": 1,
-      "maxConsecutiveFailures": 3,
-      "ignoreHttp1xx": false
-    }
+      "type": "DOCKER",
+      "volumes": []
+  },
+  "cpus": 1,
+  "dependencies": [],
+  "disk": 0,
+  "env": {
+      "MARATHON_URL": "http://leader.mesos/service/marathon/",
+      "DEBUG": "*",
+      "ENVIRONMENT_TYPE": "DEV",
+      "SLACK_WEBHOOK_URL": "slackwebhook",
+      "SECRET": "ansiblesecret"
+  },
+  "gpus": 0,
+  "healthChecks": [
+      {
+          "command": {
+              "value": "test $(ps|grep npm|grep -v grep|wc -l) == 1"
+          },
+          "gracePeriodSeconds": 5,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 60,
+          "maxConsecutiveFailures": 3,
+          "protocol": "COMMAND",
+          "timeoutSeconds": 1
+      }
   ],
+  "id": "/digitransit-deployer",
+  "instances": 1,
   "labels": {
-    "update": "auto"
+      "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 128,
   "portDefinitions": [
-    {
-      "port": 10004,
-      "protocol": "tcp",
-      "labels": {}
-    }
-  ]
+      {
+          "labels": {},
+          "port": 10004,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      10004
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 0
+  }
 }
