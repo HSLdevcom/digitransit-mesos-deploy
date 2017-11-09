@@ -1,65 +1,77 @@
 {
-  "id": "/opentripplanner-data-con-waltti",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 0.1,
-  "mem": 20,
-  "disk": 0,
-  "instances": 2,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/opentripplanner-data-container-waltti",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10022,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_0": "/opentripplanner-data-con-waltti:8080"
-          }
-        }
-      ],
-      "privileged": false,
-      "parameters": [
-        {
-          "key": "net",
-          "value": "host"
-        },
-        {
-          "key": "name",
-          "value": "opentripplanner-data-con-waltti"
-        }
-      ],
-      "forcePullImage": true
-    }
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/opentripplanner-data-container-waltti",
+          "network": "BRIDGE",
+          "parameters": [
+              {
+                  "key": "net",
+                  "value": "host"
+              },
+              {
+                  "key": "name",
+                  "value": "opentripplanner-data-con-waltti"
+              }
+          ],
+          "portMappings": [
+              {
+                  "containerPort": 8080,
+                  "hostPort": 0,
+                  "labels": {
+                      "VIP_0": "/opentripplanner-data-con-waltti:8080"
+                  },
+                  "protocol": "tcp",
+                  "servicePort": 10022
+              }
+          ],
+          "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
   },
+  "cpus": 0.1,
+  "dependencies": [],
+  "disk": 0,
+  "env": {},
+  "gpus": 0,
   "healthChecks": [
-    {
-      "path": "/version.txt",
-      "protocol": "HTTP",
-      "portIndex": 0,
-      "gracePeriodSeconds": 300,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 10,
-      "maxConsecutiveFailures": 5,
-      "ignoreHttp1xx": false
-    }
+      {
+          "gracePeriodSeconds": 300,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 10,
+          "maxConsecutiveFailures": 5,
+          "path": "/version.txt",
+          "portIndex": 0,
+          "protocol": "HTTP",
+          "timeoutSeconds": 10
+      }
   ],
+  "id": "/opentripplanner-data-con-waltti",
+  "instances": 2,
   "labels": {
-    "update": "auto"
+      "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 20,
   "portDefinitions": [
-    {
-      "port": 10022,
-      "protocol": "tcp",
-      "labels": {}
-    }
-  ]
+      {
+          "labels": {},
+          "port": 10022,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      10022
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 0
+  }
 }

@@ -1,70 +1,81 @@
 {
-  "id": "/siri2gtfsrt",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 0.3,
-  "mem": 1000,
-  "disk": 0,
-  "instances": 2,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/siri2gtfsrt",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10016,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_0": "/siri2gtfsrt:8080"
-          }
-        }
-      ],
-      "privileged": false,
-      "parameters": [
-        {
-          "key": "net",
-          "value": "host"
-        },
-        {
-          "key": "name",
-          "value": "siri2gtfsrt"
-        }
-      ],
-      "forcePullImage": true
-    }
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/siri2gtfsrt",
+          "network": "BRIDGE",
+          "parameters": [
+              {
+                  "key": "net",
+                  "value": "host"
+              },
+              {
+                  "key": "name",
+                  "value": "siri2gtfsrt"
+              }
+          ],
+          "portMappings": [
+              {
+                  "containerPort": 8080,
+                  "hostPort": 0,
+                  "labels": {
+                      "VIP_0": "/siri2gtfsrt:8080"
+                  },
+                  "protocol": "tcp",
+                  "servicePort": 10016
+              }
+          ],
+          "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
   },
+  "cpus": 0.3,
+  "dependencies": [],
+  "disk": 0,
   "env": {
-    "TRAIN_URL": "http://raildigitraffic2gtfsrt.marathon.l4lb.thisdcos.directory:8080/hsl",
-    "HSL_URL": "http://navigator-server.marathon.l4lb.thisdcos.directory:8080/siriaccess/vm/json?operatorRef=HSL",
-    "TRIP_UPDATE_URL": "http://hslalert.marathon.l4lb.thisdcos.directory:8080/"
+      "HSL_URL": "http://navigator-server.marathon.l4lb.thisdcos.directory:8080/siriaccess/vm/json?operatorRef=HSL",
+      "TRAIN_URL": "http://raildigitraffic2gtfsrt.marathon.l4lb.thisdcos.directory:8080/hsl",
+      "TRIP_UPDATE_URL": "http://hslalert.marathon.l4lb.thisdcos.directory:8080/"
   },
+  "gpus": 0,
   "healthChecks": [
-    {
-      "path": "/HSL",
-      "protocol": "HTTP",
-      "portIndex": 0,
-      "gracePeriodSeconds": 300,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 10,
-      "maxConsecutiveFailures": 5,
-      "ignoreHttp1xx": false
-    }
+      {
+          "gracePeriodSeconds": 300,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 10,
+          "maxConsecutiveFailures": 5,
+          "path": "/HSL",
+          "portIndex": 0,
+          "protocol": "HTTP",
+          "timeoutSeconds": 10
+      }
   ],
+  "id": "/siri2gtfsrt",
+  "instances": 2,
   "labels": {
-    "update": "auto"
+      "update": "auto"
   },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 1000,
   "portDefinitions": [
-    {
-      "port": 10016,
-      "protocol": "tcp",
-      "labels": {}
-    }
+      {
+          "labels": {},
+          "port": 10016,
+          "protocol": "tcp"
+      }
   ],
-"upgradeStrategy": {
-    "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
+  "ports": [
+      10016
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 0
   }
 }

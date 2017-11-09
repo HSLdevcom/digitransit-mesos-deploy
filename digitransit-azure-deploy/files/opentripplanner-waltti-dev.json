@@ -1,73 +1,85 @@
 {
-  "id": "/opentripplanner-waltti",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 1,
-  "mem": 10240,
-  "disk": 0,
-  "instances": 1,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/opentripplanner",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10008,
-          "protocol": "tcp",
-          "name": "otpfinland",
-          "labels": {
-            "VIP_0": "/opentripplanner-waltti:8080"
-          }
-        }
-      ],
-      "privileged": false,
-      "parameters": [
-        {
-          "key": "net",
-          "value": "host"
-        },
-        {
-          "key": "name",
-          "value": "opentripplanner-waltti"
-        }
-      ],
-      "forcePullImage": true
-    }
-  },
-  "env": {
-    "ROUTER_DATA_CONTAINER_URL": "https://dev-api.digitransit.fi/routing-data/v2/waltti",
-    "ROUTER_NAME": "waltti",
-    "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10"
-  },
-  "healthChecks": [
-    {
-      "protocol": "COMMAND",
-      "command": {
-        "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/waltti/) = 200"
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/opentripplanner",
+          "network": "BRIDGE",
+          "parameters": [
+              {
+                  "key": "net",
+                  "value": "host"
+              },
+              {
+                  "key": "name",
+                  "value": "opentripplanner-waltti"
+              }
+          ],
+          "portMappings": [
+              {
+                  "containerPort": 8080,
+                  "hostPort": 0,
+                  "labels": {
+                      "VIP_0": "/opentripplanner-waltti:8080"
+                  },
+                  "name": "otpfinland",
+                  "protocol": "tcp",
+                  "servicePort": 10008
+              }
+          ],
+          "privileged": false
       },
-      "gracePeriodSeconds": 1200,
-      "intervalSeconds": 30,
-      "timeoutSeconds": 20,
-      "maxConsecutiveFailures": 6
-    }
-  ],
-  "labels": {
-    "update": "auto",
-    "restart-after-services": "/opentripplanner-data-con-waltti",
-    "restart-delay": "10"
+      "type": "DOCKER",
+      "volumes": []
   },
-  "portDefinitions": [
-    {
-      "port": 10008,
-      "protocol": "tcp",
-      "labels": {}
-    }
+  "cpus": 1,
+  "dependencies": [],
+  "disk": 0,
+  "env": {
+      "ROUTER_DATA_CONTAINER_URL": "https://dev-api.digitransit.fi/routing-data/v2/waltti",
+      "ROUTER_NAME": "waltti",
+      "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10"
+  },
+  "gpus": 0,
+  "healthChecks": [
+      {
+          "command": {
+              "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/waltti/) = 200"
+          },
+          "gracePeriodSeconds": 1200,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 30,
+          "maxConsecutiveFailures": 6,
+          "protocol": "COMMAND",
+          "timeoutSeconds": 20
+      }
   ],
-"upgradeStrategy": {
-    "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
+  "id": "/opentripplanner-waltti",
+  "instances": 1,
+  "labels": {
+      "restart-after-services": "/opentripplanner-data-con-waltti",
+      "restart-delay": "10",
+      "update": "auto"
+  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 10240,
+  "portDefinitions": [
+      {
+          "labels": {},
+          "port": 10008,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      10008
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 0
   }
 }

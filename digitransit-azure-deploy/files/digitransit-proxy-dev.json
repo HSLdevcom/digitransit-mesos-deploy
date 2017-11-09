@@ -1,59 +1,70 @@
 {
-  "id": "/digitransit-proxy",
-  "cmd": null,
-  "cpus": 2,
-  "mem": 1024,
-  "disk": 0,
-  "instances": 2,
   "acceptedResourceRoles": [
-    "slave_public"
+      "slave_public"
   ],
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
+  "cmd": null,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/digitransit-proxy",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "protocol": "tcp",
-          "hostPort": 80,
-          "servicePort": 10002,
-          "labels": {
-            "VIP_0": "/digitransit-proxy:8080"
-          }
-        }
-      ],
-      "privileged": false,
-      "parameters": [],
-      "forcePullImage": true
-    }
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/digitransit-proxy",
+          "network": "BRIDGE",
+          "parameters": [],
+          "portMappings": [
+              {
+                  "containerPort": 8080,
+                  "hostPort": 80,
+                  "labels": {
+                      "VIP_0": "/digitransit-proxy:8080"
+                  },
+                  "protocol": "tcp",
+                  "servicePort": 10002
+              }
+          ],
+          "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
   },
+  "cpus": 2,
+  "dependencies": [],
+  "disk": 0,
+  "env": {},
+  "gpus": 0,
   "healthChecks": [
-    {
-      "path": "/",
-      "protocol": "HTTP",
-      "portIndex": 0,
-      "gracePeriodSeconds": 300,
-      "intervalSeconds": 60,
-      "timeoutSeconds": 20,
-      "maxConsecutiveFailures": 3,
-      "ignoreHttp1xx": false
-    }
+      {
+          "gracePeriodSeconds": 300,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 60,
+          "maxConsecutiveFailures": 3,
+          "path": "/",
+          "portIndex": 0,
+          "protocol": "HTTP",
+          "timeoutSeconds": 20
+      }
   ],
+  "id": "/digitransit-proxy",
+  "instances": 2,
   "labels": {
-    "update": "auto"
+      "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 1024,
   "portDefinitions": [
-    {
-      "port": 10002,
-      "protocol": "tcp",
-      "labels": {}
-    }
-  ]
+      {
+          "labels": {},
+          "port": 10002,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      10002
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 0
+  }
 }

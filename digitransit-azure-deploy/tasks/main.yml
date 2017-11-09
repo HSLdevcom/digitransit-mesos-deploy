@@ -93,6 +93,24 @@
      - decrypt
      - deploy
 
+- name: replace ansible secret
+  replace:
+    dest="{{ role_path }}/files/digitransit-deployer-{{environment_type | lower}}.json"
+    regexp='ansiblesecret'
+    replace="{{ansible_secret}}"
+  tags:
+    - decrypt
+    - deploy
+
+- name: replace deployer slack webhook
+  replace:
+    dest="{{ role_path }}/files/digitransit-deployer-{{environment_type | lower}}.json"
+    regexp='slackwebhook'
+    replace="{{slack_webhook}}"
+  tags:
+    - decrypt
+    - deploy
+
 - block:
     - name: replace dockerauth secret
       replace:
@@ -228,6 +246,24 @@
      dest="{{ role_path }}/files/hsl-map-server-{{environment_type | lower}}.json"
      regexp="{{fontstack_password}}"
      replace='fontstacksecret'
+  tags:
+     - encrypt
+     - deploy
+
+- name: re-encrypt ansible secret
+  replace:
+     dest="{{ role_path }}/files/digitransit-deployer-{{environment_type | lower}}.json"
+     regexp="{{ansible_secret}}"
+     replace='ansiblesecret'
+  tags:
+     - encrypt
+     - deploy
+
+- name: re-encrypt deployer slackwebhook
+  replace:
+     dest="{{ role_path }}/files/digitransit-deployer-{{environment_type | lower}}.json"
+     regexp="{{slack_webhook}}"
+     replace='slackwebhook'
   tags:
      - encrypt
      - deploy

@@ -93,6 +93,7 @@ secret_secrets:
 - "dockerauth"
 - "dockeruser"
 - "slackwebhook"
+- "ansiblesecret"
 
 secret_answers:
 - "{{fontstack_password}}"
@@ -103,3 +104,4 @@ secret_answers:
 - "{{docker_auth}}"
 - "{{docker_user}}"
 - "{{slack_webhook}}"
+- "{{ansible_secret}}"

@@ -2,7 +2,7 @@
   "id": "/digitransit-deployer",
   "cmd": null,
   "cpus": 1,
-  "mem": 128,
+  "mem": 512,
   "disk": 0,
   "instances": 1,
   "container": {
@@ -18,8 +18,11 @@
     }
   },
   "env": {
-    "MARATHON_URL": "http://172.16.0.5/service/marathon/",
-    "DEBUG": "*"
+    "MARATHON_URL": "http://leader.mesos/service/marathon/",
+    "DEBUG": "*",
+    "ENVIRONMENT_TYPE": "PROD",
+    "SLACK_WEBHOOK_URL": "slackwebhook",
+    "SECRET": "ansiblesecret"
   },
   "healthChecks": [
     {
@@ -27,10 +30,10 @@
       "command": {
         "value": "test $(ps|grep npm|grep -v grep|wc -l) == 1"
       },
-      "gracePeriodSeconds": 5,
+      "gracePeriodSeconds": 30,
       "intervalSeconds": 60,
-      "timeoutSeconds": 1,
-      "maxConsecutiveFailures": 3,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 5,
       "ignoreHttp1xx": false
     }
   ],

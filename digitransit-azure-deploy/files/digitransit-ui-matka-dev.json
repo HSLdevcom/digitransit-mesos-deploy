@@ -1,74 +1,85 @@
 {
-  "id": "/digitransit-ui-default",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 0.2,
-  "mem": 1024,
-  "disk": 0,
-  "instances": 2,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/digitransit-ui",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10017,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_0": "/digitransit-ui-default:8080"
-          }
-        }
-      ],
-      "privileged": false,
-      "parameters": [
-        {
-          "key": "net",
-          "value": "host"
-        }
-      ],
-      "forcePullImage": true
-    }
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/digitransit-ui",
+          "network": "BRIDGE",
+          "parameters": [
+              {
+                  "key": "net",
+                  "value": "host"
+              }
+          ],
+          "portMappings": [
+              {
+                  "containerPort": 8080,
+                  "hostPort": 0,
+                  "labels": {
+                      "VIP_0": "/digitransit-ui-default:8080"
+                  },
+                  "protocol": "tcp",
+                  "servicePort": 10017
+              }
+          ],
+          "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
   },
+  "cpus": 0.2,
+  "dependencies": [],
+  "disk": 0,
   "env": {
-    "CONFIG": "matka",
-    "API_URL": "https://dev-api.digitransit.fi",
-    "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
-    "SENTRY_DSN": "sentrydsnenvsecret",
-    "SENTRY_SECRET_DSN": "sentrydsnsecret",
-    "PIWIK_ID": "7",
-    "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
-    "NODE_OPTS": "--max_old_space_size=600",
-    "RELAY_FETCH_TIMEOUT": "3000"
+      "CONFIG": "matka",
+      "API_URL": "https://dev-api.digitransit.fi",
+      "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
+      "SENTRY_DSN": "sentrydsnenvsecret",
+      "SENTRY_SECRET_DSN": "sentrydsnsecret",
+      "PIWIK_ID": "7",
+      "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
+      "NODE_OPTS": "--max_old_space_size=600",
+      "RELAY_FETCH_TIMEOUT": "3000"
   },
+  "gpus": 0,
   "healthChecks": [
-    {
-      "path": "/",
-      "protocol": "HTTP",
-      "portIndex": 0,
-      "gracePeriodSeconds": 300,
-      "intervalSeconds": 10,
-      "timeoutSeconds": 10,
-      "maxConsecutiveFailures": 10,
-      "ignoreHttp1xx": false
-    }
+      {
+          "gracePeriodSeconds": 300,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 10,
+          "maxConsecutiveFailures": 10,
+          "path": "/",
+          "portIndex": 0,
+          "protocol": "HTTP",
+          "timeoutSeconds": 10
+      }
   ],
+  "id": "/digitransit-ui-default",
+  "instances": 2,
   "labels": {
-    "update": "auto",
-    "restart-at": "03:00",
-    "restart-limit-interval": "480"
+      "restart-at": "03:00",
+      "restart-limit-interval": "480",
+      "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 1024,
   "portDefinitions": [
-    {
-      "port": 10017,
-      "protocol": "tcp",
-      "labels": {}
-    }
-  ]
+      {
+          "labels": {},
+          "port": 10017,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      10017
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 0
+  }
 }

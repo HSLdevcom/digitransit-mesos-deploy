@@ -1,70 +1,81 @@
 {
-  "id": "/raildigitraffic2gtfsrt",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 0.1,
-  "mem": 2048,
-  "disk": 0,
-  "instances": 2,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
-    "docker": {
-      "image": "hsldevcom/raildigitraffic2gtfsrt",
-      "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10015,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_0": "/raildigitraffic2gtfsrt:8080"
-          }
-        }
-      ],
-      "privileged": false,
-      "parameters": [
-        {
-          "key": "net",
-          "value": "host"
-        },
-        {
-          "key": "name",
-          "value": "raildigitraffic2gtfsrt"
-        }
-      ],
-      "forcePullImage": true
-    }
+      "docker": {
+          "forcePullImage": true,
+          "image": "hsldevcom/raildigitraffic2gtfsrt",
+          "network": "BRIDGE",
+          "parameters": [
+              {
+                  "key": "net",
+                  "value": "host"
+              },
+              {
+                  "key": "name",
+                  "value": "raildigitraffic2gtfsrt"
+              }
+          ],
+          "portMappings": [
+              {
+                  "containerPort": 8080,
+                  "hostPort": 0,
+                  "labels": {
+                      "VIP_0": "/raildigitraffic2gtfsrt:8080"
+                  },
+                  "protocol": "tcp",
+                  "servicePort": 10015
+              }
+          ],
+          "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
   },
+  "cpus": 0.1,
+  "dependencies": [],
+  "disk": 0,
   "env": {
-    "ROUTER_ZIP_URL": "https://dev-api.digitransit.fi/routing-data/v2/finland/router-finland.zip"
+      "ROUTER_ZIP_URL": "https://dev-api.digitransit.fi/routing-data/v2/finland/router-finland.zip"
   },
+  "gpus": 0,
   "healthChecks": [
-    {
-      "path": "/hsl",
-      "protocol": "HTTP",
-      "portIndex": 0,
-      "gracePeriodSeconds": 720,
-      "intervalSeconds": 30,
-      "timeoutSeconds": 10,
-      "maxConsecutiveFailures": 5,
-      "ignoreHttp1xx": false
-    }
+      {
+          "gracePeriodSeconds": 720,
+          "ignoreHttp1xx": false,
+          "intervalSeconds": 30,
+          "maxConsecutiveFailures": 5,
+          "path": "/hsl",
+          "portIndex": 0,
+          "protocol": "HTTP",
+          "timeoutSeconds": 10
+      }
   ],
+  "id": "/raildigitraffic2gtfsrt",
+  "instances": 2,
   "labels": {
-    "update": "auto",
-    "restart-after-services": "/opentripplanner-data-con-finland",
-    "restart-delay": "5"
+      "restart-after-services": "/opentripplanner-data-con-finland",
+      "restart-delay": "5",
+      "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 0,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 2048,
   "portDefinitions": [
-    {
-      "port": 10015,
-      "protocol": "tcp",
-      "labels": {}
-    }
-  ]
+      {
+          "labels": {},
+          "port": 10015,
+          "protocol": "tcp"
+      }
+  ],
+  "ports": [
+      10015
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 0
+  }
 }
