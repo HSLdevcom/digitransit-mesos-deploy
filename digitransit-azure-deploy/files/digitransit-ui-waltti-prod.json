@@ -1,37 +1,38 @@
 {
-  "id": "/digitransit-ui-waltti",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 0.5,
-  "mem": 1024,
-  "disk": 0,
-  "instances": 4,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
     "docker": {
+      "forcePullImage": true,
       "image": "hsldevcom/digitransit-ui:prod",
       "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10019,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_0": "/digitransit-ui-waltti:8080"
-          }
-        }
-      ],
-      "privileged": false,
       "parameters": [
         {
           "key": "net",
           "value": "host"
         }
       ],
-      "forcePullImage": true
-    }
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "labels": {
+            "VIP_0": "/digitransit-ui-waltti:8080"
+          },
+          "protocol": "tcp",
+          "servicePort": 10019
+        }
+      ],
+      "privileged": false
+    },
+    "type": "DOCKER",
+    "volumes": []
   },
+  "cpus": 0.5,
+  "dependencies": [],
+  "disk": 0,
   "env": {
     "API_URL": "https://api.digitransit.fi",
     "MAP_URL": "https://digitransit-prod-cdn-origin.azureedge.net",
@@ -41,32 +42,42 @@
     "NODE_OPTS": "--max_old_space_size=600",
     "RELAY_FETCH_TIMEOUT": "3000"
   },
+  "gpus": 0,
   "healthChecks": [
     {
-      "path": "/",
-      "protocol": "HTTP",
-      "portIndex": 0,
       "gracePeriodSeconds": 300,
+      "ignoreHttp1xx": false,
       "intervalSeconds": 10,
-      "timeoutSeconds": 10,
       "maxConsecutiveFailures": 10,
-      "ignoreHttp1xx": false
+      "path": "/",
+      "portIndex": 0,
+      "protocol": "HTTP",
+      "timeoutSeconds": 10
     }
   ],
+  "id": "/digitransit-ui-waltti",
+  "instances": 4,
   "labels": {
-    "update": "auto",
     "restart-at": "03:10",
-    "restart-limit-interval": "480"
+    "restart-limit-interval": "480",
+    "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 1,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 1024,
   "portDefinitions": [
     {
+      "labels": {},
       "port": 10019,
-      "protocol": "tcp",
-      "labels": {}
+      "protocol": "tcp"
     }
-  ]
+  ],
+  "ports": [
+    10019
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 1
+  }
 }
