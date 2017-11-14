@@ -1,21 +1,20 @@
 {
-  "id": "/digitransit-cleaner",
-  "cmd": "sh -c \"while true; do ./docker-gc ; sleep 86400; done\"\n",
-  "cpus": 0.01,
-  "mem": 32,
-  "disk": 0,
-  "instances": 38,
-  "constraints": [
-    [
-      "hostname",
-      "UNIQUE"
-    ]
-  ],
   "acceptedResourceRoles": [
     "slave_public",
     "*"
   ],
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
+  "cmd": "sh -c \"while true; do ./docker-gc ; sleep 86400; done\"\n",
   "container": {
+    "docker": {
+      "forcePullImage": false,
+      "image": "hsldevcom/docker-gc:1.11.2_0.1.1",
+      "network": "HOST",
+      "parameters": [],
+      "portMappings": null,
+      "privileged": false
+    },
     "type": "DOCKER",
     "volumes": [
       {
@@ -28,38 +27,45 @@
         "hostPath": "/etc",
         "mode": "RO"
       }
-    ],
-    "docker": {
-      "image": "hsldevcom/docker-gc:1.11.2_0.1.1",
-      "network": "HOST",
-      "portMappings": null,
-      "privileged": false,
-      "parameters": [],
-      "forcePullImage": false
-    }
+    ]
   },
+  "cpus": 0.01,
+  "dependencies": [],
+  "disk": 0,
+  "env": {},
+  "gpus": 0,
   "healthChecks": [
     {
-      "protocol": "COMMAND",
       "command": {
         "value": "echo \"OK\""
       },
       "gracePeriodSeconds": 300,
+      "ignoreHttp1xx": false,
       "intervalSeconds": 60,
-      "timeoutSeconds": 20,
       "maxConsecutiveFailures": 3,
-      "ignoreHttp1xx": false
+      "protocol": "COMMAND",
+      "timeoutSeconds": 20
     }
   ],
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 1,
-    "maximumOverCapacity": 1
-  },
+  "id": "/digitransit-docker-gc",
+  "instances": 38,
+  "labels": {},
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 32,
   "portDefinitions": [
     {
+      "labels": {},
       "port": 10009,
-      "protocol": "tcp",
-      "labels": {}
+      "protocol": "tcp"
     }
-  ]
+  ],
+  "ports": [
+    10009
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 1
+  }
 }
