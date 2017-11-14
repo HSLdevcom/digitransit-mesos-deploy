@@ -1,28 +1,13 @@
 {
-  "id": "/pelias-api",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 0.9,
-  "mem": 4096,
-  "disk": 0,
-  "instances": 4,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
     "docker": {
+      "forcePullImage": true,
       "image": "hsldevcom/pelias-api:prod",
       "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10005,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_0": "/pelias-api:8080"
-          }
-        }
-      ],
-      "privileged": false,
       "parameters": [
         {
           "key": "net",
@@ -33,33 +18,60 @@
           "value": "pelias-api"
         }
       ],
-      "forcePullImage": true
-    }
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "labels": {
+            "VIP_0": "/pelias-api:8080"
+          },
+          "protocol": "tcp",
+          "servicePort": 10005
+        }
+      ],
+      "privileged": false
+    },
+    "type": "DOCKER",
+    "volumes": []
   },
+  "cpus": 0.9,
+  "dependencies": [],
+  "disk": 0,
+  "env": {},
+  "gpus": 0,
   "healthChecks": [
     {
-      "path": "/v1/search?text=helsinki",
-      "protocol": "HTTP",
-      "portIndex": 0,
       "gracePeriodSeconds": 300,
+      "ignoreHttp1xx": false,
       "intervalSeconds": 10,
-      "timeoutSeconds": 10,
       "maxConsecutiveFailures": 5,
-      "ignoreHttp1xx": false
+      "path": "/v1/search?text=helsinki",
+      "portIndex": 0,
+      "protocol": "HTTP",
+      "timeoutSeconds": 10
     }
   ],
+  "id": "/pelias-api",
+  "instances": 4,
   "labels": {
     "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 1,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 4096,
   "portDefinitions": [
     {
+      "labels": {},
       "port": 10005,
-      "protocol": "tcp",
-      "labels": {}
+      "protocol": "tcp"
     }
-  ]
+  ],
+  "ports": [
+    10005
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 1
+  }
 }
