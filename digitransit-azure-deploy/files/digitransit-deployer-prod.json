@@ -1,22 +1,23 @@
 {
-  "id": "/digitransit-deployer",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 1,
-  "mem": 512,
-  "disk": 0,
-  "instances": 1,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
     "docker": {
+      "forcePullImage": true,
       "image": "hsldevcom/digitransit-deployer:prod",
       "network": "HOST",
-      "portMappings": null,
-      "privileged": false,
       "parameters": [],
-      "forcePullImage": true
-    }
+      "portMappings": null,
+      "privileged": false
+    },
+    "type": "DOCKER",
+    "volumes": []
   },
+  "cpus": 1,
+  "dependencies": [],
+  "disk": 0,
   "env": {
     "MARATHON_URL": "http://leader.mesos/service/marathon/",
     "DEBUG": "*",
@@ -24,31 +25,41 @@
     "SLACK_WEBHOOK_URL": "slackwebhook",
     "SECRET": "ansiblesecret"
   },
+  "gpus": 0,
   "healthChecks": [
     {
-      "protocol": "COMMAND",
       "command": {
         "value": "test $(ps|grep npm|grep -v grep|wc -l) == 1"
       },
       "gracePeriodSeconds": 30,
+      "ignoreHttp1xx": false,
       "intervalSeconds": 60,
-      "timeoutSeconds": 10,
       "maxConsecutiveFailures": 5,
-      "ignoreHttp1xx": false
+      "protocol": "COMMAND",
+      "timeoutSeconds": 10
     }
   ],
+  "id": "/digitransit-deployer",
+  "instances": 1,
   "labels": {
     "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 1,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 512,
   "portDefinitions": [
     {
+      "labels": {},
       "port": 10004,
-      "protocol": "tcp",
-      "labels": {}
+      "protocol": "tcp"
     }
-  ]
+  ],
+  "ports": [
+    10004
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 1
+  }
 }

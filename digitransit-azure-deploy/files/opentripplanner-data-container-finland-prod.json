@@ -1,28 +1,13 @@
 {
-  "id": "/opentripplanner-data-con-finland",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 0.1,
-  "mem": 128,
-  "disk": 0,
-  "instances": 2,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
     "docker": {
+      "forcePullImage": true,
       "image": "hsldevcom/opentripplanner-data-container-finland:prod",
       "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10020,
-          "protocol": "tcp",
-          "labels": {
-            "VIP_0": "/opentripplanner-data-con-finland:8080"
-          }
-        }
-      ],
-      "privileged": false,
       "parameters": [
         {
           "key": "net",
@@ -33,33 +18,60 @@
           "value": "opentripplanner-data-con-finland"
         }
       ],
-      "forcePullImage": true
-    }
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "labels": {
+            "VIP_0": "/opentripplanner-data-con-finland:8080"
+          },
+          "protocol": "tcp",
+          "servicePort": 10020
+        }
+      ],
+      "privileged": false
+    },
+    "type": "DOCKER",
+    "volumes": []
   },
+  "cpus": 0.1,
+  "dependencies": [],
+  "disk": 0,
+  "env": {},
+  "gpus": 0,
   "healthChecks": [
     {
-      "path": "/version.txt",
-      "protocol": "HTTP",
-      "portIndex": 0,
       "gracePeriodSeconds": 300,
+      "ignoreHttp1xx": false,
       "intervalSeconds": 10,
-      "timeoutSeconds": 10,
       "maxConsecutiveFailures": 5,
-      "ignoreHttp1xx": false
+      "path": "/version.txt",
+      "portIndex": 0,
+      "protocol": "HTTP",
+      "timeoutSeconds": 10
     }
   ],
+  "id": "/opentripplanner-data-con-finland",
+  "instances": 2,
   "labels": {
     "update": "auto"
   },
-  "upgradeStrategy": {
-    "minimumHealthCapacity": 1,
-    "maximumOverCapacity": 1
-  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 128,
   "portDefinitions": [
     {
+      "labels": {},
       "port": 10020,
-      "protocol": "tcp",
-      "labels": {}
+      "protocol": "tcp"
     }
-  ]
+  ],
+  "ports": [
+    10020
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 1
+  }
 }
