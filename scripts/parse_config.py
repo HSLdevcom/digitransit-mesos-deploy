@@ -10,7 +10,7 @@ def main(service):
     req = requests.get('http://leader.mesos:8080/v2/apps/' + service, headers = {'Accept': 'application/json'}).text
     data = json.loads(req)['app']
     removeFields = ['tasks','lastTaskFailure','versionInfo','version','deployments',
-        'uris','fetch','executor','tasksStaged','tasksRunning','tasksHealthy','tasksRunning',
+        'uris','fetch','executor','tasksStaged','tasksHealthy','tasksRunning',
         'tasksUnhealthy','ipAddress','residency','secrets','requirePorts','user','args',
         'storeUrls','constraints']
     for field in removeFields:
