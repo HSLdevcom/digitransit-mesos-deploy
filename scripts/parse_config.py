@@ -16,7 +16,7 @@ def main(service):
     for field in removeFields:
         if field in data:
             del data[field]
-    print(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+    print(json.dumps(data, sort_keys=True, indent=2, separators=(',', ': ')))
 
 if __name__ == "__main__":
     main(sys.argv[1])
