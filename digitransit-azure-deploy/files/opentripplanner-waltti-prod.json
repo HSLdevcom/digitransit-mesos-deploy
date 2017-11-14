@@ -1,29 +1,13 @@
 {
-  "id": "/opentripplanner-waltti",
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
   "cmd": null,
-  "cpus": 1.9,
-  "mem": 10240,
-  "disk": 0,
-  "instances": 4,
   "container": {
-    "type": "DOCKER",
-    "volumes": [],
     "docker": {
+      "forcePullImage": true,
       "image": "hsldevcom/opentripplanner:prod",
       "network": "BRIDGE",
-      "portMappings": [
-        {
-          "containerPort": 8080,
-          "hostPort": 0,
-          "servicePort": 10008,
-          "protocol": "tcp",
-          "name": "otpfinland",
-          "labels": {
-            "VIP_0": "/opentripplanner-waltti:8080"
-          }
-        }
-      ],
-      "privileged": false,
       "parameters": [
         {
           "key": "net",
@@ -34,42 +18,70 @@
           "value": "opentripplanner-waltti"
         }
       ],
-      "forcePullImage": true
-    }
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "labels": {
+            "VIP_0": "/opentripplanner-waltti:8080"
+          },
+          "name": "otpfinland",
+          "protocol": "tcp",
+          "servicePort": 10008
+        }
+      ],
+      "privileged": false
+    },
+    "type": "DOCKER",
+    "volumes": []
   },
+  "cpus": 1.9,
+  "dependencies": [],
+  "disk": 0,
   "env": {
     "ROUTER_DATA_CONTAINER_URL": "https://api.digitransit.fi/routing-data/v2/waltti",
     "ROUTER_NAME": "waltti",
     "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10  -XX:+PrintGC"
   },
+  "gpus": 0,
   "healthChecks": [
     {
-      "protocol": "COMMAND",
       "command": {
         "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/waltti/) = 200"
       },
       "gracePeriodSeconds": 1200,
+      "ignoreHttp1xx": false,
       "intervalSeconds": 30,
-      "timeoutSeconds": 20,
-      "maxConsecutiveFailures": 3
+      "maxConsecutiveFailures": 3,
+      "protocol": "COMMAND",
+      "timeoutSeconds": 20
     }
   ],
+  "id": "/opentripplanner-waltti",
+  "instances": 4,
   "labels": {
-    "update": "auto",
     "restart-after-services": "/opentripplanner-data-con-waltti",
-    "restart-delay": "10",
     "restart-at": "05:45",
-    "restart-limit-interval": "720"
+    "restart-delay": "10",
+    "restart-limit-interval": "720",
+    "update": "auto"
   },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 10240,
   "portDefinitions": [
     {
+      "labels": {},
       "port": 10008,
-      "protocol": "tcp",
-      "labels": {}
+      "protocol": "tcp"
     }
   ],
-"upgradeStrategy": {
-    "minimumHealthCapacity": 1,
-    "maximumOverCapacity": 1
+  "ports": [
+    10008
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 1
   }
 }
