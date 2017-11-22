@@ -29,7 +29,7 @@
   "healthChecks": [
       {
           "command": {
-              "value": "test $(ps|grep npm|grep -v grep|wc -l) == 1"
+              "value": "true"
           },
           "gracePeriodSeconds": 30,
           "ignoreHttp1xx": false,
