@@ -23,7 +23,7 @@
               "containerPath": "persistent",
               "mode": "RW",
               "persistent": {
-                  "size": 2000
+                  "size": 5
               }
           }
       ]
