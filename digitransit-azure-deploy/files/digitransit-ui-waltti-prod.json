@@ -6,7 +6,7 @@
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/digitransit-ui:prod",
+      "image": "hsldevcom/digitransit-ui:ci-0109aee9805fa956b73f8dc8721f4fce30f45e71",
       "network": "BRIDGE",
       "parameters": [
         {
