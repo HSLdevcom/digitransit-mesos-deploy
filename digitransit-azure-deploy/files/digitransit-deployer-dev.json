@@ -49,12 +49,12 @@
   "portDefinitions": [
       {
           "labels": {},
-          "port": 10004,
+          "port": 10014,
           "protocol": "tcp"
       }
   ],
   "ports": [
-      10004
+      10014
   ],
   "readinessChecks": [],
   "taskKillGracePeriodSeconds": null,
