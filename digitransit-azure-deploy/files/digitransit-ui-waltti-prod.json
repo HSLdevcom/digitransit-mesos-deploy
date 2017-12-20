@@ -58,7 +58,7 @@
   "id": "/digitransit-ui-waltti",
   "instances": 4,
   "labels": {
-    "restart-at": "03:10",
+    "restart-at": "03:10, 13:10",
     "restart-limit-interval": "480",
     "update": "auto"
   },
