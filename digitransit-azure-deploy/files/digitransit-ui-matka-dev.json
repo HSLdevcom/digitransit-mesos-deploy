@@ -60,7 +60,7 @@
   "id": "/digitransit-ui-default",
   "instances": 2,
   "labels": {
-      "restart-at": "03:00, 13:00",
+      "restart-at": "03:00",
       "restart-limit-interval": "480",
       "update": "auto"
   },
