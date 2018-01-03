@@ -20,12 +20,12 @@
   "disk": 0,
   "env": {
     "NODE_OPTS": "--max_old_space_size=600",
-    "API_URL": "https://dev-api.digitransit.fi",
+    "API_URL": "https://api.digitransit.fi",
     "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
     "RELAY_FETCH_TIMEOUT": "3000",
     "CONFIG": "hsl",
-    "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
-    "PIWIK_ID": "5"
+    "MAP_URL": "https://digitransit-prod-cdn-origin.azureedge.net",
+    "PIWIK_ID": "4"
   },
   "gpus": 0,
   "healthChecks": [
