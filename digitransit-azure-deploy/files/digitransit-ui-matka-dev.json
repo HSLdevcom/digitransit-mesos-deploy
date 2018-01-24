@@ -61,7 +61,7 @@
   "instances": 2,
   "labels": {
       "restart-at": "03:00",
-      "restart-limit-interval": "480",
+      "restart-limit-interval": "180",
       "update": "auto"
   },
   "maxLaunchDelaySeconds": 3600,
