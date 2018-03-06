@@ -90,7 +90,7 @@ dockersecrets:
 slacksecrets:
 - "pelias-data-container-builder-dev.json"
 - "otp-data-builder-dev.json"
-- "digitransit-performance-tests-dev"
+- "digitransit-performance-tests-dev.json"
 
 secret_secrets:
 - "fontstackpasswordsecret"
