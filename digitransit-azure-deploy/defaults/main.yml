@@ -72,6 +72,9 @@ dev_container:
 - name: "otp-data-builder"
   config: "otp-data-builder-dev"
 
+- name: "digitransit-performance-tests"
+  config: "digitransit-performance-tests-dev"
+
 filesecrets:
 - "digitransit-ui-hsl-{{environment_type | lower}}.json"
 - "digitransit-ui-waltti-{{environment_type | lower}}.json"
@@ -83,6 +86,11 @@ filesecrets:
 dockersecrets:
 - "pelias-data-container-builder-dev.json"
 - "otp-data-builder-dev.json"
+
+slacksecrets:
+- "pelias-data-container-builder-dev.json"
+- "otp-data-builder-dev.json"
+- "digitransit-performance-tests-dev.json"
 
 secret_secrets:
 - "fontstackpasswordsecret"

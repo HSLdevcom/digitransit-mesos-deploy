@@ -140,7 +140,7 @@
          regexp='slackwebhook'
          replace="{{slack_webhook}}"
       with_items:
-         - "{{dockersecrets}}"
+         - "{{slacksecrets}}"
       tags:
          - decrypt
          - deploy
@@ -297,7 +297,7 @@
          regexp="{{slack_webhook}}"
          replace='slackwebhook'
       with_items:
-         - "{{dockersecrets}}"
+         - "{{slacksecrets}}"
       tags:
          - encrypt
          - deploy
