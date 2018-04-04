@@ -26,7 +26,8 @@
     "disk": 0,
     "env": {
         "SLACK_WEBHOOK_URL": "slackwebhook",
-        "FILES_AND_HEADERS": "test.txt --content-type 'application/graphql',test2.txt"
+        "FILES_AND_HEADERS": "test.txt --content-type 'application/graphql',test2.txt,test_data_pelias.txt",
+        "CONCURRENT_USERS": "75"
     },
     "gpus": 0,
     "healthChecks": [
