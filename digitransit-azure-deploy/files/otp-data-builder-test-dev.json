@@ -6,7 +6,7 @@
     "container": {
         "docker": {
             "forcePullImage": true,
-            "image": "hsldevcom/digitransit-performance-tests",
+            "image": "hsldevcom/otp-data-builder:otp-test",
             "network": "HOST",
             "parameters": [],
             "portMappings": null,
@@ -18,16 +18,32 @@
                 "containerPath": "/var/run/docker.sock",
                 "hostPath": "/var/run/docker.sock",
                 "mode": "RO"
+            },
+            {
+                "containerPath": "/opt/otp-data-builder/data",
+                "hostPath": "/tmp/data",
+                "mode": "RW"
+            },
+            {
+                "containerPath": "persistent",
+                "mode": "RW",
+                "persistent": {
+                    "size": 5
+                }
             }
         ]
     },
-    "cpus": 1,
+    "cpus": 3,
     "dependencies": [],
     "disk": 0,
     "env": {
-        "SLACK_WEBHOOK_URL": "slackwebhook",
-        "FILES_AND_HEADERS": "test.txt --content-type 'application/graphql',test2.txt,test_data_pelias.txt",
-        "CONCURRENT_USERS": "75"
+        "CRON": "0 0 1 * * *",
+        "DATA": "/opt/otp-data-builder/data",
+        "DOCKER_AUTH": "dockerauth",
+        "DOCKER_TAG": "test",
+        "DOCKER_USER": "dockeruser",
+        "HOST_DATA": "/tmp/data",
+        "ROUTERS": "hsl, waltti, finland"
     },
     "gpus": 0,
     "healthChecks": [
@@ -43,27 +59,27 @@
             "timeoutSeconds": 20
         }
     ],
-    "id": "/digitransit-performance-tests",
-    "instances": 1,
+    "id": "/otp-data-builder-test",
+    "instances": 0,
     "labels": {
         "update": "auto"
     },
     "maxLaunchDelaySeconds": 3600,
-    "mem": 128,
+    "mem": 9000,
     "portDefinitions": [
         {
             "labels": {},
-            "port": 10026,
+            "port": 10070,
             "protocol": "tcp"
         }
     ],
     "ports": [
-        10026
+        10070
     ],
     "readinessChecks": [],
     "taskKillGracePeriodSeconds": null,
     "upgradeStrategy": {
-        "maximumOverCapacity": 1,
-        "minimumHealthCapacity": 0
+        "maximumOverCapacity": 0,
+        "minimumHealthCapacity": 0.5
     }
-  }
+}

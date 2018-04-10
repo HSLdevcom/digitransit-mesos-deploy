@@ -41,7 +41,6 @@
       "DATA": "/opt/otp-data-builder/data",
       "DOCKER_AUTH": "dockerauth",
       "SLACK_WEBHOOK_URL": "slackwebhook",
-      "SENTRY_DSN": "sentry_routing_secret_dsn",
       "DOCKER_USER": "dockeruser"
   },
   "gpus": 0,
