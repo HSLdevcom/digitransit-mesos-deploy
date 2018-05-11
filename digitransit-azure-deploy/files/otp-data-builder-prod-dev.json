@@ -44,7 +44,7 @@
         "BUILDER_TYPE": "prod",
         "DOCKER_USER": "dockeruser",
         "CRON": "0 0 3 * * *",
-        "OLD_TAG": "prod",
+        "SEED_TAG": "prod",
         "OTP_TAG": "prod",
         "DOCKER_TAG": "prod"
     },

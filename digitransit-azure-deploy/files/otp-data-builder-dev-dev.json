@@ -44,7 +44,7 @@
         "BUILDER_TYPE": "dev",
         "DOCKER_USER": "dockeruser",
         "CRON": "0 0 1 * * *",
-        "OLD_TAG": "latest",
+        "SEED_TAG": "latest",
         "OTP_TAG": "latest",
         "DOCKER_TAG": "latest"
     },
