@@ -43,7 +43,9 @@
         "DOCKER_TAG": "test",
         "DOCKER_USER": "dockeruser",
         "HOST_DATA": "/tmp/data",
-        "ROUTERS": "hsl, waltti, finland"
+        "ROUTERS": "hsl, waltti, finland",
+        "SEED_TAG": "latest",
+        "OTP_TAG": "latest"
     },
     "gpus": 0,
     "healthChecks": [
