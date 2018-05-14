@@ -6,7 +6,7 @@
     "container": {
         "docker": {
             "forcePullImage": true,
-            "image": "hsldevcom/otp-data-builder:otp-test",
+            "image": "hsldevcom/otp-data-builder",
             "network": "HOST",
             "parameters": [],
             "portMappings": null,
@@ -37,15 +37,16 @@
     "dependencies": [],
     "disk": 0,
     "env": {
-        "CRON": "0 0 1 * * *",
+        "HOST_DATA": "/tmp/data",
         "DATA": "/opt/otp-data-builder/data",
         "DOCKER_AUTH": "dockerauth",
-        "DOCKER_TAG": "test",
+        "SLACK_WEBHOOK_URL": "slackwebhook",
+        "BUILDER_TYPE": "dev",
         "DOCKER_USER": "dockeruser",
-        "HOST_DATA": "/tmp/data",
-        "ROUTERS": "hsl, waltti, finland",
+        "CRON": "0 50 2 * * *",
         "SEED_TAG": "latest",
-        "OTP_TAG": "latest"
+        "OTP_TAG": "latest",
+        "DOCKER_TAG": "latest"
     },
     "gpus": 0,
     "healthChecks": [
@@ -61,8 +62,8 @@
             "timeoutSeconds": 20
         }
     ],
-    "id": "/otp-data-builder-test",
-    "instances": 0,
+    "id": "/otp-data-builder-dev",
+    "instances": 1,
     "labels": {
         "update": "auto"
     },
@@ -71,12 +72,12 @@
     "portDefinitions": [
         {
             "labels": {},
-            "port": 10070,
+            "port": 10027,
             "protocol": "tcp"
         }
     ],
     "ports": [
-        10070
+        10027
     ],
     "readinessChecks": [],
     "taskKillGracePeriodSeconds": null,
@@ -84,4 +85,4 @@
         "maximumOverCapacity": 0,
         "minimumHealthCapacity": 0.5
     }
-}
+  }
