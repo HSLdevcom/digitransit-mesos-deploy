@@ -55,7 +55,7 @@
     }
   ],
   "id": "/hsl-map-server",
-  "instances": 6,
+  "instances": 8,
   "labels": {
     "restart-after-services": "/opentripplanner-finland,/opentripplanner-hsl,/opentripplanner-waltti",
     "restart-delay": "5",
