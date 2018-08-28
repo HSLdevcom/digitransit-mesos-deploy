@@ -35,18 +35,7 @@
 ## curl -X PUT http://localhost/marathon/v2/apps/pelias-api -d @pelias-api.json -H "Content-type: application/json"
 
 
-- block:
-    - name: replace piwik dsn secret
-      replace:
-        dest="{{ role_path }}/files/{{ item }}"
-        regexp='sentrydsnenvsecret'
-        replace="{{dev_sentry_dsn}}"
-      with_items:
-         - "{{filesecrets}}"
-      tags:
-         - decrypt
-         - deploy
-  when: environment_type == 'DEV'
+
 
 - block:
     - name: replace piwik dsn secret
@@ -112,6 +101,17 @@
     - deploy
 
 - block:
+    - name: replace piwik dsn secret
+      replace:
+        dest="{{ role_path }}/files/{{ item }}"
+        regexp='sentrydsnenvsecret'
+        replace="{{dev_sentry_dsn}}"
+      with_items:
+         - "{{filesecrets}}"
+      tags:
+         - decrypt
+         - deploy
+
     - name: replace dockerauth secret
       replace:
          dest="{{ role_path }}/files/{{item}}"
@@ -144,6 +144,34 @@
       tags:
          - decrypt
          - deploy
+
+    - name: replace sentry user
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp='sentryuser'
+        replace="{{sentry_user}}"
+      tags:
+         - decrypt
+         - deploy
+    
+    - name: replace sentry user
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp='sentrytoken'
+        replace="{{sentry_token}}"
+      tags:
+         - decrypt
+         - deploy
+
+    - name: replace sentry password
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp='sentrypassword'
+        replace="{{sentry_password}}"
+      tags:
+         - decrypt
+         - deploy
+
   when: environment_type == 'DEV'
 
 ###UPDATE OR CREATE THE CONTAINERS
@@ -182,19 +210,6 @@
 
 
 ###RE-ENCRYPT the variabls to prevent any accidents when committing changes
-
-- block:
-    - name: re-encrypt piwik dsn secret
-      replace:
-        dest="{{ role_path }}/files/{{ item }}"
-        regexp="{{dev_sentry_dsn}}"
-        replace='sentrydsnenvsecret'
-      with_items:
-         - "{{filesecrets}}"
-      tags:
-         - encrypt
-         - deploy
-  when: environment_type == 'DEV'
 
 - block:
     - name: re-encrypt piwik dsn secret
@@ -260,6 +275,44 @@
      - deploy
 
 - block:
+    - name: re-encrypt piwik dsn secret
+      replace:
+        dest="{{ role_path }}/files/{{ item }}"
+        regexp="{{dev_sentry_dsn}}"
+        replace='sentrydsnenvsecret'
+      with_items:
+         - "{{filesecrets}}"
+      tags:
+         - encrypt
+         - deploy
+
+    - name: re-encrypt sentry user
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp="{{sentry_user}}"
+        replace='sentryuser'
+      tags:
+         - encrypt
+         - deploy
+    
+    - name: re-encrypt sentry user
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp="{{sentry_token}}"
+        replace='sentrytoken'
+      tags:
+         - encrypt
+         - deploy
+
+    - name: re-encrypt sentry password
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp="{{sentry_password}}"
+        replace='sentrypassword'
+      tags:
+         - encrypt
+         - deploy
+
     - name: re-encrypt dockerauth secret
       replace:
          dest="{{ role_path }}/files/{{item}}"

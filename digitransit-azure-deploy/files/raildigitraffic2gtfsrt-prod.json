@@ -43,7 +43,7 @@
   "gpus": 0,
   "healthChecks": [
     {
-      "gracePeriodSeconds": 720,
+      "gracePeriodSeconds": 1800,
       "ignoreHttp1xx": false,
       "intervalSeconds": 30,
       "maxConsecutiveFailures": 5,

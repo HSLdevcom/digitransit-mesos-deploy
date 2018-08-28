@@ -6,7 +6,7 @@
     "container": {
         "docker": {
             "forcePullImage": true,
-            "image": "hsldevcom/otp-data-builder:next",
+            "image": "hsldevcom/hsl-timetable-builder",
             "network": "HOST",
             "parameters": [],
             "portMappings": null,
@@ -18,34 +18,20 @@
                 "containerPath": "/var/run/docker.sock",
                 "hostPath": "/var/run/docker.sock",
                 "mode": "RO"
-            },
-            {
-                "containerPath": "/opt/otp-data-builder/data",
-                "hostPath": "/tmp/data",
-                "mode": "RW"
-            },
-            {
-                "containerPath": "persistent",
-                "mode": "RW",
-                "persistent": {
-                    "size": 5
-                }
             }
         ]
     },
-    "cpus": 3,
+    "cpus": 1,
     "dependencies": [],
     "disk": 0,
     "env": {
-        "CRON": "0 0 1 * * *",
-        "DATA": "/opt/otp-data-builder/data",
+        "BUILDER_TYPE": "dev",
         "DOCKER_AUTH": "dockerauth",
-        "DOCKER_TAG": "next",
+        "DOCKER_TAG": "latest",
         "DOCKER_USER": "dockeruser",
-        "HOST_DATA": "/tmp/data",
-        "OTP_TAG": "latest",
-        "SEED_TAG": "latest",
-        "TOOLS_TAG": "next"
+        "FONTSTACK_PASSWORD": "fontstackpassword",
+        "SLACK_WEBHOOK_URL": "slackwebhook",
+        "TIMETABLE_DAYS_ADVANCE": "2"
     },
     "gpus": 0,
     "healthChecks": [
@@ -61,22 +47,22 @@
             "timeoutSeconds": 20
         }
     ],
-    "id": "/otp-data-builder-test",
+    "id": "/hsl-timetable-builder",
     "instances": 1,
     "labels": {
         "update": "auto"
     },
     "maxLaunchDelaySeconds": 3600,
-    "mem": 9000,
+    "mem": 1024,
     "portDefinitions": [
         {
             "labels": {},
-            "port": 10070,
+            "port": 10030,
             "protocol": "tcp"
         }
     ],
     "ports": [
-        10070
+        10030
     ],
     "readinessChecks": [],
     "taskKillGracePeriodSeconds": null,

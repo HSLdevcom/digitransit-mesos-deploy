@@ -1,0 +1,77 @@
+{
+    "acceptedResourceRoles": null,
+    "backoffFactor": 1.15,
+    "backoffSeconds": 1,
+    "cmd": null,
+    "container": {
+      "docker": {
+        "forcePullImage": true,
+        "image": "hsldevcom/hsl-timetable-container",
+        "network": "BRIDGE",
+        "parameters": [
+          {
+            "key": "net",
+            "value": "host"
+          },
+          {
+            "key": "name",
+            "value": "hsl-timetable-container"
+          }
+        ],
+        "portMappings": [
+          {
+            "containerPort": 8080,
+            "hostPort": 0,
+            "labels": {
+              "VIP_0": "/hsl-timetable-container:8080"
+            },
+            "protocol": "tcp",
+            "servicePort": 10029
+          }
+        ],
+        "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
+    },
+    "cpus": 0.1,
+    "dependencies": [],
+    "disk": 0,
+    "env": {},
+    "gpus": 0,
+    "healthChecks": [
+      {
+        "gracePeriodSeconds": 300,
+        "ignoreHttp1xx": false,
+        "intervalSeconds": 10,
+        "maxConsecutiveFailures": 5,
+        "path": "/version.txt",
+        "portIndex": 0,
+        "protocol": "HTTP",
+        "timeoutSeconds": 10
+      }
+    ],
+    "id": "/hsl-timetable-container",
+    "instances": 2,
+    "labels": {
+      "update": "auto"
+    },
+    "maxLaunchDelaySeconds": 3600,
+    "mem": 128,
+    "portDefinitions": [
+      {
+        "labels": {},
+        "port": 10029,
+        "protocol": "tcp"
+      }
+    ],
+    "ports": [
+      10029
+    ],
+    "readinessChecks": [],
+    "taskKillGracePeriodSeconds": null,
+    "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 0
+    }
+  }

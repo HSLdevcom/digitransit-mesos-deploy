@@ -6,12 +6,16 @@
     "container": {
         "docker": {
             "forcePullImage": true,
-            "image": "hsldevcom/digitransit-ui:latest",
+            "image": "hsldevcom/opentripplanner:latest",
             "network": "BRIDGE",
             "parameters": [
                 {
                     "key": "net",
                     "value": "host"
+                },
+                {
+                    "key": "name",
+                    "value": "opentripplanner-next"
                 }
             ],
             "portMappings": [
@@ -19,10 +23,11 @@
                     "containerPort": 8080,
                     "hostPort": 0,
                     "labels": {
-                        "VIP_0": "/digitransit-ui-waltti:8080"
+                        "VIP_0": "/opentripplanner-next:8080"
                     },
+                    "name": "otphsl",
                     "protocol": "tcp",
-                    "servicePort": 10019
+                    "servicePort": 10029
                 }
             ],
             "privileged": false
@@ -30,50 +35,46 @@
         "type": "DOCKER",
         "volumes": []
     },
-    "cpus": 0.2,
+    "cpus": 1,
     "dependencies": [],
     "disk": 0,
     "env": {
-        "API_URL": "https://dev-api.digitransit.fi",
-        "ASSET_URL": "https://digitransit-dev-cdn-origin.azureedge.net/ui/v1/waltti",
-        "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
-        "NODE_OPTS": "--max_old_space_size=600",
-        "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
-        "RELAY_FETCH_TIMEOUT": "3000",
-        "SENTRY_DSN": "sentrydsnenvsecret",
-        "SENTRY_SECRET_DSN": "sentrydsnsecret"
+        "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10",
+        "ROUTER_DATA_CONTAINER_URL": "https://dev-api.digitransit.fi/routing-data/v2/next",
+        "ROUTER_NAME": "hsl"
     },
     "gpus": 0,
     "healthChecks": [
         {
-            "gracePeriodSeconds": 300,
+            "command": {
+                "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/hsl/) = 200"
+            },
+            "gracePeriodSeconds": 1200,
             "ignoreHttp1xx": false,
-            "intervalSeconds": 10,
-            "maxConsecutiveFailures": 10,
-            "path": "/",
-            "portIndex": 0,
-            "protocol": "HTTP",
-            "timeoutSeconds": 10
+            "intervalSeconds": 30,
+            "maxConsecutiveFailures": 6,
+            "protocol": "COMMAND",
+            "timeoutSeconds": 20
         }
     ],
-    "id": "/digitransit-ui-waltti",
-    "instances": 2,
+    "id": "/opentripplanner-next",
+    "instances": 0,
     "labels": {
-        "restart-at": "03:10",
-        "restart-limit-interval": "180",
+        "restart-after-services": "/opentripplanner-data-con-next",
+        "restart-delay": "1",
         "update": "auto"
     },
     "maxLaunchDelaySeconds": 3600,
-    "mem": 1024,
+    "mem": 10240,
     "portDefinitions": [
         {
             "labels": {},
-            "port": 10019,
+            "port": 10029,
             "protocol": "tcp"
         }
     ],
     "ports": [
-        10019
+        10029
     ],
     "readinessChecks": [],
     "taskKillGracePeriodSeconds": null,

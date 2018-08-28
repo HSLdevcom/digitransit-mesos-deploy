@@ -1,85 +1,86 @@
 {
-  "acceptedResourceRoles": null,
-  "backoffFactor": 1.15,
-  "backoffSeconds": 1,
-  "cmd": null,
-  "container": {
-      "docker": {
-          "forcePullImage": true,
-          "image": "hsldevcom/digitransit-ui",
-          "network": "BRIDGE",
-          "parameters": [
-              {
-                  "key": "net",
-                  "value": "host"
-              }
-          ],
-          "portMappings": [
-              {
-                  "containerPort": 8080,
-                  "hostPort": 0,
-                  "labels": {
-                      "VIP_0": "/digitransit-ui-hsl:8080"
-                  },
-                  "protocol": "tcp",
-                  "servicePort": 10001
-              }
-          ],
-          "privileged": false
-      },
-      "type": "DOCKER",
-      "volumes": []
-  },
-  "cpus": 0.2,
-  "dependencies": [],
-  "disk": 0,
-  "env": {
-      "CONFIG": "hsl",
-      "API_URL": "https://dev-api.digitransit.fi",
-      "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
-      "SENTRY_DSN": "sentrydsnenvsecret",
-      "SENTRY_SECRET_DSN": "sentrydsnsecret",
-      "PIWIK_ID": "5",
-      "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
-      "NODE_OPTS": "--max_old_space_size=600",
-      "RELAY_FETCH_TIMEOUT": "3000"
-  },
-  "gpus": 0,
-  "healthChecks": [
-      {
-          "gracePeriodSeconds": 300,
-          "ignoreHttp1xx": false,
-          "intervalSeconds": 10,
-          "maxConsecutiveFailures": 10,
-          "path": "/",
-          "portIndex": 0,
-          "protocol": "HTTP",
-          "timeoutSeconds": 10
-      }
-  ],
-  "id": "/digitransit-ui-hsl",
-  "instances": 2,
-  "labels": {
-      "restart-at": "03:20",
-      "restart-limit-interval": "180",
-      "update": "auto"
-  },
-  "maxLaunchDelaySeconds": 3600,
-  "mem": 1024,
-  "portDefinitions": [
-      {
-          "labels": {},
-          "port": 10001,
-          "protocol": "tcp"
-      }
-  ],
-  "ports": [
-      10001
-  ],
-  "readinessChecks": [],
-  "taskKillGracePeriodSeconds": null,
-  "upgradeStrategy": {
-      "maximumOverCapacity": 1,
-      "minimumHealthCapacity": 0
-  }
+    "acceptedResourceRoles": null,
+    "backoffFactor": 1.15,
+    "backoffSeconds": 1,
+    "cmd": null,
+    "container": {
+        "docker": {
+            "forcePullImage": true,
+            "image": "hsldevcom/digitransit-ui",
+            "network": "BRIDGE",
+            "parameters": [
+                {
+                    "key": "net",
+                    "value": "host"
+                }
+            ],
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 0,
+                    "labels": {
+                        "VIP_0": "/digitransit-ui-hsl:8080"
+                    },
+                    "protocol": "tcp",
+                    "servicePort": 10001
+                }
+            ],
+            "privileged": false
+        },
+        "type": "DOCKER",
+        "volumes": []
+    },
+    "cpus": 0.2,
+    "dependencies": [],
+    "disk": 0,
+    "env": {
+        "API_URL": "https://dev-api.digitransit.fi",
+        "ASSET_URL": "https://digitransit-dev-cdn-origin.azureedge.net/ui/v1/hsl",
+        "CONFIG": "hsl",
+        "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
+        "NODE_OPTS": "--max_old_space_size=600",
+        "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
+        "PIWIK_ID": "5",
+        "RELAY_FETCH_TIMEOUT": "3000",
+        "SENTRY_DSN": "sentrydsnenvsecret",
+        "SENTRY_SECRET_DSN": "sentrydsnsecret"
+    },
+    "gpus": 0,
+    "healthChecks": [
+        {
+            "gracePeriodSeconds": 300,
+            "ignoreHttp1xx": false,
+            "intervalSeconds": 10,
+            "maxConsecutiveFailures": 10,
+            "path": "/",
+            "portIndex": 0,
+            "protocol": "HTTP",
+            "timeoutSeconds": 10
+        }
+    ],
+    "id": "/digitransit-ui-hsl",
+    "instances": 2,
+    "labels": {
+        "restart-at": "03:20",
+        "restart-limit-interval": "180",
+        "update": "auto"
+    },
+    "maxLaunchDelaySeconds": 3600,
+    "mem": 1024,
+    "portDefinitions": [
+        {
+            "labels": {},
+            "port": 10001,
+            "protocol": "tcp"
+        }
+    ],
+    "ports": [
+        10001
+    ],
+    "readinessChecks": [],
+    "taskKillGracePeriodSeconds": null,
+    "upgradeStrategy": {
+        "maximumOverCapacity": 1,
+        "minimumHealthCapacity": 0
+    }
 }

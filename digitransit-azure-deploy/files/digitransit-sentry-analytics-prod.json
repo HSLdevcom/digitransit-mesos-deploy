@@ -1,0 +1,74 @@
+{
+    "acceptedResourceRoles": null,
+    "backoffFactor": 1.15,
+    "backoffSeconds": 1,
+    "cmd": null,
+    "container": {
+      "docker": {
+        "forcePullImage": true,
+        "image": "hsldevcom/minimal-image",
+        "network": "BRIDGE",
+        "parameters": [
+          {
+            "key": "name",
+            "value": "digitransit-sentry-analytics"
+          }
+        ],
+        "portMappings": [
+          {
+            "containerPort": 8080,
+            "hostPort": 0,
+            "labels": {
+              "VIP_0": "/digitransit-sentry-analytics:8080"
+            },
+            "protocol": "tcp",
+            "servicePort": 10089
+          }
+        ],
+        "privileged": false
+      },
+      "type": "DOCKER",
+      "volumes": []
+    },
+    "cpus": 0.1,
+    "dependencies": [],
+    "disk": 0,
+    "env": {},
+    "gpus": 0,
+    "healthChecks": [
+      {
+        "command": {
+          "value": "true"
+        },
+        "gracePeriodSeconds": 30,
+        "ignoreHttp1xx": false,
+        "intervalSeconds": 60,
+        "maxConsecutiveFailures": 5,
+        "protocol": "COMMAND",
+        "timeoutSeconds": 10
+      }
+    ],
+    "id": "/digitransit-sentry-analytics",
+    "instances": 1,
+    "labels": {
+      "update": "auto"
+    },
+    "maxLaunchDelaySeconds": 180,
+    "mem": 16,
+    "portDefinitions": [
+      {
+        "labels": {},
+        "port": 10089,
+        "protocol": "tcp"
+      }
+    ],
+    "ports": [
+      10089
+    ],
+    "readinessChecks": [],
+    "taskKillGracePeriodSeconds": null,
+    "upgradeStrategy": {
+      "maximumOverCapacity": 1,
+      "minimumHealthCapacity": 1
+    }
+  }

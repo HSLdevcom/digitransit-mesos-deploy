@@ -6,12 +6,12 @@
     "container": {
         "docker": {
             "forcePullImage": true,
-            "image": "hsldevcom/digitransit-ui:latest",
+            "image": "hsldevcom/digitransit-sentry-analytics",
             "network": "BRIDGE",
             "parameters": [
                 {
-                    "key": "net",
-                    "value": "host"
+                    "key": "name",
+                    "value": "digitransit-sentry-analytics"
                 }
             ],
             "portMappings": [
@@ -19,10 +19,10 @@
                     "containerPort": 8080,
                     "hostPort": 0,
                     "labels": {
-                        "VIP_0": "/digitransit-ui-waltti:8080"
+                        "VIP_0": "/digitransit-sentry-analytics:8080"
                     },
                     "protocol": "tcp",
-                    "servicePort": 10019
+                    "servicePort": 10089
                 }
             ],
             "privileged": false
@@ -30,50 +30,47 @@
         "type": "DOCKER",
         "volumes": []
     },
-    "cpus": 0.2,
+    "cpus": 0.1,
     "dependencies": [],
     "disk": 0,
     "env": {
-        "API_URL": "https://dev-api.digitransit.fi",
-        "ASSET_URL": "https://digitransit-dev-cdn-origin.azureedge.net/ui/v1/waltti",
-        "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
-        "NODE_OPTS": "--max_old_space_size=600",
-        "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
-        "RELAY_FETCH_TIMEOUT": "3000",
-        "SENTRY_DSN": "sentrydsnenvsecret",
-        "SENTRY_SECRET_DSN": "sentrydsnsecret"
+        "DISABLE_CACHE": "true",
+        "SENTRY_BASE_URL": "https://sentry.hsl.fi/api/0/",
+        "SENTRY_TOKEN": "sentrytoken",
+        "USER_NAME": "sentryuser",
+        "USER_PASS": "sentrypassword",
+        "ZERO_ROUTES_ID": "25"
     },
     "gpus": 0,
     "healthChecks": [
         {
-            "gracePeriodSeconds": 300,
+            "command": {
+                "value": "true"
+            },
+            "gracePeriodSeconds": 30,
             "ignoreHttp1xx": false,
-            "intervalSeconds": 10,
-            "maxConsecutiveFailures": 10,
-            "path": "/",
-            "portIndex": 0,
-            "protocol": "HTTP",
+            "intervalSeconds": 60,
+            "maxConsecutiveFailures": 5,
+            "protocol": "COMMAND",
             "timeoutSeconds": 10
         }
     ],
-    "id": "/digitransit-ui-waltti",
-    "instances": 2,
+    "id": "/digitransit-sentry-analytics",
+    "instances": 1,
     "labels": {
-        "restart-at": "03:10",
-        "restart-limit-interval": "180",
         "update": "auto"
     },
     "maxLaunchDelaySeconds": 3600,
-    "mem": 1024,
+    "mem": 256,
     "portDefinitions": [
         {
             "labels": {},
-            "port": 10019,
+            "port": 10089,
             "protocol": "tcp"
         }
     ],
     "ports": [
-        10019
+        10089
     ],
     "readinessChecks": [],
     "taskKillGracePeriodSeconds": null,

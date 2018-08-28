@@ -64,6 +64,18 @@ container:
 - name: "pelias-data-container"
   config: "pelias-data-container-{{ environment_type | lower }}"
 
+- name: "hsl-timetable-container"
+  config: "hsl-timetable-container-{{ environment_type | lower }}"
+
+- name: "opentripplanner-next"
+  config: "opentripplanner-next-{{ environment_type | lower }}"
+
+- name: "opentripplanner-data-con-next"
+  config: "opentripplanner-data-con-next-{{ environment_type | lower }}"
+
+- name: "digitransit-sentry-analytics"
+  config: "digitransit-sentry-analytics-{{ environment_type | lower }}"
+
 dev_container:
 
 - name: "pelias-data-container-builder"
@@ -80,6 +92,12 @@ dev_container:
 
 - name: "digitransit-performance-tests"
   config: "digitransit-performance-tests-dev"
+
+- name: "osmtracker"
+  config: "osmtracker-dev"
+
+- name: "hsl-timetable-builder"
+  config: "hsl-timetable-builder-dev"
 
 filesecrets:
 - "digitransit-ui-hsl-{{environment_type | lower}}.json"
@@ -111,6 +129,9 @@ secret_secrets:
 - "dockeruser"
 - "slackwebhook"
 - "ansiblesecret"
+- "sentrytoken"
+- "sentryuser"
+- "sentrypassword"
 
 secret_answers:
 - "{{fontstack_password}}"
@@ -122,3 +143,6 @@ secret_answers:
 - "{{docker_user}}"
 - "{{slack_webhook}}"
 - "{{ansible_secret}}"
+- "{{sentrytoken}}"
+- "{{sentryuser}}"
+- "{{sentrypass}}"

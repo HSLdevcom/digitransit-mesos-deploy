@@ -6,7 +6,7 @@
     "container": {
         "docker": {
             "forcePullImage": true,
-            "image": "hsldevcom/otp-data-builder",
+            "image": "hsldevcom/otp-data-builder:prod",
             "network": "HOST",
             "parameters": [],
             "portMappings": null,
@@ -37,16 +37,17 @@
     "dependencies": [],
     "disk": 0,
     "env": {
-        "HOST_DATA": "/tmp/data",
+        "BUILDER_TYPE": "prod",
+        "CRON": "0 0 3 * * *",
         "DATA": "/opt/otp-data-builder/data",
         "DOCKER_AUTH": "dockerauth",
-        "SLACK_WEBHOOK_URL": "slackwebhook",
-        "BUILDER_TYPE": "prod",
+        "DOCKER_TAG": "prod",
         "DOCKER_USER": "dockeruser",
-        "CRON": "0 0 3 * * *",
-        "SEED_TAG": "prod",
+        "HOST_DATA": "/tmp/data",
         "OTP_TAG": "prod",
-        "DOCKER_TAG": "prod"
+        "SEED_TAG": "prod",
+        "SLACK_WEBHOOK_URL": "slackwebhook",
+        "TOOLS_TAG": "prod"
     },
     "gpus": 0,
     "healthChecks": [
@@ -85,4 +86,4 @@
         "maximumOverCapacity": 0,
         "minimumHealthCapacity": 0.5
     }
-  }
+}
