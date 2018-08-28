@@ -144,6 +144,34 @@
       tags:
          - decrypt
          - deploy
+
+    - name: replace sentry user
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp='sentryuser'
+        replace="{{sentry_user}}"
+      tags:
+         - decrypt
+         - deploy
+    
+    - name: replace sentry user
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp='sentrytoken'
+        replace="{{sentry_token}}"
+      tags:
+         - decrypt
+         - deploy
+
+    - name: replace sentry password
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp='sentrypassword'
+        replace="{{sentry_password}}"
+      tags:
+         - decrypt
+         - deploy
+
   when: environment_type == 'DEV'
 
 ###UPDATE OR CREATE THE CONTAINERS
@@ -194,6 +222,34 @@
       tags:
          - encrypt
          - deploy
+
+    - name: re-encrypt sentry user
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp="{{sentry_user}}"
+        replace='sentryuser'
+      tags:
+         - encrypt
+         - deploy
+    
+    - name: re-encrypt sentry user
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp="{{sentry_token}}"
+        replace='sentrytoken'
+      tags:
+         - encrypt
+         - deploy
+
+    - name: re-encrypt sentry password
+      replace:
+        dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
+        regexp="{{sentry_password}}"
+        replace='sentrypassword'
+      tags:
+         - encrypt
+         - deploy
+
   when: environment_type == 'DEV'
 
 - block:

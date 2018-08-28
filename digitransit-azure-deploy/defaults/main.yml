@@ -73,6 +73,9 @@ container:
 - name: "opentripplanner-data-con-next"
   config: "opentripplanner-data-con-next-{{ environment_type | lower }}"
 
+- name: "digitransit-sentry-analytics"
+  config: "digitransit-sentry-analytics-{{ environment_type | lower }}"
+
 dev_container:
 
 - name: "pelias-data-container-builder"
@@ -126,6 +129,9 @@ secret_secrets:
 - "dockeruser"
 - "slackwebhook"
 - "ansiblesecret"
+- "sentrytoken"
+- "sentryuser"
+- "sentrypassword"
 
 secret_answers:
 - "{{fontstack_password}}"
@@ -137,3 +143,6 @@ secret_answers:
 - "{{docker_user}}"
 - "{{slack_webhook}}"
 - "{{ansible_secret}}"
+- "{{sentrytoken}}"
+- "{{sentryuser}}"
+- "{{sentrypass}}"
