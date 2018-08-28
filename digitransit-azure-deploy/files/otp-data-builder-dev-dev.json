@@ -37,16 +37,17 @@
     "dependencies": [],
     "disk": 0,
     "env": {
-        "HOST_DATA": "/tmp/data",
+        "BUILDER_TYPE": "dev",
+        "CRON": "0 50 2 * * *",
         "DATA": "/opt/otp-data-builder/data",
         "DOCKER_AUTH": "dockerauth",
-        "SLACK_WEBHOOK_URL": "slackwebhook",
-        "BUILDER_TYPE": "dev",
+        "DOCKER_TAG": "latest",
         "DOCKER_USER": "dockeruser",
-        "CRON": "0 50 2 * * *",
-        "SEED_TAG": "latest",
+        "HOST_DATA": "/tmp/data",
         "OTP_TAG": "latest",
-        "DOCKER_TAG": "latest"
+        "SEED_TAG": "latest",
+        "SLACK_WEBHOOK_URL": "slackwebhook",
+        "TOOLS_TAG": "latest"
     },
     "gpus": 0,
     "healthChecks": [
@@ -85,4 +86,4 @@
         "maximumOverCapacity": 0,
         "minimumHealthCapacity": 0.5
     }
-  }
+}

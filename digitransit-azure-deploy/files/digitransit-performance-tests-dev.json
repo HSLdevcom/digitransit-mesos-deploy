@@ -25,9 +25,10 @@
     "dependencies": [],
     "disk": 0,
     "env": {
+        "CONCURRENT_USERS": "75",
+        "FILES_AND_HEADERS": "test_data_otp_external.txt --content-type 'application/graphql',test2.txt,test_data_pelias_external.txt",
         "SLACK_WEBHOOK_URL": "slackwebhook",
-        "FILES_AND_HEADERS": "test.txt --content-type 'application/graphql',test2.txt,test_data_pelias.txt",
-        "CONCURRENT_USERS": "75"
+        "TEST_TIME": "07:25:00"
     },
     "gpus": 0,
     "healthChecks": [
@@ -66,4 +67,4 @@
         "maximumOverCapacity": 1,
         "minimumHealthCapacity": 0
     }
-  }
+}

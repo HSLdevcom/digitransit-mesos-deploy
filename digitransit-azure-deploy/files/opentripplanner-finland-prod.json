@@ -39,9 +39,9 @@
   "dependencies": [],
   "disk": 0,
   "env": {
+    "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10  -XX:+PrintGC",
     "ROUTER_DATA_CONTAINER_URL": "https://api.digitransit.fi/routing-data/v2/finland",
-    "ROUTER_NAME": "finland",
-    "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10  -XX:+PrintGC"
+    "ROUTER_NAME": "finland"
   },
   "gpus": 0,
   "healthChecks": [
@@ -58,7 +58,7 @@
     }
   ],
   "id": "/opentripplanner-finland",
-  "instances": 4,
+  "instances": 8,
   "labels": {
     "restart-after-services": "/opentripplanner-data-con-finland",
     "restart-at": "05:30",

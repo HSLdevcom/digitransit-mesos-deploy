@@ -6,7 +6,7 @@
     "container": {
         "docker": {
             "forcePullImage": true,
-            "image": "hsldevcom/digitransit-ui:index-page",
+            "image": "hsldevcom/osmtracker:test",
             "network": "HOST",
             "parameters": [],
             "portMappings": null,
@@ -18,16 +18,7 @@
     "cpus": 1,
     "dependencies": [],
     "disk": 0,
-    "env": {
-        "API_URL": "https://dev-api.digitransit.fi",
-        "ASSET_URL": "https://digitransit-dev-cdn-origin.azureedge.net/ui/v1/hsl-next",
-        "CONFIG": "hsl",
-        "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
-        "NODE_OPTS": "--max_old_space_size=600",
-        "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
-        "PIWIK_ID": "5",
-        "RELAY_FETCH_TIMEOUT": "3000"
-    },
+    "env": {},
     "gpus": 0,
     "healthChecks": [
         {
@@ -41,8 +32,8 @@
             "timeoutSeconds": 10
         }
     ],
-    "id": "/digitransit-ui-hsl-next",
-    "instances": 1,
+    "id": "/osmtracker",
+    "instances": 0,
     "labels": {
         "update": "auto"
     },
@@ -51,14 +42,14 @@
     "portDefinitions": [
         {
             "labels": {
-                "VIP_0": "/digitransit-ui-hsl-next:8080"
+                "VIP_0": "/osmtracker:80"
             },
-            "port": 8080,
+            "port": 80,
             "protocol": "tcp"
         }
     ],
     "ports": [
-        8080
+        80
     ],
     "readinessChecks": [],
     "taskKillGracePeriodSeconds": null,
