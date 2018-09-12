@@ -59,7 +59,7 @@
         }
     ],
     "id": "/digitransit-ui-default",
-    "instances": 2,
+    "instances": 1,
     "labels": {
         "restart-at": "03:00",
         "restart-limit-interval": "180",
