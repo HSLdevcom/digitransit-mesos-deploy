@@ -73,7 +73,7 @@
     - decrypt
     - deploy
 
-- name: replace fontstack secret
+- name: replace map-server fontstack secret
   replace:
      dest="{{ role_path }}/files/hsl-map-server-{{environment_type | lower}}.json"
      regexp='fontstacksecret'
@@ -172,6 +172,24 @@
          - decrypt
          - deploy
 
+    - name: replace timetable builder fontstack secret
+      replace:
+        dest="{{ role_path }}/files/hsl-timetable-builder-dev.json"
+        regexp='fontstacksecret'
+        replace="{{fontstack_password}}"
+      tags:
+        - decrypt
+        - deploy
+
+    - name: replace otp-next sentry_routing_secret_dsn
+      replace:
+          dest="{{ role_path }}/files/opentripplanner-next-dev.json"
+          regexp='sentry_routing_secret_dsn'
+          replace="{{sentry_routing_secret_dsn}}"
+      tags:
+        - decrypt
+        - deploy
+
   when: environment_type == 'DEV'
 
 ###UPDATE OR CREATE THE CONTAINERS
@@ -247,7 +265,7 @@
       - encrypt
       - deploy
 
-- name: re-encrypt fontstack secret
+- name: re-encrypt map-server fontstack secret
   replace:
      dest="{{ role_path }}/files/hsl-map-server-{{environment_type | lower}}.json"
      regexp="{{fontstack_password}}"
@@ -345,4 +363,23 @@
       tags:
          - encrypt
          - deploy
+
+    - name: re-encrypt timetable builder fontstack secret
+      replace:
+        dest="{{ role_path }}/files/hsl-timetable-builder-dev.json"
+        regexp="{{fontstack_password}}"
+        replace='fontstacksecret'
+      tags:
+        - encrypt
+        - deploy
+
+    - name: re-encrypt sentry_routing_secret_dsn
+      replace:
+          dest="{{ role_path }}/files/opentripplanner-next-dev.json"
+          regexp="{{sentry_routing_secret_dsn}}"
+          replace='sentry_routing_secret_dsn'
+      tags:
+          - encrypt
+          - deploy
+
   when: environment_type == 'DEV'

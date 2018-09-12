@@ -112,12 +112,14 @@ dockersecrets:
 - "otp-data-builder-dev-dev.json"
 - "otp-data-builder-prod-dev.json"
 - "otp-data-builder-test-dev.json"
+- "hsl-timetable-builder-dev.json"
 
 slacksecrets:
 - "pelias-data-container-builder-dev.json"
 - "otp-data-builder-dev-dev.json"
 - "otp-data-builder-prod-dev.json"
 - "digitransit-performance-tests-dev.json"
+- "hsl-timetable-builder-dev.json"
 
 secret_secrets:
 - "fontstackpasswordsecret"
