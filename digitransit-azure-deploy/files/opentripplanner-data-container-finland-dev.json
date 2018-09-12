@@ -52,7 +52,7 @@
       }
   ],
   "id": "/opentripplanner-data-con-finland",
-  "instances": 2,
+  "instances": 1,
   "labels": {
       "update": "auto"
   },

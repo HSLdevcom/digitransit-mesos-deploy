@@ -54,7 +54,7 @@
       }
   ],
   "id": "/navigator-server",
-  "instances": 2,
+  "instances": 1,
   "labels": {
       "update": "auto"
   },

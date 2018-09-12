@@ -48,7 +48,7 @@
         }
     ],
     "id": "/digitransit-docker-gc",
-    "instances": 21,
+    "instances": 15,
     "labels": {},
     "maxLaunchDelaySeconds": 3600,
     "mem": 32,

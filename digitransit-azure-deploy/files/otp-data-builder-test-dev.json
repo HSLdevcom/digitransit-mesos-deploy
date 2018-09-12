@@ -21,7 +21,7 @@
             },
             {
                 "containerPath": "/opt/otp-data-builder/data",
-                "hostPath": "/tmp/data",
+                "hostPath": "/var/lib/docker/otp/data",
                 "mode": "RW"
             },
             {
@@ -38,14 +38,15 @@
     "disk": 0,
     "env": {
         "CRON": "0 0 1 * * *",
-        "DATA": "/opt/otp-data-builder/data",
+        "DATA": "/var/lib/docker/otp/data",
         "DOCKER_AUTH": "dockerauth",
         "DOCKER_TAG": "next",
         "DOCKER_USER": "dockeruser",
         "HOST_DATA": "/tmp/data",
         "OTP_TAG": "latest",
+        "ROUTERS": "waltti, hsl, finland",
         "SEED_TAG": "latest",
-        "TOOLS_TAG": "next"
+        "TOOLS_TAG": "latest"
     },
     "gpus": 0,
     "healthChecks": [

@@ -54,7 +54,7 @@
         }
     ],
     "id": "/raildigitraffic2gtfsrt",
-    "instances": 2,
+    "instances": 1,
     "labels": {
         "restart-after-services": "/opentripplanner-data-con-finland",
         "restart-delay": "5",
