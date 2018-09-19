@@ -29,7 +29,7 @@
         "DOCKER_AUTH": "dockerauth",
         "DOCKER_TAG": "latest",
         "DOCKER_USER": "dockeruser",
-        "FONTSTACK_PASSWORD": "fontstackpassword",
+        "FONTSTACK_PASSWORD": "fontstacksecret",
         "SLACK_WEBHOOK_URL": "slackwebhook",
         "TIMETABLE_DAYS_ADVANCE": "2"
     },

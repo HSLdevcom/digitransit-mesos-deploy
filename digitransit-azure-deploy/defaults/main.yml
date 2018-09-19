@@ -122,7 +122,6 @@ slacksecrets:
 - "hsl-timetable-builder-dev.json"
 
 secret_secrets:
-- "fontstackpasswordsecret"
 - "sentrydsnenvsecret"
 - "sentrydsnsecret"
 - "piwikaddrsecret"
@@ -136,7 +135,6 @@ secret_secrets:
 - "sentrypassword"
 
 secret_answers:
-- "{{fontstack_password}}"
 - "{{environment_type}_sentry_dsn}"
 - "{{sentry_secret_dsn}}"
 - "{{piwikaddr}}"
