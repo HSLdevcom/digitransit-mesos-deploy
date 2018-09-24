@@ -22,6 +22,9 @@ container:
 - name: "digitransit-site"
   config: "digitransit-site-{{ environment_type | lower }}"
 
+- name: "graphiql"
+  config: "graphiql-{{ environment_type | lower }}"
+
 - name: "hslalert"
   config: "hslalert-{{ environment_type | lower }}"
 
@@ -43,6 +46,9 @@ container:
 - name: "opentripplanner-finland"
   config: "opentripplanner-finland-{{ environment_type | lower }}"
 
+- name: "opentripplanner-next"
+  config: "opentripplanner-next-{{ environment_type | lower }}"
+
 - name: "digitransit-proxy"
   config: "digitransit-proxy-{{ environment_type | lower }}"
 
@@ -55,6 +61,18 @@ container:
 - name: "opentripplanner-data-con-finland"
   config: "opentripplanner-data-container-finland-{{ environment_type | lower }}"
 
+- name: "opentripplanner-data-con-next"
+  config: "opentripplanner-data-con-next-{{ environment_type | lower }}"
+
+- name: "opentripplanner-data-con-next-hsl"
+  config: "opentripplanner-data-con-next-hsl-{{ environment_type | lower }}"
+
+- name: "opentripplanner-data-con-next-waltti"
+  config: "opentripplanner-data-con-next-waltti-{{ environment_type | lower }}"
+
+- name: "opentripplanner-data-con-next-finland"
+  config: "opentripplanner-data-con-next-finland-{{ environment_type | lower }}"
+
 - name: "navigator-server"
   config: "navigator-server-{{ environment_type | lower }}"
 
@@ -66,12 +84,6 @@ container:
 
 - name: "hsl-timetable-container"
   config: "hsl-timetable-container-{{ environment_type | lower }}"
-
-- name: "opentripplanner-next"
-  config: "opentripplanner-next-{{ environment_type | lower }}"
-
-- name: "opentripplanner-data-con-next"
-  config: "opentripplanner-data-con-next-{{ environment_type | lower }}"
 
 - name: "digitransit-sentry-analytics"
   config: "digitransit-sentry-analytics-{{ environment_type | lower }}"

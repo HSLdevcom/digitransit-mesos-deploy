@@ -21,7 +21,7 @@
             },
             {
                 "containerPath": "/opt/otp-data-builder/data",
-                "hostPath": "/tmp/data",
+                "hostPath": "/var/lib/docker/otp/data",
                 "mode": "RW"
             },
             {
@@ -38,12 +38,12 @@
     "disk": 0,
     "env": {
         "BUILDER_TYPE": "prod",
-        "CRON": "0 0 3 * * *",
+        "BUILD_TIME": "23:00:00",
         "DATA": "/opt/otp-data-builder/data",
         "DOCKER_AUTH": "dockerauth",
         "DOCKER_TAG": "prod",
         "DOCKER_USER": "dockeruser",
-        "HOST_DATA": "/tmp/data",
+        "HOST_DATA": "/var/lib/docker/otp/data",
         "OTP_TAG": "prod",
         "SEED_TAG": "prod",
         "SLACK_WEBHOOK_URL": "slackwebhook",

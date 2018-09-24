@@ -37,14 +37,14 @@
     "dependencies": [],
     "disk": 0,
     "env": {
-        "CRON": "0 0 1 * * *",
+        "BUILD_TIME": "23:00:00",
         "DATA": "/opt/otp-data-builder/data",
         "DOCKER_AUTH": "dockerauth",
         "DOCKER_TAG": "next",
         "DOCKER_USER": "dockeruser",
         "HOST_DATA": "/var/lib/docker/otp/data",
         "OTP_TAG": "latest",
-        "ROUTERS": "waltti, hsl, finland",
+        "ROUTERS": "finland, waltti, hsl",
         "SEED_TAG": "latest",
         "TOOLS_TAG": "latest"
     },
@@ -68,7 +68,7 @@
         "update": "auto"
     },
     "maxLaunchDelaySeconds": 3600,
-    "mem": 12288,
+    "mem": 9000,
     "portDefinitions": [
         {
             "labels": {},

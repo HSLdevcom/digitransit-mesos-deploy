@@ -1,0 +1,77 @@
+{
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
+  "cmd": null,
+  "container": {
+    "docker": {
+      "forcePullImage": true,
+      "image": "hsldevcom/opentripplanner-data-container-waltti:next",
+      "network": "BRIDGE",
+      "parameters": [
+        {
+          "key": "net",
+          "value": "host"
+        },
+        {
+          "key": "name",
+          "value": "opentripplanner-data-con-next-waltti"
+        }
+      ],
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "labels": {
+            "VIP_0": "/opentripplanner-data-con-next-waltti:8080"
+          },
+          "protocol": "tcp",
+          "servicePort": 10090
+        }
+      ],
+      "privileged": false
+    },
+    "type": "DOCKER",
+    "volumes": []
+  },
+  "cpus": 0.1,
+  "dependencies": [],
+  "disk": 0,
+  "env": {},
+  "gpus": 0,
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 400,
+      "ignoreHttp1xx": false,
+      "intervalSeconds": 10,
+      "maxConsecutiveFailures": 5,
+      "path": "/version.txt",
+      "portIndex": 0,
+      "protocol": "HTTP",
+      "timeoutSeconds": 10
+    }
+  ],
+  "id": "/opentripplanner-data-con-next-waltti",
+  "instances": 1,
+  "labels": {
+    "update": "auto"
+  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 192,
+  "portDefinitions": [
+    {
+      "labels": {},
+      "port": 10090,
+      "protocol": "tcp"
+    }
+  ],
+  "ports": [
+    10090
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 0
+  }
+}

@@ -50,8 +50,6 @@
   "id": "/digitransit-site",
   "instances": 1,
   "labels": {
-      "restart-at": "05:00, 14:00",
-      "restart-limit-interval": "180",
       "update": "auto"
   },
   "maxLaunchDelaySeconds": 3600,
