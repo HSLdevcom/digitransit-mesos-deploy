@@ -61,13 +61,10 @@
   "instances": 18,
   "labels": {
     "restart-after-services": "/opentripplanner-data-con-hsl",
-    "restart-at": "05:15",
-    "restart-delay": "1",
-    "restart-limit-interval": "720",
-    "update": "auto"
+    "restart-delay": "1"
   },
   "maxLaunchDelaySeconds": 3600,
-  "mem": 10240,
+  "mem": 9216,
   "portDefinitions": [
     {
       "labels": {},

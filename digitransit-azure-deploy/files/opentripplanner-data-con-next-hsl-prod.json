@@ -6,7 +6,7 @@
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/opentripplanner:prod",
+      "image": "hsldevcom/minimal-image:latest",
       "network": "BRIDGE",
       "parameters": [
         {
@@ -15,7 +15,7 @@
         },
         {
           "key": "name",
-          "value": "opentripplanner-finland"
+          "value": "opentripplanner-data-con-next-hsl"
         }
       ],
       "portMappings": [
@@ -23,11 +23,10 @@
           "containerPort": 8080,
           "hostPort": 0,
           "labels": {
-            "VIP_0": "/opentripplanner-finland:8080"
+            "VIP_0": "/opentripplanner-data-con-next-hsl:8080"
           },
-          "name": "otpfinland",
           "protocol": "tcp",
-          "servicePort": 10007
+          "servicePort": 10089
         }
       ],
       "privileged": false
@@ -35,45 +34,40 @@
     "type": "DOCKER",
     "volumes": []
   },
-  "cpus": 1.9,
+  "cpus": 0.1,
   "dependencies": [],
   "disk": 0,
-  "env": {
-    "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10  -XX:+PrintGC",
-    "ROUTER_DATA_CONTAINER_URL": "https://api.digitransit.fi/routing-data/v2/finland",
-    "ROUTER_NAME": "finland"
-  },
+  "env": {},
   "gpus": 0,
   "healthChecks": [
     {
       "command": {
-        "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/finland/) = 200"
+        "value": "true"
       },
-      "gracePeriodSeconds": 2400,
+      "gracePeriodSeconds": 30,
       "ignoreHttp1xx": false,
-      "intervalSeconds": 30,
-      "maxConsecutiveFailures": 3,
+      "intervalSeconds": 60,
+      "maxConsecutiveFailures": 5,
       "protocol": "COMMAND",
-      "timeoutSeconds": 20
+      "timeoutSeconds": 10
     }
   ],
-  "id": "/opentripplanner-finland",
-  "instances": 8,
+  "id": "/opentripplanner-data-con-next-hsl",
+  "instances": 1,
   "labels": {
-    "restart-after-services": "/opentripplanner-data-con-finland",
-    "restart-delay": "25"
+    "update": "auto"
   },
-  "maxLaunchDelaySeconds": 3600,
-  "mem": 9216,
+  "maxLaunchDelaySeconds": 180,
+  "mem": 16,
   "portDefinitions": [
     {
       "labels": {},
-      "port": 10007,
+      "port": 10089,
       "protocol": "tcp"
     }
   ],
   "ports": [
-    10007
+    10089
   ],
   "readinessChecks": [],
   "taskKillGracePeriodSeconds": null,
