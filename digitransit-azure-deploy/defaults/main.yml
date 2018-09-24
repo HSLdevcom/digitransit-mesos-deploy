@@ -53,16 +53,13 @@ container:
   config: "digitransit-proxy-{{ environment_type | lower }}"
 
 - name: "opentripplanner-data-con-hsl"
-  config: "opentripplanner-data-container-hsl-{{ environment_type | lower }}"
+  config: "opentripplanner-data-con-hsl-{{ environment_type | lower }}"
 
 - name: "opentripplanner-data-con-waltti"
-  config: "opentripplanner-data-container-waltti-{{ environment_type | lower }}"
+  config: "opentripplanner-data-con-waltti-{{ environment_type | lower }}"
 
 - name: "opentripplanner-data-con-finland"
-  config: "opentripplanner-data-container-finland-{{ environment_type | lower }}"
-
-- name: "opentripplanner-data-con-next"
-  config: "opentripplanner-data-con-next-{{ environment_type | lower }}"
+  config: "opentripplanner-data-con-finland-{{ environment_type | lower }}"
 
 - name: "opentripplanner-data-con-next-hsl"
   config: "opentripplanner-data-con-next-hsl-{{ environment_type | lower }}"
