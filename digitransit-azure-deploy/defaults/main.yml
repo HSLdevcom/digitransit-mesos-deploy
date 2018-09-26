@@ -115,6 +115,7 @@ filesecrets:
 - "opentripplanner-hsl-{{environment_type | lower}}.json"
 - "opentripplanner-waltti-{{environment_type | lower}}.json"
 - "opentripplanner-finland-{{environment_type | lower}}.json"
+- "opentripplanner-next-{{environment_type | lower}}.json"
 
 dockersecrets:
 - "pelias-data-container-builder-dev.json"
