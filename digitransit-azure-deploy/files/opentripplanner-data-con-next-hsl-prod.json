@@ -6,7 +6,7 @@
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/minimal-image:latest",
+      "image": "hsldevcom/opentripplanner-data-container-hsl:next",
       "network": "BRIDGE",
       "parameters": [
         {
@@ -41,14 +41,13 @@
   "gpus": 0,
   "healthChecks": [
     {
-      "command": {
-        "value": "true"
-      },
-      "gracePeriodSeconds": 30,
+      "gracePeriodSeconds": 300,
       "ignoreHttp1xx": false,
-      "intervalSeconds": 60,
+      "intervalSeconds": 10,
       "maxConsecutiveFailures": 5,
-      "protocol": "COMMAND",
+      "path": "/version.txt",
+      "portIndex": 0,
+      "protocol": "HTTP",
       "timeoutSeconds": 10
     }
   ],
@@ -57,8 +56,8 @@
   "labels": {
     "update": "auto"
   },
-  "maxLaunchDelaySeconds": 180,
-  "mem": 16,
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 128,
   "portDefinitions": [
     {
       "labels": {},
