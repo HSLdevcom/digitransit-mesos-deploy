@@ -19,13 +19,14 @@
   "dependencies": [],
   "disk": 0,
   "env": {
+    "ASSET_URL": "https://digitransit-prod-cdn-origin.azureedge.net/ui/v1/hsl-next",
     "NODE_OPTS": "--max_old_space_size=600",
     "API_URL": "https://api.digitransit.fi",
     "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
     "RELAY_FETCH_TIMEOUT": "3000",
     "CONFIG": "hsl",
     "MAP_URL": "https://digitransit-prod-cdn-origin.azureedge.net",
-    "PIWIK_ID": "4"
+    "PIWIK_ID": "5"
   },
   "gpus": 0,
   "healthChecks": [

@@ -181,15 +181,6 @@
         - decrypt
         - deploy
 
-    - name: replace otp-next sentry_routing_secret_dsn
-      replace:
-          dest="{{ role_path }}/files/opentripplanner-next-dev.json"
-          regexp='sentry_routing_secret_dsn'
-          replace="{{sentry_routing_secret_dsn}}"
-      tags:
-        - decrypt
-        - deploy
-
   when: environment_type == 'DEV'
 
 ###UPDATE OR CREATE THE CONTAINERS
@@ -372,14 +363,5 @@
       tags:
         - encrypt
         - deploy
-
-    - name: re-encrypt sentry_routing_secret_dsn
-      replace:
-          dest="{{ role_path }}/files/opentripplanner-next-dev.json"
-          regexp="{{sentry_routing_secret_dsn}}"
-          replace='sentry_routing_secret_dsn'
-      tags:
-          - encrypt
-          - deploy
 
   when: environment_type == 'DEV'

@@ -61,10 +61,7 @@
   "instances": 4,
   "labels": {
     "restart-after-services": "/opentripplanner-data-con-waltti",
-    "restart-at": "05:45",
-    "restart-delay": "10",
-    "restart-limit-interval": "720",
-    "update": "auto"
+    "restart-delay": "10"
   },
   "maxLaunchDelaySeconds": 3600,
   "mem": 10240,

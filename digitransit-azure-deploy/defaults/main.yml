@@ -22,6 +22,9 @@ container:
 - name: "digitransit-site"
   config: "digitransit-site-{{ environment_type | lower }}"
 
+- name: "graphiql"
+  config: "graphiql-{{ environment_type | lower }}"
+
 - name: "hslalert"
   config: "hslalert-{{ environment_type | lower }}"
 
@@ -43,17 +46,29 @@ container:
 - name: "opentripplanner-finland"
   config: "opentripplanner-finland-{{ environment_type | lower }}"
 
+- name: "opentripplanner-next"
+  config: "opentripplanner-next-{{ environment_type | lower }}"
+
 - name: "digitransit-proxy"
   config: "digitransit-proxy-{{ environment_type | lower }}"
 
 - name: "opentripplanner-data-con-hsl"
-  config: "opentripplanner-data-container-hsl-{{ environment_type | lower }}"
+  config: "opentripplanner-data-con-hsl-{{ environment_type | lower }}"
 
 - name: "opentripplanner-data-con-waltti"
-  config: "opentripplanner-data-container-waltti-{{ environment_type | lower }}"
+  config: "opentripplanner-data-con-waltti-{{ environment_type | lower }}"
 
 - name: "opentripplanner-data-con-finland"
-  config: "opentripplanner-data-container-finland-{{ environment_type | lower }}"
+  config: "opentripplanner-data-con-finland-{{ environment_type | lower }}"
+
+- name: "opentripplanner-data-con-next-hsl"
+  config: "opentripplanner-data-con-next-hsl-{{ environment_type | lower }}"
+
+- name: "opentripplanner-data-con-next-waltti"
+  config: "opentripplanner-data-con-next-waltti-{{ environment_type | lower }}"
+
+- name: "opentripplanner-data-con-next-finland"
+  config: "opentripplanner-data-con-next-finland-{{ environment_type | lower }}"
 
 - name: "navigator-server"
   config: "navigator-server-{{ environment_type | lower }}"
@@ -66,12 +81,6 @@ container:
 
 - name: "hsl-timetable-container"
   config: "hsl-timetable-container-{{ environment_type | lower }}"
-
-- name: "opentripplanner-next"
-  config: "opentripplanner-next-{{ environment_type | lower }}"
-
-- name: "opentripplanner-data-con-next"
-  config: "opentripplanner-data-con-next-{{ environment_type | lower }}"
 
 - name: "digitransit-sentry-analytics"
   config: "digitransit-sentry-analytics-{{ environment_type | lower }}"
@@ -106,6 +115,7 @@ filesecrets:
 - "opentripplanner-hsl-{{environment_type | lower}}.json"
 - "opentripplanner-waltti-{{environment_type | lower}}.json"
 - "opentripplanner-finland-{{environment_type | lower}}.json"
+- "opentripplanner-next-{{environment_type | lower}}.json"
 
 dockersecrets:
 - "pelias-data-container-builder-dev.json"
@@ -122,7 +132,6 @@ slacksecrets:
 - "hsl-timetable-builder-dev.json"
 
 secret_secrets:
-- "fontstackpasswordsecret"
 - "sentrydsnenvsecret"
 - "sentrydsnsecret"
 - "piwikaddrsecret"
@@ -136,7 +145,6 @@ secret_secrets:
 - "sentrypassword"
 
 secret_answers:
-- "{{fontstack_password}}"
 - "{{environment_type}_sentry_dsn}"
 - "{{sentry_secret_dsn}}"
 - "{{piwikaddr}}"

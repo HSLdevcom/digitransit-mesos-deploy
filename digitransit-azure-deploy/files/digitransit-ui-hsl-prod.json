@@ -38,7 +38,7 @@
     "ASSET_URL": "https://digitransit-prod-cdn-origin.azureedge.net/ui/v1/hsl",
     "CONFIG": "hsl",
     "MAP_URL": "https://digitransit-prod-cdn-origin.azureedge.net",
-    "NODE_OPTS": "--max_old_space_size=600",
+    "NODE_OPTS": "--max_old_space_size=1000",
     "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
     "PIWIK_ID": "4",
     "RELAY_FETCH_TIMEOUT": "3000",
@@ -66,7 +66,7 @@
     "update": "auto"
   },
   "maxLaunchDelaySeconds": 3600,
-  "mem": 1024,
+  "mem": 1536,
   "portDefinitions": [
     {
       "labels": {},

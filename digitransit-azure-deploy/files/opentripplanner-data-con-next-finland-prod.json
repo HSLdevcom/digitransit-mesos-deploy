@@ -6,32 +6,27 @@
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/pelias-data-container:prod",
+      "image": "hsldevcom/minimal-image:latest",
       "network": "BRIDGE",
       "parameters": [
         {
+          "key": "net",
+          "value": "host"
+        },
+        {
           "key": "name",
-          "value": "pelias-data-container"
+          "value": "opentripplanner-data-con-next-finland"
         }
       ],
       "portMappings": [
         {
-          "containerPort": 9200,
+          "containerPort": 8080,
           "hostPort": 0,
           "labels": {
-            "VIP_0": "/pelias-data-container:9200"
+            "VIP_0": "/opentripplanner-data-con-next-finland:8080"
           },
           "protocol": "tcp",
-          "servicePort": 10003
-        },
-        {
-          "containerPort": 9300,
-          "hostPort": 0,
-          "labels": {
-            "VIP_1": "/pelias-data-container:9300"
-          },
-          "protocol": "tcp",
-          "servicePort": 10011
+          "servicePort": 10091
         }
       ],
       "privileged": false
@@ -39,47 +34,40 @@
     "type": "DOCKER",
     "volumes": []
   },
-  "cpus": 2,
+  "cpus": 0.1,
   "dependencies": [],
   "disk": 0,
-  "env": {
-    "ES_HEAP_SIZE": "6g"
-  },
+  "env": {},
   "gpus": 0,
   "healthChecks": [
     {
-      "gracePeriodSeconds": 600,
+      "command": {
+        "value": "true"
+      },
+      "gracePeriodSeconds": 30,
       "ignoreHttp1xx": false,
-      "intervalSeconds": 10,
-      "maxConsecutiveFailures": 3,
-      "path": "/_search?q=name.fi:helsinki",
-      "portIndex": 0,
-      "protocol": "HTTP",
+      "intervalSeconds": 60,
+      "maxConsecutiveFailures": 5,
+      "protocol": "COMMAND",
       "timeoutSeconds": 10
     }
   ],
-  "id": "/pelias-data-container",
-  "instances": 5,
+  "id": "/opentripplanner-data-con-next-finland",
+  "instances": 1,
   "labels": {
     "update": "auto"
   },
-  "maxLaunchDelaySeconds": 3600,
-  "mem": 6324,
+  "maxLaunchDelaySeconds": 180,
+  "mem": 16,
   "portDefinitions": [
     {
       "labels": {},
-      "port": 10003,
-      "protocol": "tcp"
-    },
-    {
-      "labels": {},
-      "port": 10011,
+      "port": 10091,
       "protocol": "tcp"
     }
   ],
   "ports": [
-    10003,
-    10011
+    10091
   ],
   "readinessChecks": [],
   "taskKillGracePeriodSeconds": null,
