@@ -49,7 +49,7 @@
           "command": {
               "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/waltti/) = 200"
           },
-          "gracePeriodSeconds": 1200,
+          "gracePeriodSeconds": 2000,
           "ignoreHttp1xx": false,
           "intervalSeconds": 30,
           "maxConsecutiveFailures": 6,

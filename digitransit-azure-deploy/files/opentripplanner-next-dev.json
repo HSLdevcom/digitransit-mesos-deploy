@@ -39,9 +39,9 @@
     "dependencies": [],
     "disk": 0,
     "env": {
-        "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10",
-        "ROUTER_DATA_CONTAINER_URL": "https://dev-api.digitransit.fi/routing-data/v2/next",
-        "ROUTER_NAME": "hsl"
+        "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx10G -Xms10G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10",
+        "ROUTER_DATA_CONTAINER_URL": "https://dev-api.digitransit.fi/routing-data/v2/next-hsl,https://dev-api.digitransit.fi/routing-data/v2/next-waltti",
+        "ROUTER_NAME": "hsl,waltti"
     },
     "gpus": 0,
     "healthChecks": [
@@ -49,7 +49,7 @@
             "command": {
                 "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/hsl/) = 200"
             },
-            "gracePeriodSeconds": 1200,
+            "gracePeriodSeconds": 8000,
             "ignoreHttp1xx": false,
             "intervalSeconds": 30,
             "maxConsecutiveFailures": 6,
@@ -58,14 +58,14 @@
         }
     ],
     "id": "/opentripplanner-next",
-    "instances": 0,
+    "instances": 1,
     "labels": {
-        "restart-after-services": "/opentripplanner-data-con-next",
+        "restart-after-services": "/opentripplanner-data-con-next-hsl,/opentripplanner-data-con-next-waltti",
         "restart-delay": "1",
         "update": "auto"
     },
     "maxLaunchDelaySeconds": 3600,
-    "mem": 10240,
+    "mem": 12288,
     "portDefinitions": [
         {
             "labels": {},
