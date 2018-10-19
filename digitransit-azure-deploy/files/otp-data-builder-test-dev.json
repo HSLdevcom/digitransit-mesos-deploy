@@ -37,7 +37,7 @@
     "dependencies": [],
     "disk": 0,
     "env": {
-        "BUILD_TIME": "23:00:00",
+        "BUILD_TIME": "23:30:00",
         "DATA": "/opt/otp-data-builder/data",
         "DOCKER_AUTH": "dockerauth",
         "DOCKER_TAG": "next",
@@ -68,7 +68,7 @@
         "update": "auto"
     },
     "maxLaunchDelaySeconds": 3600,
-    "mem": 9000,
+    "mem": 12000,
     "portDefinitions": [
         {
             "labels": {},

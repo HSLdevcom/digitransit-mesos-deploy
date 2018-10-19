@@ -45,6 +45,7 @@
         "DOCKER_USER": "dockeruser",
         "HOST_DATA": "/var/lib/docker/otp/data",
         "OTP_TAG": "prod",
+        "ROUTERS": "finland, waltti, hsl",
         "SEED_TAG": "prod",
         "SLACK_WEBHOOK_URL": "slackwebhook",
         "TOOLS_TAG": "prod"
@@ -69,7 +70,7 @@
         "update": "auto"
     },
     "maxLaunchDelaySeconds": 3600,
-    "mem": 9000,
+    "mem": 12000,
     "portDefinitions": [
         {
             "labels": {},

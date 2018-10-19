@@ -41,7 +41,7 @@
   "env": {
     "ROUTER_DATA_CONTAINER_URL": "https://api.digitransit.fi/routing-data/v2/waltti",
     "ROUTER_NAME": "waltti",
-    "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10  -XX:+PrintGC"
+    "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx8G -Xms8G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10  -XX:+PrintGC"
   },
   "gpus": 0,
   "healthChecks": [
@@ -49,7 +49,7 @@
       "command": {
         "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/waltti/) = 200"
       },
-      "gracePeriodSeconds": 1200,
+      "gracePeriodSeconds": 4200,
       "ignoreHttp1xx": false,
       "intervalSeconds": 30,
       "maxConsecutiveFailures": 3,
@@ -61,10 +61,13 @@
   "instances": 4,
   "labels": {
     "restart-after-services": "/opentripplanner-data-con-waltti",
-    "restart-delay": "10"
+    "restart-at": "05:45",
+    "restart-delay": "10",
+    "restart-limit-interval": "720",
+    "update":"auto"
   },
   "maxLaunchDelaySeconds": 3600,
-  "mem": 10240,
+  "mem": 11240,
   "portDefinitions": [
     {
       "labels": {},

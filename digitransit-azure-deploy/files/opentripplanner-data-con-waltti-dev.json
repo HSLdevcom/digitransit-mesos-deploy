@@ -57,7 +57,7 @@
       "update": "auto"
   },
   "maxLaunchDelaySeconds": 3600,
-  "mem": 128,
+  "mem": 192,
   "portDefinitions": [
       {
           "labels": {},
