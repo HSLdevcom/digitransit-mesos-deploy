@@ -143,7 +143,6 @@ secret_secrets:
 - "sentrytoken"
 - "sentryuser"
 - "sentrypassword"
-- "mmlapikey"
 
 secret_answers:
 - "{{environment_type}_sentry_dsn}"
@@ -157,4 +156,3 @@ secret_answers:
 - "{{sentrytoken}}"
 - "{{sentryuser}}"
 - "{{sentrypass}}"
-- "{{mmlapikey}}"
