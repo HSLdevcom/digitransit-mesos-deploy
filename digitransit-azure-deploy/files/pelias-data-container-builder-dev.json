@@ -34,7 +34,8 @@
   "env": {
       "DOCKER_AUTH": "dockerauth",
       "DOCKER_USER": "dockeruser",
-      "SLACK_WEBHOOK_URL": "slackwebhook"
+      "SLACK_WEBHOOK_URL": "slackwebhook",
+      "MMLAPIKEY": "mmlapikey"
   },
   "gpus": 0,
   "healthChecks": [
