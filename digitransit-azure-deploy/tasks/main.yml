@@ -181,6 +181,15 @@
         - decrypt
         - deploy
 
+    - name: replace mml api key
+      replace:
+        dest="{{ role_path }}/files/pelias-data-container-builder-dev.json"
+        regexp='mmlapikey'
+        replace="{{mmlapikey}}"
+      tags:
+         - decrypt
+         - deploy
+
   when: environment_type == 'DEV'
 
 ###UPDATE OR CREATE THE CONTAINERS
@@ -303,8 +312,8 @@
       tags:
          - encrypt
          - deploy
-    
-    - name: re-encrypt sentry user
+
+    - name: re-encrypt sentry token
       replace:
         dest="{{ role_path }}/files/digitransit-sentry-analytics-dev.json"
         regexp="{{sentry_token}}"
@@ -363,5 +372,14 @@
       tags:
         - encrypt
         - deploy
+
+    - name: re-encrypt mml api key
+      replace:
+        dest="{{ role_path }}/files/pelias-data-container-builder-dev.json"
+        regexp="{{mmlapikey}}"
+        replace='mmlapikey'
+      tags:
+         - encrypt
+         - deploy
 
   when: environment_type == 'DEV'
