@@ -6,7 +6,7 @@
     "container": {
       "docker": {
         "forcePullImage": true,
-        "image": "hsldevcom/hsl-timetable-container",
+        "image": "hsldevcom/hsl-timetable-container:latest",
         "network": "BRIDGE",
         "parameters": [
           {

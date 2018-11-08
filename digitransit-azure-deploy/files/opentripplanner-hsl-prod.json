@@ -63,8 +63,7 @@
     "restart-after-services": "/opentripplanner-data-con-hsl",
     "restart-at": "05:15",
     "restart-delay": "1",
-    "restart-limit-interval": "720",
-    "update": "auto"
+    "restart-limit-interval": "720"
   },
   "maxLaunchDelaySeconds": 3600,
   "mem": 9216,
