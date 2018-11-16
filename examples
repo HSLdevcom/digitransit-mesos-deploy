@@ -1,5 +1,16 @@
 #Some example for managing containers
 
+#decrypt DEV configuration files for debugging purpose
+ansible-playbook digitransit-manage-containers.yml --tags decrypt --extra-vars "environment_type=DEV"
+
+#decrypt PROD configuration files for debugging purpose
+ansible-playbook digitransit-manage-containers.yml --tags decrypt --extra-vars "environment_type=PROD"
+
+#encrypt DEV configuration files for debugging purpose
+ansible-playbook digitransit-manage-containers.yml --tags encrypt --extra-vars "environment_type=DEV"
+
+##encrypt PROD configuration files for debugging purpose
+ansible-playbook digitransit-manage-containers.yml --tags encrypt --extra-vars "environment_type=PROD"
 
 #deploy or update containers in production through localhost port 5536 
 ansible-playbook digitransit-manage-containers.yml --tags deploy --extra-vars "environment_type=PROD"
