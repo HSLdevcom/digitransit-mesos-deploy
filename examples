@@ -21,10 +21,6 @@ ansible-playbook digitransit-manage-containers.yml --tags deploy --extra-vars "e
 #restart a container example pelias api
 ansible-playbook digitransit-manage-containers.yml --tags restart --extra-vars "app_id=pelias-api environment_type=DEV"
 
-#Update all containers to meet the specification in version control 
-#Deploy containers if not existing if not container is running it will create it
-ansible-playbook -i hosts digitransit-manage-containers.yml --tags deploy --extra-vars "environment_type=PROD"
-
 #deploy CDN for environment
 ansible-playbook digitransit-create-cdn-dev.yml --extra-vars "environment_type=DEV origin_host=dev-api.digitransit.fi origin_header=dev-api.digitransit.fi" 
 
