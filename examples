@@ -1,5 +1,16 @@
 #Some example for managing containers
 
+#decrypt DEV configuration files for debugging purpose
+ansible-playbook digitransit-manage-containers.yml --tags decrypt --extra-vars "environment_type=DEV"
+
+#decrypt PROD configuration files for debugging purpose
+ansible-playbook digitransit-manage-containers.yml --tags decrypt --extra-vars "environment_type=PROD"
+
+#encrypt DEV configuration files for debugging purpose
+ansible-playbook digitransit-manage-containers.yml --tags encrypt --extra-vars "environment_type=DEV"
+
+##encrypt PROD configuration files for debugging purpose
+ansible-playbook digitransit-manage-containers.yml --tags encrypt --extra-vars "environment_type=PROD"
 
 #deploy or update containers in production through localhost port 5536 
 ansible-playbook digitransit-manage-containers.yml --tags deploy --extra-vars "environment_type=PROD"
@@ -9,10 +20,6 @@ ansible-playbook digitransit-manage-containers.yml --tags deploy --extra-vars "e
 
 #restart a container example pelias api
 ansible-playbook digitransit-manage-containers.yml --tags restart --extra-vars "app_id=pelias-api environment_type=DEV"
-
-#Update all containers to meet the specification in version control 
-#Deploy containers if not existing if not container is running it will create it
-ansible-playbook -i hosts digitransit-manage-containers.yml --tags deploy --extra-vars "environment_type=PROD"
 
 #deploy CDN for environment
 ansible-playbook digitransit-create-cdn-dev.yml --extra-vars "environment_type=DEV origin_host=dev-api.digitransit.fi origin_header=dev-api.digitransit.fi" 
