@@ -3,6 +3,12 @@
   "backoffFactor": 1.15,
   "backoffSeconds": 1,
   "cmd": null,
+  "constraints": [
+        [
+            "hostname",
+            "UNIQUE"
+        ]
+    ],
   "container": {
       "docker": {
           "forcePullImage": true,
