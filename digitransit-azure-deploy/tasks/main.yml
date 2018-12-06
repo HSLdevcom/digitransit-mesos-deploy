@@ -100,6 +100,17 @@
     - decrypt
     - deploy
 
+- name: replace proxy secrets
+  replace:
+    dest="{{ role_path }}/files/digitransit-proxy-{{environment_type | lower}}.json"
+    regexp="{{item.secret}}"
+    replace="{{item.answer}}"
+  with_items:
+    - "{{proxysecrets}}"
+  tags:
+    - decrypt
+    - deploy
+
 - block:
     - name: replace piwik dsn secret
       replace:
@@ -291,6 +302,17 @@
   tags:
      - encrypt
      - deploy
+
+- name: re-encrypt proxy secrets
+  replace:
+    dest="{{ role_path }}/files/digitransit-proxy-{{environment_type | lower}}.json"
+    regexp="{{item.answer}}"
+    replace="{{item.secret}}"
+  with_items:
+    - "{{proxysecrets}}"
+  tags:
+    - encrypt
+    - deploy
 
 - block:
     - name: re-encrypt piwik dsn secret

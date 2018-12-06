@@ -31,7 +31,7 @@
   "cpus": 2,
   "dependencies": [],
   "disk": 0,
-  "env": {},
+  "env": {"OLD_LISSU_BASIC_AUTH":"\"Basic oldlissubasickey\"","JOJO_BASIC_AUTH":"\"Basic jojobasickey\"","LINKKI_BASIC_AUTH":"\"Basic linkkibasickey\"","VILKKU_BASIC_AUTH":"\"Basic vilkkubasickey\"","NEW_LISSU_BASIC_AUTH":"\"Basic newlissubasickey\"","LAPPEENRANTA_BASIC_AUTH":"\"Basic lappeenrantabasickey\""},
   "gpus": 0,
   "healthChecks": [
       {
