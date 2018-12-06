@@ -60,7 +60,7 @@
     }
   ],
   "id": "/pelias-data-container",
-  "instances": 5,
+  "instances": 8,
   "labels": {
     "update": "auto"
   },

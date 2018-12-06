@@ -27,6 +27,7 @@
     "RELAY_FETCH_TIMEOUT": "3000",
     "CONFIG": "hsl",
     "MAP_URL": "https://digitransit-prod-cdn-origin.azureedge.net",
+    "OTP_URL":"https://api.digitransit.fi/routing/v1/routers/next-hsl/",
     "PIWIK_ID": "5"
   },
   "gpus": 0,

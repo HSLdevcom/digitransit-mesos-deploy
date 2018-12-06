@@ -59,7 +59,7 @@
     }
   ],
   "id": "/opentripplanner-waltti",
-  "instances": 4,
+  "instances": 5,
   "labels": {
     "restart-after-services": "/opentripplanner-data-con-waltti",
     "restart-at": "05:45",
