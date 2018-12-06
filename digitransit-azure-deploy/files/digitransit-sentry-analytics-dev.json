@@ -3,6 +3,7 @@
     "backoffFactor": 1.15,
     "backoffSeconds": 1,
     "cmd": null,
+    "constraints": [],
     "container": {
         "docker": {
             "forcePullImage": true,
