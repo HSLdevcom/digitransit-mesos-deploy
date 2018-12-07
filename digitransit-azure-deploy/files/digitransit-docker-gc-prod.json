@@ -6,6 +6,12 @@
   "backoffFactor": 1.15,
   "backoffSeconds": 1,
   "cmd": "sh -c \"while true; do ./docker-gc ; sleep 86400; done\"\n",
+  "constraints": [
+    [
+        "hostname",
+        "UNIQUE"
+    ]
+  ],
   "container": {
     "docker": {
       "forcePullImage": false,
@@ -48,7 +54,7 @@
     }
   ],
   "id": "/digitransit-docker-gc",
-  "instances": 60,
+  "instances": 68,
   "labels": {},
   "maxLaunchDelaySeconds": 3600,
   "mem": 32,

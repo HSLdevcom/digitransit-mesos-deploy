@@ -3,6 +3,12 @@
   "backoffFactor": 1.15,
   "backoffSeconds": 1,
   "cmd": null,
+  "constraints": [
+        [
+            "hostname",
+            "UNIQUE"
+        ]
+    ],
   "container": {
       "docker": {
           "forcePullImage": true,
@@ -55,7 +61,7 @@
       }
   ],
   "id": "/hsl-map-server",
-  "instances": 1,
+  "instances": 2,
   "labels": {
       "restart-after-services": "/opentripplanner-finland,/opentripplanner-hsl,/opentripplanner-waltti",
       "restart-delay": "5",

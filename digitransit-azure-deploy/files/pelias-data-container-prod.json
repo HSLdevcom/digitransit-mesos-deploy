@@ -3,6 +3,7 @@
   "backoffFactor": 1.15,
   "backoffSeconds": 1,
   "cmd": null,
+  "constraints": [],
   "container": {
     "docker": {
       "forcePullImage": true,
@@ -59,7 +60,7 @@
     }
   ],
   "id": "/pelias-data-container",
-  "instances": 5,
+  "instances": 8,
   "labels": {
     "update": "auto"
   },

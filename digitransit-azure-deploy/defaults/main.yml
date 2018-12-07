@@ -130,3 +130,11 @@ slacksecrets:
 - "otp-data-builder-prod-dev.json"
 - "digitransit-performance-tests-dev.json"
 - "hsl-timetable-builder-dev.json"
+
+proxysecrets:
+- { secret: "oldlissubasickey", answer: "{{old_lissu_basic_key}}" }
+- { secret: "newlissubasickey", answer: "{{new_lissu_basic_key}}" }
+- { secret: "jojobasickey", answer: "{{jojo_basic_key}}" }
+- { secret: "linkkibasickey", answer: "{{linkki_basic_key}}" }
+- { secret: "vilkkubasickey", answer: "{{vilkku_basic_key}}" }
+- { secret: "lappeenrantabasickey", answer: "{{lappeenranta_basic_key}}" }

@@ -3,10 +3,11 @@
   "backoffFactor": 1.15,
   "backoffSeconds": 1,
   "cmd": null,
+  "constraints": [],
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/minimal-image:latest",
+      "image": "hsldevcom/opentripplanner:latest",
       "network": "BRIDGE",
       "parameters": [
         {
@@ -35,31 +36,36 @@
     "type": "DOCKER",
     "volumes": []
   },
-  "cpus": 0.1,
+  "cpus": 1,
   "dependencies": [],
   "disk": 0,
-  "env": {},
+  "env": {
+    "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx10G -Xms10G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10",
+    "ROUTER_DATA_CONTAINER_URL": "https://api.digitransit.fi/routing-data/v2/next-hsl",
+    "ROUTER_NAME": "hsl"
+  },
   "gpus": 0,
   "healthChecks": [
     {
       "command": {
-        "value": "true"
+        "value": "test $(curl -4 -s -o /dev/null -w \"%{http_code}\" http://localhost:$PORT0/otp/routers/hsl/) = 200"
       },
-      "gracePeriodSeconds": 30,
+      "gracePeriodSeconds": 1200,
       "ignoreHttp1xx": false,
-      "intervalSeconds": 60,
+      "intervalSeconds": 30,
       "maxConsecutiveFailures": 5,
       "protocol": "COMMAND",
-      "timeoutSeconds": 10
+      "timeoutSeconds": 20
     }
   ],
   "id": "/opentripplanner-next",
   "instances": 1,
   "labels": {
-    "update": "auto"
+    "restart-after-services": "/opentripplanner-data-con-next-hsl",
+    "restart-delay": "1"
   },
-  "maxLaunchDelaySeconds": 180,
-  "mem": 16,
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 12288,
   "portDefinitions": [
     {
       "labels": {},

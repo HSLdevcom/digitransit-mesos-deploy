@@ -3,6 +3,12 @@
     "backoffFactor": 1.15,
     "backoffSeconds": 1,
     "cmd": null,
+    "constraints": [
+        [
+             "hostname",
+             "UNIQUE"
+        ]
+    ],
     "container": {
         "docker": {
             "forcePullImage": true,
@@ -40,8 +46,8 @@
     "disk": 0,
     "env": {
         "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx10G -Xms10G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10",
-        "ROUTER_DATA_CONTAINER_URL": "https://dev-api.digitransit.fi/routing-data/v2/next-hsl,https://dev-api.digitransit.fi/routing-data/v2/next-waltti",
-        "ROUTER_NAME": "hsl,waltti"
+        "ROUTER_DATA_CONTAINER_URL": "https://dev-api.digitransit.fi/routing-data/v2/next-hsl",
+        "ROUTER_NAME": "hsl"
     },
     "gpus": 0,
     "healthChecks": [
@@ -60,7 +66,7 @@
     "id": "/opentripplanner-next",
     "instances": 1,
     "labels": {
-        "restart-after-services": "/opentripplanner-data-con-next-hsl,/opentripplanner-data-con-next-waltti",
+        "restart-after-services": "/opentripplanner-data-con-next-hsl",
         "restart-delay": "1",
         "update": "auto"
     },
