@@ -60,7 +60,7 @@
     }
   ],
   "id": "/digitransit-ui-hsl",
-  "instances": 9,
+  "instances": 8,
   "labels": {
     "restart-at": "03:20, 13:20",
     "restart-limit-interval": "180",
