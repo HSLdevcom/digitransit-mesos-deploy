@@ -59,7 +59,7 @@
     }
   ],
   "id": "/opentripplanner-next",
-  "instances": 7,
+  "instances": 3,
   "labels": {
     "restart-after-services": "/opentripplanner-data-con-next-hsl",
     "restart-delay": "1"

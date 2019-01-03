@@ -3,11 +3,16 @@
   "backoffFactor": 1.15,
   "backoffSeconds": 1,
   "cmd": null,
-  "constraints": [],
+  "constraints": [
+    [
+      "hostname",
+      "UNIQUE"
+    ]
+  ],
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/digitransit-ui:index-page",
+      "image": "hsldevcom/digitransit-ui:index-page-prod",
       "network": "HOST",
       "parameters": [],
       "portMappings": null,
@@ -44,7 +49,7 @@
     }
   ],
   "id": "/digitransit-ui-hsl-next",
-  "instances": 4,
+  "instances": 2,
   "labels": {
     "update": "auto"
   },
