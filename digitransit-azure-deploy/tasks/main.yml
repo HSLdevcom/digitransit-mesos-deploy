@@ -425,7 +425,7 @@
     - name: re-encrypt timetable builder takukey secret
       replace:
         dest="{{ role_path }}/files/hsl-timetable-builder-dev.json"
-        regexp='{{taku_key}}"'
+        regexp='{{taku_key}}'
         replace="takukey"
       tags:
          - encrypt
