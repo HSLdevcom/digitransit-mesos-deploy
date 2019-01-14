@@ -16,10 +16,6 @@
       "network": "BRIDGE",
       "parameters": [
         {
-          "key": "net",
-          "value": "host"
-        },
-        {
           "key": "name",
           "value": "hsl-timetable-container"
         }
