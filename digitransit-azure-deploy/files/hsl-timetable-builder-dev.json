@@ -26,12 +26,13 @@
     "dependencies": [],
     "disk": 0,
     "env": {
-        "BUILDER_TYPE": "dev",
         "DOCKER_AUTH": "dockerauth",
         "DOCKER_TAG": "latest",
         "DOCKER_USER": "dockeruser",
         "FONTSTACK_PASSWORD": "fontstacksecret",
         "SLACK_WEBHOOK_URL": "slackwebhook",
+        "TAKU_API_URL": "takuapi",
+        "TAKU_KEY": "takukey",
         "TIMETABLE_DAYS_ADVANCE": "2"
     },
     "gpus": 0,

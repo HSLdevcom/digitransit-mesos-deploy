@@ -192,6 +192,24 @@
         - decrypt
         - deploy
 
+    - name: replace timetable builder takuapi secret
+      replace:
+        dest="{{ role_path }}/files/hsl-timetable-builder-dev.json"
+        regexp='takuapi'
+        replace="{{taku_api}}"
+      tags:
+         - decrypt
+         - deploy
+
+    - name: replace timetable builder takukey secret
+      replace:
+        dest="{{ role_path }}/files/hsl-timetable-builder-dev.json"
+        regexp='takukey'
+        replace="{{taku_key}}"
+      tags:
+         - decrypt
+         - deploy
+
     - name: replace mml api key
       replace:
         dest="{{ role_path }}/files/pelias-data-container-builder-dev.json"
@@ -394,6 +412,24 @@
       tags:
         - encrypt
         - deploy
+
+    - name: re-encrypt timetable builder takuapi secret
+      replace:
+        dest="{{ role_path }}/files/hsl-timetable-builder-dev.json"
+        regexp='{{taku_api}}'
+        replace="takuapi"
+      tags:
+         - encrypt
+         - deploy
+
+    - name: re-encrypt timetable builder takukey secret
+      replace:
+        dest="{{ role_path }}/files/hsl-timetable-builder-dev.json"
+        regexp='{{taku_key}}"'
+        replace="takukey"
+      tags:
+         - encrypt
+         - deploy
 
     - name: re-encrypt mml api key
       replace:
