@@ -46,7 +46,7 @@
       }
   ],
   "id": "/digitransit-proxy",
-  "instances": 1,
+  "instances": 2,
   "labels": {
       "update": "auto"
   },
