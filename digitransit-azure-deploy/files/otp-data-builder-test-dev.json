@@ -40,6 +40,7 @@
     "env": {
         "BUILD_TIME": "23:30:00",
         "DATA": "/opt/otp-data-builder/data",
+        "BUILDER_TYPE": "next",
         "DOCKER_AUTH": "dockerauth",
         "DOCKER_TAG": "next",
         "DOCKER_USER": "dockeruser",
@@ -47,6 +48,7 @@
         "OTP_TAG": "latest",
         "ROUTERS": "finland, waltti, hsl",
         "SEED_TAG": "latest",
+        "SLACK_WEBHOOK_URL": "slackwebhook",
         "TOOLS_TAG": "latest"
     },
     "gpus": 0,

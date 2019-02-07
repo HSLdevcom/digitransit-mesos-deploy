@@ -128,6 +128,7 @@ slacksecrets:
 - "pelias-data-container-builder-dev.json"
 - "otp-data-builder-dev-dev.json"
 - "otp-data-builder-prod-dev.json"
+- "otp-data-builder-test-dev.json"
 - "digitransit-performance-tests-dev.json"
 - "hsl-timetable-builder-dev.json"
 
