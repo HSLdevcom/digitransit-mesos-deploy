@@ -49,7 +49,7 @@
   "dependencies": [],
   "disk": 0,
   "env": {
-      "ES_HEAP_SIZE": "6g"
+      "ES_HEAP_SIZE": "2g"
   },
   "gpus": 0,
   "healthChecks": [
