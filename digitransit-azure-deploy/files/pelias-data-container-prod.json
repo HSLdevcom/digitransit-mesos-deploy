@@ -49,7 +49,7 @@
   "dependencies": [],
   "disk": 0,
   "env": {
-    "ES_HEAP_SIZE": "2g"
+    "ES_HEAP_SIZE": "3g"
   },
   "gpus": 0,
   "healthChecks": [
@@ -70,7 +70,7 @@
     "update": "auto"
   },
   "maxLaunchDelaySeconds": 3600,
-  "mem": 2816,
+  "mem": 3584,
   "portDefinitions": [
     {
       "labels": {},
