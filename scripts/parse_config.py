@@ -12,7 +12,7 @@ def main(service):
     removeFields = ['tasks','lastTaskFailure','versionInfo','version','deployments',
         'uris','fetch','executor','tasksStaged','tasksHealthy','tasksRunning',
         'tasksUnhealthy','ipAddress','residency','secrets','requirePorts','user','args',
-        'storeUrls','constraints']
+        'storeUrls']
     for field in removeFields:
         if field in data:
             del data[field]
