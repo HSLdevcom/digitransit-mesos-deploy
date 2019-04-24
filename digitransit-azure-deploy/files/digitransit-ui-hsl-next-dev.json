@@ -12,7 +12,7 @@
     "container": {
         "docker": {
             "forcePullImage": true,
-            "image": "hsldevcom/digitransit-ui:index-page",
+            "image": "hsldevcom/digitransit-ui:next",
             "network": "HOST",
             "parameters": [],
             "portMappings": null,
