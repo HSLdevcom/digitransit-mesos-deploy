@@ -12,7 +12,7 @@
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/digitransit-ui:index-page-prod",
+      "image": "hsldevcom/minimal-image:latest",
       "network": "HOST",
       "parameters": [],
       "portMappings": null,
@@ -21,7 +21,7 @@
     "type": "DOCKER",
     "volumes": []
   },
-  "cpus": 1,
+  "cpus": 0.1,
   "dependencies": [],
   "disk": 0,
   "env": {
@@ -38,23 +38,23 @@
   "gpus": 0,
   "healthChecks": [
     {
-      "gracePeriodSeconds": 300,
-      "ignoreHttp1xx": false,
-      "intervalSeconds": 10,
-      "maxConsecutiveFailures": 3,
-      "path": "/",
-      "portIndex": 0,
-      "protocol": "HTTP",
-      "timeoutSeconds": 10
+      "protocol": "COMMAND",
+      "command": {
+        "value": "true"
+      },
+      "gracePeriodSeconds": 30,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 10,
+      "maxConsecutiveFailures": 5
     }
   ],
   "id": "/digitransit-ui-hsl-next",
-  "instances": 2,
+  "instances": 1,
   "labels": {
     "update": "auto"
   },
   "maxLaunchDelaySeconds": 3600,
-  "mem": 800,
+  "mem": 16,
   "portDefinitions": [
     {
       "labels": {
