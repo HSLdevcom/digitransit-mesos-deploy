@@ -45,11 +45,11 @@
         "DOCKER_TAG": "next",
         "DOCKER_USER": "dockeruser",
         "HOST_DATA": "/var/lib/docker/otp/data",
-        "OTP_TAG": "latest",
+        "OTP_TAG": "prod",
         "ROUTERS": "finland, waltti, hsl",
-        "SEED_TAG": "latest",
+        "SEED_TAG": "next",
         "SLACK_WEBHOOK_URL": "slackwebhook",
-        "TOOLS_TAG": "latest"
+        "TOOLS_TAG": "prod"
     },
     "gpus": 0,
     "healthChecks": [

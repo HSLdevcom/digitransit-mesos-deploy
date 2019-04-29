@@ -45,7 +45,7 @@
         "DOCKER_TAG": "latest",
         "DOCKER_USER": "dockeruser",
         "EXTRA_SRC": "{\"tampere\": {\"url\": \"http://www.tampere.fi/ekstrat/ptdata/tamperefeed_faret.zip\", \"routers\": [\"waltti\", \"finland\"]}}",
-        "EXTRA_UPDATERS": "{\"foli-alerts\": {\"url\": \"https://foli-beta.nanona.fi/gtfs-rt/reittiopas\", \"routers\": [\"waltti\"]}}",
+        "EXTRA_UPDATERS": "{\"foli-alerts\": {\"url\": \"https://foli-beta.nanona.fi/gtfs-rt/reittiopas\", \"routers\": [\"waltti\"]}, \"hsl-trip-updates\": {\"topic\": \"gtfsrt/dev/fi/hsl/tu\", \"routers\": [\"hsl\", \"finland\"]}}",
         "HOST_DATA": "/var/lib/docker/otp/data",
         "OTP_TAG": "latest",
         "ROUTERS": "finland, waltti, hsl",
