@@ -43,7 +43,7 @@
   "env": {
     "FINLAND_OTP_URL": "opentripplanner-finland:8080/otp/routers/finland/index/graphql",
     "FONTSTACK_PASSWORD": "fontstacksecret",
-    "HSL_OTP_URL": "opentripplanner-next:8080/otp/routers/hsl/index/graphql",
+    "HSL_OTP_URL": "opentripplanner-hsl:8080/otp/routers/hsl/index/graphql",
     "NODE_OPTS": "--max_old_space_size=2048 --optimize_for_size --max_executable_size=2048 --stack_size=2048 --harmony",
     "WALTTI_OTP_URL": "opentripplanner-waltti:8080/otp/routers/waltti/index/graphql"
   },
@@ -63,7 +63,7 @@
   "id": "/hsl-map-server",
   "instances": 8,
   "labels": {
-    "restart-after-services": "/opentripplanner-finland,/opentripplanner-next,/opentripplanner-waltti",
+    "restart-after-services": "/opentripplanner-finland,/opentripplanner-hsl,/opentripplanner-waltti",
     "restart-delay": "5",
     "update": "auto"
   },
