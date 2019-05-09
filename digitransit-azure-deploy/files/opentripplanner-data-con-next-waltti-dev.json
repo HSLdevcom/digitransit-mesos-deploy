@@ -12,7 +12,7 @@
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/opentripplanner-data-container-waltti:next",
+      "image": "hsldevcom/minimal-image:latest",
       "network": "BRIDGE",
       "parameters": [
         {
@@ -47,13 +47,14 @@
   "gpus": 0,
   "healthChecks": [
     {
-      "gracePeriodSeconds": 400,
+      "command": {
+        "value": "true"
+      },
+      "gracePeriodSeconds": 30,
       "ignoreHttp1xx": false,
-      "intervalSeconds": 10,
+      "intervalSeconds": 60,
       "maxConsecutiveFailures": 5,
-      "path": "/version.txt",
-      "portIndex": 0,
-      "protocol": "HTTP",
+      "protocol": "COMMAND",
       "timeoutSeconds": 10
     }
   ],
@@ -62,8 +63,8 @@
   "labels": {
     "update": "auto"
   },
-  "maxLaunchDelaySeconds": 3600,
-  "mem": 200,
+  "maxLaunchDelaySeconds": 180,
+  "mem": 16,
   "portDefinitions": [
     {
       "labels": {},
