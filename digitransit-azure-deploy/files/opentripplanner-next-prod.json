@@ -7,7 +7,7 @@
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/opentripplanner:latest",
+      "image": "hsldevcom/opentripplanner:prod",
       "network": "BRIDGE",
       "parameters": [
         {

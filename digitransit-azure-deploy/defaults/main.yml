@@ -139,3 +139,4 @@ proxysecrets:
 - { secret: "vilkkubasickey", answer: "{{vilkku_basic_key}}" }
 - { secret: "lappeenrantabasickey", answer: "{{lappeenranta_basic_key}}" }
 - { secret: "samocattokenkey", answer: "{{samocat_token_key}}" }
+- { secret: "lahtibasickey", answer: "{{lahti_basic_key}}" }
