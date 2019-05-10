@@ -41,7 +41,7 @@
   "disk": 0,
   "env": {
     "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx7G -Xms7G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10  -XX:+PrintGC",
-    "ROUTER_DATA_CONTAINER_URL": "https://api.digitransit.fi/routing-data/v2/legacy-hsl",
+    "ROUTER_DATA_CONTAINER_URL": "https://api.digitransit.fi/routing-data/v2/hsl",
     "ROUTER_NAME": "hsl"
   },
   "gpus": 0,
@@ -59,7 +59,7 @@
     }
   ],
   "id": "/opentripplanner-hsl",
-  "instances": 2,
+  "instances": 20,
   "labels": {
     "restart-after-services": "/opentripplanner-data-con-hsl",
     "restart-at": "05:15",
