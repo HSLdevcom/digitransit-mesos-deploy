@@ -40,7 +40,7 @@
     "dependencies": [],
     "disk": 0,
     "env": {
-        "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -Xmx10G -Xms10G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:G1ReservePercent=10",
+        "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -XX:+UseParNewGC -Xms10G -Xmx10G -XX:NewRatio=5 -XX:+UseStringDeduplication -XX:+UseStringCache",
         "ROUTER_DATA_CONTAINER_URL": "https://dev-api.digitransit.fi/routing-data/v2/hsl",
         "ROUTER_NAME": "hsl"
     },
