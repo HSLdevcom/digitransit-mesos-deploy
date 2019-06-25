@@ -42,7 +42,7 @@
   "env": {
       "ROUTER_DATA_CONTAINER_URL": "https://dev-api.digitransit.fi/routing-data/v2/waltti",
       "ROUTER_NAME": "waltti",
-      "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -XX:+UseParNewGC -Xms7G -Xmx7G -XX:NewRatio=5 -XX:+UseStringDeduplication -XX:+UseStringCache"
+      "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -XX:+UseParNewGC -Xms7G -Xmx7G -XX:NewRatio=5 -XX:+UseStringDeduplication"
   },
   "gpus": 0,
   "healthChecks": [
