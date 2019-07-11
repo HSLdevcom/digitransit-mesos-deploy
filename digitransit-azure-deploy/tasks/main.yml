@@ -48,6 +48,22 @@
       tags:
          - decrypt
          - deploy
+    - name: replace yleisviesti user
+      replace:
+        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
+        regexp='htuser'
+        replace="{{ht_user}}"
+      tags:
+         - decrypt
+         - deploy
+    - name: replace yleisviesti password
+      replace:
+        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
+        regexp='htpassword'
+        replace="{{ht_password}}"
+      tags:
+         - decrypt
+         - deploy
   when: environment_type == 'PROD'
 
 
@@ -269,6 +285,22 @@
       tags:
          - encrypt
          - deploy
+    - name: replace yleisviesti user
+      replace:
+        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
+        regexp="{{ht_user}}"
+        replace='htuser'
+      tags:
+         - encrypt
+         - deploy
+    - name: replace yleisviesti password
+      replace:
+        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
+        regexp="{{ht_password_regex}}"
+        replace='htpassword'
+      tags:
+         - encrypt
+         - deploy
   when: environment_type == 'PROD'
 
 
@@ -385,8 +417,8 @@
     - name: re-encrypt dockeruser secret
       replace:
          dest="{{ role_path }}/files/{{item}}"
-         regexp="{{docker_user}}"
-         replace='dockeruser'
+         regexp="\"{{docker_user}}\""
+         replace="\"dockeruser\""
       with_items:
          - "{{dockersecrets}}"
       tags:

@@ -85,6 +85,9 @@ container:
 - name: "digitransit-sentry-analytics"
   config: "digitransit-sentry-analytics-{{ environment_type | lower }}"
 
+- name: "yleisviestipalvelu"
+  config: "yleisviestipalvelu-{{ environment_type | lower }}"
+
 dev_container:
 
 - name: "pelias-data-container-builder"
