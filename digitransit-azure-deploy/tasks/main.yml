@@ -296,7 +296,7 @@
     - name: replace yleisviesti password
       replace:
         dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
-        regexp="{{ht_password}}"
+        regexp="{{ht_password_regex}}"
         replace='htpassword'
       tags:
          - encrypt
