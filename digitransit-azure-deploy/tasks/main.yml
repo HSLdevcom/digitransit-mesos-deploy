@@ -417,8 +417,8 @@
     - name: re-encrypt dockeruser secret
       replace:
          dest="{{ role_path }}/files/{{item}}"
-         regexp="{{docker_user}}"
-         replace='dockeruser'
+         regexp="\"{{docker_user}}\""
+         replace="\"dockeruser\""
       with_items:
          - "{{dockersecrets}}"
       tags:
