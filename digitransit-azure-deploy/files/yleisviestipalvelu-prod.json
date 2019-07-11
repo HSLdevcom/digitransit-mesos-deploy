@@ -1,0 +1,96 @@
+{
+  "acceptedResourceRoles": null,
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
+  "cmd": null,
+  "constraints": [
+    [
+      "hostname",
+      "UNIQUE"
+    ]
+  ],
+  "container": {
+    "docker": {
+      "forcePullImage": true,
+      "image": "hsldevcom/yleisviestipalvelu",
+      "network": "BRIDGE",
+      "parameters": [
+        {
+          "key": "name",
+          "value": "yleisviestipalvelu"
+        }
+      ],
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "labels": {
+            "VIP_0": "/yleisviestipalvelu:8080"
+          },
+          "protocol": "tcp",
+          "servicePort": 10031
+        }
+      ],
+      "privileged": false
+    },
+    "type": "DOCKER",
+    "volumes": [
+      {
+        "containerPath": "/yleisviestipalvelu/messages",
+        "hostPath": "/var/lib/docker/yleisviestipalvelu/messages",
+        "mode": "RW"
+      },
+      {
+        "containerPath": "persistent",
+        "mode": "RW",
+        "persistent": {
+          "size": 5
+        }
+      }
+    ]
+  },
+  "cpus": 0.1,
+  "dependencies": [],
+  "disk": 0,
+  "env": {
+    "HTPASSWD": "htuser:htpassword",
+    "PORT": "8900"
+  },
+  "gpus": 0,
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 300,
+      "ignoreHttp1xx": false,
+      "intervalSeconds": 10,
+      "maxConsecutiveFailures": 5,
+      "path": "/",
+      "portIndex": 0,
+      "protocol": "HTTP",
+      "timeoutSeconds": 10
+    }
+  ],
+  "id": "/yleisviestipalvelu",
+  "instances": 1,
+  "labels": {
+    "update": "auto"
+  },
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 128,
+  "portDefinitions": [
+    {
+      "labels": {},
+      "port": 10031,
+      "protocol": "tcp"
+    }
+  ],
+  "ports": [
+    10031
+  ],
+  "readinessChecks": [],
+  "taskKillGracePeriodSeconds": null,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 0,
+    "minimumHealthCapacity": 0
+  }
+}
+  

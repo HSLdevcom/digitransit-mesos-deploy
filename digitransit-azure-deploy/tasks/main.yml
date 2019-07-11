@@ -48,6 +48,22 @@
       tags:
          - decrypt
          - deploy
+    - name: replace yleisviesti user
+      replace:
+        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
+        regexp='htuser'
+        replace="{{ht_user}}"
+      tags:
+         - decrypt
+         - deploy
+    - name: replace yleisviesti password
+      replace:
+        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
+        regexp='htpassword'
+        replace="{{ht_password}}"
+      tags:
+         - decrypt
+         - deploy
   when: environment_type == 'PROD'
 
 
@@ -266,6 +282,22 @@
         replace='sentrydsnenvsecret'
       with_items:
          - "{{filesecrets}}"
+      tags:
+         - encrypt
+         - deploy
+    - name: replace yleisviesti user
+      replace:
+        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
+        regexp="{{ht_user}}"
+        replace='htuser'
+      tags:
+         - encrypt
+         - deploy
+    - name: replace yleisviesti password
+      replace:
+        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
+        regexp="{{ht_password}}"
+        replace='htpassword'
       tags:
          - encrypt
          - deploy
