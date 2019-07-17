@@ -143,3 +143,15 @@ proxysecrets:
 - { secret: "lappeenrantabasickey", answer: "{{lappeenranta_basic_key}}" }
 - { secret: "samocattokenkey", answer: "{{samocat_token_key}}" }
 - { secret: "lahtibasickey", answer: "{{lahti_basic_key}}" }
+- { secret: "matkahuoltokainuubasickey", answer: "{{matkahuolto_kainuu_basic_key}}" }
+- { secret: "matkahuoltolappibasickey", answer: "{{matkahuolto_lappi_basic_key}}" }
+- { secret: "matkahuoltovantaabasickey", answer: "{{matkahuolto_vantaa_basic_key}}" }
+- { secret: "matkahuoltovarsinaisbasickey", answer: "{{matkahuolto_varsinais_basic_key}}" }
+- { secret: "matkahuoltosatakuntabasickey", answer: "{{matkahuolto_satakunta_basic_key}}" }
+- { secret: "matkahuoltokarjalabasickey", answer: "{{matkahuolto_karjala_basic_key}}" }
+- { secret: "matkahuoltopohjanmaabasickey", answer: "{{matkahuolto_pohjanmaa_basic_key}}" }
+- { secret: "matkahuoltosavobasickey", answer: "{{matkahuolto_savo_basic_key}}" }
+- { secret: "matkahuoltokantabasickey", answer: "{{matkahuolto_kanta_basic_key}}" }
+- { secret: "matkahuoltovakkabasickey", answer: "{{matkahuolto_vakka_basic_key}}" }
+- { secret: "matkahuoltokeskibasickey", answer: "{{matkahuolto_keski_basic_key}}" }
+- { secret: "matkahuoltokymebasickey", answer: "{{matkahuolto_kyme_basic_key}}" }
