@@ -39,7 +39,19 @@
     "NEW_LISSU_BASIC_AUTH": "\"Basic newlissubasickey\"",
     "LAPPEENRANTA_BASIC_AUTH": "\"Basic lappeenrantabasickey\"",
     "HSL_RT_STORAGE_NAME": "transitdataprod",
-    "LAHTI_BASIC_AUTH": "\"Basic lahtibasickey\""
+    "LAHTI_BASIC_AUTH": "\"Basic lahtibasickey\"",
+    "MATKAHUOLTO_KAINUU_BASIC_AUTH": "\"Basic matkahuoltokainuubasickey\"",
+    "MATKAHUOLTO_LAPPI_BASIC_AUTH": "\"Basic matkahuoltolappibasickey\"",
+    "MATKAHUOLTO_VANTAA_BASIC_AUTH": "\"Basic matkahuoltovantaabasickey\"",
+    "MATKAHUOLTO_VARSINAIS_BASIC_AUTH": "\"Basic matkahuoltovarsinaisbasickey\"",
+    "MATKAHUOLTO_SATAKUNTA_BASIC_AUTH": "\"Basic matkahuoltosatakuntabasickey\"",
+    "MATKAHUOLTO_KARJALA_BASIC_AUTH": "\"Basic matkahuoltokarjalabasickey\"",
+    "MATKAHUOLTO_POHJANMAA_BASIC_AUTH": "\"Basic matkahuoltopohjanmaabasickey\"",
+    "MATKAHUOLTO_SAVO_BASIC_AUTH": "\"Basic matkahuoltosavobasickey\"",
+    "MATKAHUOLTO_KANTA_BASIC_AUTH": "\"Basic matkahuoltokantabasickey\"",
+    "MATKAHUOLTO_VAKKA_BASIC_AUTH": "\"Basic matkahuoltovakkabasickey\"",
+    "MATKAHUOLTO_KESKI_BASIC_AUTH": "\"Basic matkahuoltokeskibasickey\"",
+    "MATKAHUOLTO_KYME_BASIC_AUTH": "\"Basic matkahuoltokymebasickey\""
   },
   "gpus": 0,
   "healthChecks": [
