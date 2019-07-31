@@ -42,7 +42,7 @@
       replace:
         dest="{{ role_path }}/files/{{ item }}"
         regexp='sentrydsnenvsecret'
-        replace="{{prod_sentry_dsn}}"
+        replace="{{sentry_dsn}}"
       with_items:
          - "{{filesecrets}}"
       tags:
@@ -132,7 +132,7 @@
       replace:
         dest="{{ role_path }}/files/{{ item }}"
         regexp='sentrydsnenvsecret'
-        replace="{{dev_sentry_dsn}}"
+        replace="{{sentry_dsn}}"
       with_items:
          - "{{filesecrets}}"
       tags:
@@ -278,7 +278,7 @@
     - name: re-encrypt piwik dsn secret
       replace:
         dest="{{ role_path }}/files/{{ item }}"
-        regexp="{{prod_sentry_dsn}}"
+        regexp="{{sentry_dsn}}"
         replace='sentrydsnenvsecret'
       with_items:
          - "{{filesecrets}}"
@@ -368,7 +368,7 @@
     - name: re-encrypt piwik dsn secret
       replace:
         dest="{{ role_path }}/files/{{ item }}"
-        regexp="{{dev_sentry_dsn}}"
+        regexp="{{sentry_dsn}}"
         replace='sentrydsnenvsecret'
       with_items:
          - "{{filesecrets}}"
