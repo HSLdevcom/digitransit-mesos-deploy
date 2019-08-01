@@ -31,8 +31,6 @@
         "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
         "NODE_OPTS": "--max_old_space_size=600",
         "OTP_URL": "https://dev-api.digitransit.fi/routing/v1/routers/next-hsl/",
-        "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
-        "PIWIK_ID": "5",
         "REALTIME_PATCH":"{\"HSL\":{\"mqtt\":\"wss://cmqttdev.cinfra.fi\"}}",
         "RELAY_FETCH_TIMEOUT": "3000"
     },

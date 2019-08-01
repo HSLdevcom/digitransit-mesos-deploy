@@ -44,7 +44,6 @@
         "ASSET_URL": "https://digitransit-dev-cdn-origin.azureedge.net/ui/v1/waltti",
         "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
         "NODE_OPTS": "--max_old_space_size=600",
-        "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
         "REALTIME_PATCH": "{\"tampere\": {\"mqtt\": \"wss://dev-mqtt.lmj.fi:8443/mqtt\"}, \"Joensuu\": {\"mqtt\": \"wss://dev-mqtt.lmj.fi:8443/mqtt\"}, \"Lappeenranta\": {\"mqtt\": \"wss://dev-mqtt.lmj.fi:8443/mqtt\"}, \"Kuopio\": {\"mqtt\": \"wss://dev-mqtt.lmj.fi:8443/mqtt\"}, \"LINKKI\": {\"mqtt\": \"wss://dev-mqtt.lmj.fi:8443/mqtt\"}}",
         "RELAY_FETCH_TIMEOUT": "3000",
         "SENTRY_DSN": "sentrydsnenvsecret",
