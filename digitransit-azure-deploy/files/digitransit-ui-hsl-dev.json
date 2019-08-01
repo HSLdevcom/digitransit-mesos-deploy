@@ -45,8 +45,6 @@
         "CONFIG": "hsl",
         "MAP_URL": "https://digitransit-dev-cdn-origin.azureedge.net",
         "NODE_OPTS": "--max_old_space_size=600",
-        "PIWIK_ADDRESS": "//piwik.digitransit.fi/piwik.php",
-        "PIWIK_ID": "5",
         "RELAY_FETCH_TIMEOUT": "3000",
         "SENTRY_DSN": "sentrydsnenvsecret",
         "SENTRY_SECRET_DSN": "sentrydsnsecret"
