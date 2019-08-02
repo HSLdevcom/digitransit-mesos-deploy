@@ -12,7 +12,7 @@
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/hsl-timetable-container:latest",
+      "image": "hsldevcom/hsl-timetable-container:2019-07-07-latest",
       "network": "BRIDGE",
       "parameters": [
         {
@@ -74,6 +74,6 @@
   "taskKillGracePeriodSeconds": null,
   "upgradeStrategy": {
     "maximumOverCapacity": 1,
-    "minimumHealthCapacity": 0
+    "minimumHealthCapacity": 1
   }
 }
