@@ -59,7 +59,7 @@
     }
   ],
   "id": "/opentripplanner-finland",
-  "instances": 7,
+  "instances": 8,
   "labels": {
     "restart-after-services": "/opentripplanner-data-con-finland",
     "restart-at": "05:30",

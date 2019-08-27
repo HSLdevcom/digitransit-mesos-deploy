@@ -48,24 +48,25 @@
       tags:
          - decrypt
          - deploy
-    - name: replace yleisviesti user
-      replace:
-        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
-        regexp='htuser'
-        replace="{{ht_user}}"
-      tags:
-         - decrypt
-         - deploy
-    - name: replace yleisviesti password
-      replace:
-        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
-        regexp='htpassword'
-        replace="{{ht_password}}"
-      tags:
-         - decrypt
-         - deploy
   when: environment_type == 'PROD'
 
+- name: replace yleisviesti user
+  replace:
+    dest="{{ role_path }}/files/yleisviestipalvelu-{{environment_type | lower}}.json"
+    regexp='htuser'
+    replace="{{ht_user}}"
+  tags:
+      - decrypt
+      - deploy
+
+- name: replace yleisviesti password
+  replace:
+    dest="{{ role_path }}/files/yleisviestipalvelu-{{environment_type | lower}}.json"
+    regexp='htpassword'
+    replace="{{ht_password}}"
+  tags:
+      - decrypt
+      - deploy
 
 - name: replace piwik secret
   replace:
@@ -285,24 +286,24 @@
       tags:
          - encrypt
          - deploy
-    - name: replace yleisviesti user
-      replace:
-        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
-        regexp="{{ht_user}}"
-        replace='htuser'
-      tags:
-         - encrypt
-         - deploy
-    - name: replace yleisviesti password
-      replace:
-        dest="{{ role_path }}/files/yleisviestipalvelu-prod.json"
-        regexp="{{ht_password_regex}}"
-        replace='htpassword'
-      tags:
-         - encrypt
-         - deploy
   when: environment_type == 'PROD'
 
+- name: replace yleisviesti user
+  replace:
+    dest="{{ role_path }}/files/yleisviestipalvelu-{{environment_type | lower}}.json"
+    regexp="{{ht_user}}"
+    replace='htuser'
+  tags:
+      - encrypt
+      - deploy
+- name: replace yleisviesti password
+  replace:
+    dest="{{ role_path }}/files/yleisviestipalvelu-{{environment_type | lower}}.json"
+    regexp="{{ht_password_regex}}"
+    replace='htpassword'
+  tags:
+      - encrypt
+      - deploy
 
 - name: re-encrypt piwik secret
   replace:
