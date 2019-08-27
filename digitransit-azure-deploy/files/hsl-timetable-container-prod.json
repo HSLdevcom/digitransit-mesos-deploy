@@ -12,7 +12,7 @@
   "container": {
     "docker": {
       "forcePullImage": true,
-      "image": "hsldevcom/hsl-timetable-container:2019-07-07-latest",
+      "image": "hsldevcom/hsl-timetable-container",
       "network": "BRIDGE",
       "parameters": [
         {
@@ -59,7 +59,7 @@
     "update": "auto"
   },
   "maxLaunchDelaySeconds": 3600,
-  "mem": 12,
+  "mem": 32,
   "portDefinitions": [
     {
       "labels": {},
