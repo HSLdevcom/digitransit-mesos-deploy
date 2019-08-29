@@ -42,7 +42,7 @@
   "env": {
       "ROUTER_DATA_CONTAINER_URL": "https://dev-api.digitransit.fi/routing-data/v2/finland",
       "ROUTER_NAME": "finland",
-      "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -XX:+UseParNewGC -Xms7G -Xmx7G -XX:NewRatio=5 -XX:+UseStringDeduplication"
+      "JAVA_OPTS": "-Dsentry.dsn=sentry_routing_secret_dsn -XX:+UseParNewGC -Xms9G -Xmx9G -XX:NewRatio=5 -XX:+UseStringDeduplication"
   },
   "gpus": 0,
   "healthChecks": [
@@ -66,7 +66,7 @@
       "update": "auto"
   },
   "maxLaunchDelaySeconds": 3600,
-  "mem": 10240,
+  "mem": 11264,
   "portDefinitions": [
       {
           "labels": {},
