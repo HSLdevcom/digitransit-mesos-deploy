@@ -38,7 +38,7 @@
       "VILKKU_BASIC_AUTH": "\"Basic vilkkubasickey\"",
       "NEW_LISSU_BASIC_AUTH": "\"Basic newlissubasickey\"",
       "LAPPEENRANTA_BASIC_AUTH": "\"Basic lappeenrantabasickey\"",
-      "HSL_RT_STORAGE_NAME": "hslgtfsrealtimetest",
+      "HSL_RT_STORAGE_NAME": "transitdatadev",
       "LAHTI_BASIC_AUTH": "\"Basic lahtibasickey\"",
       "MATKAHUOLTO_KAINUU_BASIC_AUTH": "\"Basic matkahuoltokainuubasickey\"",
       "MATKAHUOLTO_LAPPI_BASIC_AUTH": "\"Basic matkahuoltolappibasickey\"",
