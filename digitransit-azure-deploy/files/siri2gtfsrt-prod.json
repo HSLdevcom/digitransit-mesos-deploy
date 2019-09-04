@@ -45,8 +45,7 @@
   "disk": 0,
   "env": {
     "HSL_URL": "http://navigator-server.marathon.l4lb.thisdcos.directory:8080/siriaccess/vm/json?operatorRef=HSL",
-    "TRAIN_URL": "http://raildigitraffic2gtfsrt.marathon.l4lb.thisdcos.directory:8080/hsl",
-    "TRIP_UPDATE_URL": "http://hslalert.marathon.l4lb.thisdcos.directory:8080/"
+    "TRAIN_URL": "http://raildigitraffic2gtfsrt.marathon.l4lb.thisdcos.directory:8080/hsl"
   },
   "gpus": 0,
   "healthChecks": [

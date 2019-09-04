@@ -25,9 +25,6 @@ container:
 - name: "graphiql"
   config: "graphiql-{{ environment_type | lower }}"
 
-- name: "hslalert"
-  config: "hslalert-{{ environment_type | lower }}"
-
 - name: "digitransit-ui-waltti"
   config: "digitransit-ui-waltti-{{ environment_type | lower }}"
 
