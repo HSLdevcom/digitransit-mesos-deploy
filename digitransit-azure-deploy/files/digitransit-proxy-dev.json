@@ -28,7 +28,7 @@
       "type": "DOCKER",
       "volumes": []
   },
-  "cpus": 2,
+  "cpus": 3,
   "dependencies": [],
   "disk": 0,
   "env": {
@@ -72,7 +72,7 @@
       "update": "auto"
   },
   "maxLaunchDelaySeconds": 3600,
-  "mem": 1024,
+  "mem": 1152,
   "portDefinitions": [
       {
           "labels": {},
