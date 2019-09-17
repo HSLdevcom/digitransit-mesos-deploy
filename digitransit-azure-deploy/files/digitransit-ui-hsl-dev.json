@@ -47,8 +47,7 @@
         "NODE_OPTS": "--max_old_space_size=600",
         "RELAY_FETCH_TIMEOUT": "3000",
         "SENTRY_DSN": "sentrydsnenvsecret",
-        "SENTRY_SECRET_DSN": "sentrydsnsecret",
-        "REALTIME_PATCH": "{\"HSL\": { \"mqtt\": \"wss://cmqttdev.cinfra.fi\"}}"
+        "SENTRY_SECRET_DSN": "sentrydsnsecret"
     },
     "gpus": 0,
     "healthChecks": [
