@@ -102,9 +102,6 @@ dev_container:
 - name: "digitransit-performance-tests"
   config: "digitransit-performance-tests-dev"
 
-- name: "osmtracker"
-  config: "osmtracker-dev"
-
 - name: "hsl-timetable-builder"
   config: "hsl-timetable-builder-dev"
 
