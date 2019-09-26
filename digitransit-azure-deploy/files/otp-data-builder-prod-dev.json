@@ -49,7 +49,8 @@
         "ROUTERS": "finland, waltti, hsl",
         "SEED_TAG": "prod",
         "SLACK_WEBHOOK_URL": "slackwebhook",
-        "TOOLS_TAG": "prod"
+        "TOOLS_TAG": "prod",
+        "CONTAINER_LOGGER_LOGROTATE_STDOUT_OPTIONS": "rotate 18"
     },
     "gpus": 0,
     "healthChecks": [
