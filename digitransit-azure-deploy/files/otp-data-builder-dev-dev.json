@@ -69,7 +69,7 @@
         }
     ],
     "id": "/otp-data-builder-dev",
-    "instances": 1,
+    "instances": 0,
     "labels": {
         "update": "auto"
     },

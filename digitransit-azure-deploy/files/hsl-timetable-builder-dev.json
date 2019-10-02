@@ -50,7 +50,7 @@
         }
     ],
     "id": "/hsl-timetable-builder",
-    "instances": 1,
+    "instances": 0,
     "labels": {
         "update": "auto"
     },
