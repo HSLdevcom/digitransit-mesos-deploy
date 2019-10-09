@@ -58,7 +58,7 @@
       }
   ],
   "id": "/opentripplanner-data-con-hsl",
-  "instances": 1,
+  "instances": 0,
   "labels": {
       "update": "auto"
   },
