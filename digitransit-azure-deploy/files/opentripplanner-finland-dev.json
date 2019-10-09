@@ -59,7 +59,7 @@
       }
   ],
   "id": "/opentripplanner-finland",
-  "instances": 2,
+  "instances": 0,
   "labels": {
       "restart-after-services": "/opentripplanner-data-con-finland",
       "restart-delay": "25",

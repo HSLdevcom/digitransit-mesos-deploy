@@ -58,7 +58,7 @@
       }
   ],
   "id": "/pelias-api",
-  "instances": 1,
+  "instances": 0,
   "labels": {
       "update": "auto"
   },
